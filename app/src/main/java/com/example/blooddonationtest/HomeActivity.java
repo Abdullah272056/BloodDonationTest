@@ -3,14 +3,12 @@ package com.example.blooddonationtest;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class MainActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
     Button button;
     // Write a message to the database
     FirebaseDatabase database ;
@@ -21,7 +19,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        getWindow().setTitle("Homepage");
+        setContentView(R.layout.activity_home);
 
 //        button.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -31,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 //                myRef = database.getReference("message");
 //                String key=myRef.push().getKey();
 //                myRef.child(key).setValue("Hello world"+key);
-//                Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(HomeActivity.this, "Success", Toast.LENGTH_SHORT).show();
 //            }
 //        });
 
