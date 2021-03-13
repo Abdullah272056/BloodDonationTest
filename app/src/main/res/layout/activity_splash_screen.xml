@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    android:background="@drawable/bd"
     android:weightSum="10"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -9,6 +10,30 @@
     android:layout_height="match_parent"
     tools:context=".SplashScreen">
 
+    <View
+        android:layout_weight="9.6"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+
+
+    <LinearLayout
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="#F3DA02"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ProgressBar
+            android:backgroundTint="#FF0000"
+            android:background="#FDFDFD"
+            android:progressBackgroundTint="#F8CACA"
+            android:progressTint="#FF0000"
+            android:id="@+id/progressbarId"
+            android:layout_gravity="center"
+            style="@style/tallerBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"/>
+
+    </LinearLayout>
 
 
 
