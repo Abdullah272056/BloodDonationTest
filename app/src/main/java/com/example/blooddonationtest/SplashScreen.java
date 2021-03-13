@@ -8,7 +8,7 @@ import android.widget.ProgressBar;
 
 public class SplashScreen extends AppCompatActivity {
     ProgressBar progressBar;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,4 +42,7 @@ public class SplashScreen extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+
+
 }
