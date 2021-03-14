@@ -106,7 +106,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <Button
-                android:id="@+id/LogIbButtonID"
+                android:id="@+id/logIbButtonID"
                 android:background="#F80202"
                 android:layout_weight="1"
                 android:textColor="#FFFEFE"
