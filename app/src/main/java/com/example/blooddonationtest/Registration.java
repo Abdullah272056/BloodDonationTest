@@ -40,7 +40,6 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
 
         databaseReference= FirebaseDatabase.getInstance().getReference();
 
-
         // view finding
          signUpEmailEditText=findViewById(R.id.signUpEmailEditTextId);
         signUpPasswordEditText=findViewById(R.id.signUpPasswordEditTextId);
@@ -118,6 +117,8 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             String id1 = mAuth.getCurrentUser().getUid();
+
+
                             //For adding into database
 
 //                            databaseReference = databaseReference.child("Profile").child(id1);
@@ -127,7 +128,7 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
                             Intent intent=new Intent(Registration.this,LogInActivity.class);
                             startActivity(intent);
                             finish();
-                            
+
 
                             Toast.makeText(Registration.this, "register success", Toast.LENGTH_SHORT).show();
                         } else {
