@@ -1,9 +1,11 @@
 package com.example.blooddonationtest;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,7 +41,7 @@ public class BeADonator extends AppCompatActivity{
         bloodGroupTextView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-               // donatorInfoSave();
+                selectBloodGroup();
             }
         });
         lastDateTextView.setOnClickListener(new View.OnClickListener(){
@@ -50,6 +52,21 @@ public class BeADonator extends AppCompatActivity{
         });
 
 
+    }
+
+    public void  selectBloodGroup(){
+        AlertDialog.Builder builder     =new AlertDialog.Builder(BeADonator.this);
+        LayoutInflater layoutInflater   =LayoutInflater.from(BeADonator.this);
+        View view                       =layoutInflater.inflate(R.layout.blood_group,null);
+        builder.setView(view);
+        final AlertDialog alertDialog   = builder.create();
+
+
+
+
+
+
+        alertDialog.show();
     }
 
     public void donatorInfoSave(){
