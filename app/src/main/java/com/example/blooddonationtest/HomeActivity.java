@@ -4,11 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -61,7 +66,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
     switch (v.getId()){
     case R.id.logIbButtonID:
-
+            userLogin();
         break;
         case R.id.signUpTextViewId:
         Intent intent=new Intent(HomeActivity.this,Registration.class);
@@ -80,4 +85,31 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
 
     }
+
+    public void userLogin(){
+
+        final String signInEmail= logInEmailEditText.getText().toString();
+        final String signInPassword=logInPasswordEditText.getText().toString();
+        if (TextUtils.isEmpty(signInEmail)){
+            logInEmailEditText.setError("Enter your email");
+            logInEmailEditText.requestFocus();
+            return;
+        }
+        if (!Patterns.EMAIL_ADDRESS.matcher(signInEmail).matches()){
+            logInEmailEditText.setError("Enter a valid  email address");
+            logInEmailEditText.requestFocus();
+            return;
+        }
+
+        if (TextUtils.isEmpty(signInPassword)){
+            logInPasswordEditText.setError("Enter password");
+            logInPasswordEditText.requestFocus();
+            return;
+        }
+
+
+      
+    }
+
 }
+
