@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BloodDonationTest</string>
+    <string name="not_a_member_yet_b_sign_up_now">Not a member yet ? <b> Sign up now </b> </string>
 </resources>
