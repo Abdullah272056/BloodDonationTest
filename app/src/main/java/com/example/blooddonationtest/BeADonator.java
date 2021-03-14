@@ -3,12 +3,31 @@ package com.example.blooddonationtest;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class BeADonator extends AppCompatActivity {
+    EditText nameEditText,phoneEditText,countryNameEditText,districtEditText,thanaEditText;
+    TextView lastDateTextView, bloodGroupTextView;
+    Button saveButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_be_a_donator);
+
+        // view finding
+        nameEditText=findViewById(R.id.nameEditTextId);
+        phoneEditText=findViewById(R.id.phoneEditTextId);
+        countryNameEditText=findViewById(R.id.countryNameEditTextId);
+        districtEditText=findViewById(R.id.districtEditTextId);
+        thanaEditText=findViewById(R.id.thanaEditTextId);
+        lastDateTextView=findViewById(R.id.lastDateTextViewId);
+        bloodGroupTextView=findViewById(R.id.bloodGroupTextViewId);
+        saveButton=findViewById(R.id.saveButtonId);
+
+
     }
 }
