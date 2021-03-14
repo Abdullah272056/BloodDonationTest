@@ -57,6 +57,7 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"/>
                     <EditText
+                        android:id="@+id/nameEditTextId"
                         android:imeOptions="actionNext"
                         android:layout_marginStart="15dp"
                         android:textSize="20sp"
@@ -81,7 +82,7 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"/>
                     <EditText
-
+                        android:id="@+id/phoneEditTextId"
                         android:imeOptions="actionNext"
                         android:layout_marginStart="15dp"
                         android:textSize="20sp"
@@ -106,6 +107,7 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"/>
                     <TextView
+                        android:id="@+id/bloodGroupTextViewId"
                         android:imeOptions="actionNext"
                         android:layout_marginStart="15dp"
                         android:textSize="20sp"
@@ -129,6 +131,7 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"/>
                     <TextView
+                        android:id="@+id/lastDateTextViewId"
                         android:imeOptions="actionNext"
                         android:layout_marginStart="15dp"
                         android:textSize="20sp"
@@ -152,6 +155,7 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"/>
                     <EditText
+                        android:id="@+id/countryNameEditTextId"
                         android:imeOptions="actionNext"
                         android:layout_marginStart="15dp"
                         android:textSize="20sp"
@@ -175,14 +179,16 @@
                         android:src="@drawable/ic_baseline_location_city_24"
                         android:layout_width="30dp"
                         android:layout_height="30dp"/>
+
                     <EditText
-                        android:imeOptions="actionNext"
-                        android:layout_marginStart="15dp"
-                        android:textSize="20sp"
-                        android:inputType="text"
-                        android:hint="Enter district name"
+                        android:id="@+id/districtEditTextId"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:hint="Enter district name"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:textSize="20sp" />
 
                 </LinearLayout>
                 <LinearLayout
@@ -200,7 +206,7 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"/>
                     <EditText
-                        android:id="@+id/logInEmailEditTextId"
+                        android:id="@+id/thanaEditTextId"
                         android:imeOptions="actionDone"
                         android:layout_marginStart="15dp"
                         android:textSize="20sp"
@@ -221,6 +227,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <Button
+                    android:id="@+id/saveButtonId"
                     android:padding="10dp"
                     android:background="#F10606"
                     android:textColor="#FFFFFF"
