@@ -51,6 +51,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"/>
             <EditText
+                android:id="@+id/signUpEmailEditTextId"
                 android:imeOptions="actionNext"
                 android:layout_marginStart="15dp"
                 android:textSize="20sp"
@@ -75,6 +76,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"/>
             <EditText
+                android:id="@+id/signUpPasswordEditTextId"
                 android:imeOptions="actionDone"
                 android:layout_marginStart="15dp"
                 android:textSize="20sp"
@@ -100,6 +102,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"/>
             <EditText
+                android:id="@+id/signUpConfirmPasswordEditTextId"
                 android:imeOptions="actionDone"
                 android:layout_marginStart="15dp"
                 android:textSize="20sp"
@@ -117,15 +120,17 @@
             android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <Button
-                android:background="#F80202"
+                android:id="@+id/SignUpButtonId"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="#FFFEFE"
-                android:textSize="30sp"
+                android:background="#F80202"
                 android:padding="10dp"
                 android:text="Sign Up"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"/>
+                android:textColor="#FFFEFE"
+                android:textSize="30sp" />
         </LinearLayout>
         <LinearLayout
             android:paddingRight="20dp"
@@ -133,12 +138,14 @@
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <TextView
-                android:textColor="#FFFEFE"
-                android:textSize="17sp"
-                android:text="@string/already_have_an_account_sign_in"
+                android:id="@+id/signInTextViewId"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:text="@string/already_have_an_account_sign_in"
+                android:textColor="#FFFEFE"
+                android:textSize="17sp" />
         </LinearLayout>
 
 
