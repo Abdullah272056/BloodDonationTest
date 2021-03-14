@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:background="#1B1717"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BeADonator">
+    <LinearLayout
+        android:layout_marginTop="25dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/ic_bd_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+        <TextView
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:textColor="#FF0000"
+            android:text="Be a Donate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:background="#FDF8F8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/ic_baseline_person_24"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+            <EditText
+                android:imeOptions="actionNext"
+                android:layout_marginStart="15dp"
+                android:textSize="20sp"
+                android:inputType="textPersonName"
+                android:hint="Enter your name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:background="#FDF8F8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/ic_baseline_phone_android_24"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+            <EditText
+
+                android:imeOptions="actionNext"
+                android:layout_marginStart="15dp"
+                android:textSize="20sp"
+                android:inputType="phone"
+                android:hint="Enter phone number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:background="#FDF8F8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/ic_baseline_email_24"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+            <TextView
+                android:imeOptions="actionNext"
+                android:layout_marginStart="15dp"
+                android:textSize="20sp"
+                android:hint="Select blood group *"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:background="#FDF8F8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/ic_baseline_calendar_today_24"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+            <TextView
+                android:imeOptions="actionNext"
+                android:layout_marginStart="15dp"
+                android:textSize="20sp"
+                android:hint="Last donate date *"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:background="#FDF8F8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/ic_baseline_location_on_24"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+            <EditText
+                android:imeOptions="actionNext"
+                android:layout_marginStart="15dp"
+                android:textSize="20sp"
+                android:inputType="text"
+                android:hint="Enter country name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:background="#FDF8F8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/ic_baseline_location_city_24"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+            <EditText
+                android:imeOptions="actionNext"
+                android:layout_marginStart="15dp"
+                android:textSize="20sp"
+                android:inputType="text"
+                android:hint="Enter district name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:background="#FDF8F8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/ic_baseline_location_city_24"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+            <EditText
+                android:id="@+id/logInEmailEditTextId"
+                android:imeOptions="actionNext"
+                android:layout_marginStart="15dp"
+                android:textSize="20sp"
+                android:hint="Enter thana name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
