@@ -39,7 +39,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-
+            android:id="@+id/forgotPasswordTextViewId"
             android:paddingRight="20dp"
             android:textAlignment="textEnd"
             android:textStyle="normal"
@@ -63,6 +63,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"/>
             <EditText
+                android:id="@+id/logInEmailEditTextId"
                 android:imeOptions="actionNext"
                 android:layout_marginStart="15dp"
                 android:textSize="20sp"
@@ -87,6 +88,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"/>
             <EditText
+                android:id="@+id/logInPasswordEditTextId"
                 android:imeOptions="actionDone"
                 android:layout_marginStart="15dp"
                 android:textSize="20sp"
@@ -104,6 +106,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <Button
+                android:id="@+id/LogIbButtonID"
                 android:background="#F80202"
                 android:layout_weight="1"
                 android:textColor="#FFFEFE"
@@ -120,6 +123,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
+                android:id="@+id/signUpTextViewId"
                 android:textColor="#FFFEFE"
                 android:textSize="17sp"
                 android:text="@string/not_a_member_yet_b_sign_up_now"
