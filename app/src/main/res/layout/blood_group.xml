@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:padding="20dp"
+    android:background="#353434"
+    android:gravity="center"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:textAlignment="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+       android:background="#252424"
+        android:textColor="#FF0000"
+        android:textSize="30sp"
+        android:text="Select blood group"
+        android:layout_width="294dp"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_margin="7dp"
+            android:textColor="#FF0000"
+            android:background="#1C1C1C"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="40sp"
+            android:text="A+"
+            android:layout_width="90dp"
+            android:layout_height="90dp"/>
+        <TextView
+            android:layout_margin="7dp"
+            android:textColor="#FF0000"
+            android:background="#1C1C1C"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="40sp"
+            android:text="A-"
+            android:layout_width="90dp"
+            android:layout_height="90dp"/>
+        <TextView
+            android:layout_margin="7dp"
+            android:textColor="#FF0000"
+            android:background="#1C1C1C"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="40sp"
+            android:text="AB+"
+            android:layout_width="90dp"
+            android:layout_height="90dp"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_margin="7dp"
+            android:textColor="#FF0000"
+            android:background="#1C1C1C"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="40sp"
+            android:text="B+"
+            android:layout_width="90dp"
+            android:layout_height="90dp"/>
+        <ImageView
+            android:padding="10dp"
+            android:src="@drawable/ic_bd_icon"
+            android:layout_margin="7dp"
+            android:textColor="#FF0000"
+            android:background="#1C1C1C"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="40sp"
+            android:text="A-"
+            android:layout_width="90dp"
+            android:layout_height="90dp"/>
+        <TextView
+            android:layout_margin="7dp"
+            android:textColor="#FF0000"
+            android:background="#1C1C1C"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="40sp"
+            android:text="B-"
+            android:layout_width="90dp"
+            android:layout_height="90dp"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_margin="7dp"
+            android:textColor="#FF0000"
+            android:background="#1C1C1C"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="40sp"
+            android:text="O+"
+            android:layout_width="90dp"
+            android:layout_height="90dp"/>
+        <TextView
+            android:layout_margin="7dp"
+            android:textColor="#FF0000"
+            android:background="#1C1C1C"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="40sp"
+            android:text="O-"
+            android:layout_width="90dp"
+            android:layout_height="90dp"/>
+        <TextView
+            android:layout_margin="7dp"
+            android:textColor="#FF0000"
+            android:background="#1C1C1C"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="40sp"
+            android:text="AB-"
+            android:layout_width="90dp"
+            android:layout_height="90dp"/>
+
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

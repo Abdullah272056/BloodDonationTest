@@ -9,14 +9,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class BeADonator extends AppCompatActivity {
+public class BeADonator extends AppCompatActivity{
     EditText nameEditText,phoneEditText,countryNameEditText,districtEditText,thanaEditText;
     TextView lastDateTextView, bloodGroupTextView;
     Button saveButton;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_be_a_donator);
 
@@ -30,10 +30,22 @@ public class BeADonator extends AppCompatActivity {
         bloodGroupTextView=findViewById(R.id.bloodGroupTextViewId);
         saveButton=findViewById(R.id.saveButtonId);
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
+        saveButton.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v) {
+            public void onClick(View v){
                 donatorInfoSave();
+            }
+        });
+        bloodGroupTextView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+               // donatorInfoSave();
+            }
+        });
+        lastDateTextView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+               // donatorInfoSave();
             }
         });
 
