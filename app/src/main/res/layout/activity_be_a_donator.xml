@@ -26,13 +26,13 @@
                 android:layout_height="wrap_content">
                 <ImageView
                     android:src="@drawable/ic_bd_icon"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"/>
+                    android:layout_width="60dp"
+                    android:layout_height="70dp"/>
                 <TextView
                     android:textSize="25sp"
                     android:textAlignment="center"
                     android:textColor="#FF0000"
-                    android:text="Be a Donate"
+                    android:text="Be a Donator"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -201,7 +201,7 @@
                         android:layout_height="30dp"/>
                     <EditText
                         android:id="@+id/logInEmailEditTextId"
-                        android:imeOptions="actionNext"
+                        android:imeOptions="actionDone"
                         android:layout_marginStart="15dp"
                         android:textSize="20sp"
                         android:hint="Enter thana name"
@@ -212,13 +212,19 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_margin="20dp"
+                android:layout_marginBottom="30dp"
+                android:background="#FFF8F8"
+                android:padding="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <Button
+                    android:padding="10dp"
                     android:background="#F10606"
                     android:textColor="#FFFFFF"
-                    android:textSize="30sp"
+                    android:textSize="35sp"
                     android:text=" Save"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -227,6 +233,6 @@
 
         </LinearLayout>
     </ScrollView>
-    
+
 
 </LinearLayout>
