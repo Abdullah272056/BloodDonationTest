@@ -20,6 +20,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Objects;
+
 public class Registration extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth;
     EditText signUpEmailEditText, signUpPasswordEditText,signUpConfirmPasswordEditText;
@@ -67,52 +69,52 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
     }
 
     public  void userRegistration(){
-        final String signInEmail= signUpEmailEditText.getText().toString();
-        final String signInPassword=signUpPasswordEditText.getText().toString();
-        final String signInConfirmPassword=signUpConfirmPasswordEditText.getText().toString();
+        final String signUpEmail= signUpEmailEditText.getText().toString();
+        final String signUpPassword=signUpPasswordEditText.getText().toString();
+        final String signUpConfirmPassword=signUpConfirmPasswordEditText.getText().toString();
 
-        if (TextUtils.isEmpty(signInEmail)){
+        if (TextUtils.isEmpty(signUpEmail)){
             signUpEmailEditText.setError("Enter your email");
             signUpEmailEditText.requestFocus();
             return;
         }
-        if (!Patterns.EMAIL_ADDRESS.matcher(signInEmail).matches()){
+        if (!Patterns.EMAIL_ADDRESS.matcher(signUpEmail).matches()){
             signUpEmailEditText.setError("Enter a valid  email address");
             signUpEmailEditText.requestFocus();
             return;
         }
 
-        if (TextUtils.isEmpty(signInPassword)){
+        if (TextUtils.isEmpty(signUpPassword)){
             signUpPasswordEditText.setError("Enter password");
             signUpPasswordEditText.requestFocus();
             return;
         }
-        if (signInPassword.length()<6){
+        if (signUpPassword.length()<6){
             signUpPasswordEditText.setError("password should be more than 6");
             signUpPasswordEditText.requestFocus();
             return;
         }
 
 
-        if (TextUtils.isEmpty(signInConfirmPassword)){
+        if (TextUtils.isEmpty(signUpConfirmPassword)){
             signUpConfirmPasswordEditText.setError("Enter confirm password");
             signUpConfirmPasswordEditText.requestFocus();
             return;
         }
-        if (!signInPassword.equals(signInConfirmPassword)){
+        if (!signUpPassword.equals(signUpConfirmPassword)){
             signUpConfirmPasswordEditText.setError("do not match confirm password");
             signUpConfirmPasswordEditText.requestFocus();
             return;
         }
 
-        mAuth.createUserWithEmailAndPassword(signInEmail, signInPassword)
+        mAuth.createUserWithEmailAndPassword(signUpEmail, signUpPassword)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             Toast.makeText(Registration.this, "register success", Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(Registration.this, "register not success", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Registration.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
 
                         }
                     }
@@ -120,5 +122,5 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
 
 
 
-    }
+                }
 }
