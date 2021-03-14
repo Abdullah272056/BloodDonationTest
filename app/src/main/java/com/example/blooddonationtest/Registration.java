@@ -3,11 +3,12 @@ package com.example.blooddonationtest;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class Registration extends AppCompatActivity {
+public class Registration extends AppCompatActivity implements View.OnClickListener {
 
     EditText signUpEmailEditText, signUpPasswordEditText,signUpConfirmPasswordEditText;
     Button signUpButton;
@@ -26,5 +27,10 @@ public class Registration extends AppCompatActivity {
 
 
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        
     }
 }
