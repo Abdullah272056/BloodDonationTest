@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/aPositiveButtonId"
+            android:id="@+id/aPositiveTextViewId"
             android:layout_margin="7dp"
             android:textColor="#FF0000"
             android:background="#1C1C1C"
@@ -35,7 +35,7 @@
             android:layout_width="90dp"
             android:layout_height="90dp"/>
         <TextView
-            android:id="@+id/aNegativeButtonId"
+            android:id="@+id/aNegativeTextViewId"
             android:layout_margin="7dp"
             android:textColor="#FF0000"
             android:background="#1C1C1C"
@@ -46,7 +46,7 @@
             android:layout_width="90dp"
             android:layout_height="90dp"/>
         <TextView
-            android:id="@+id/abPositiveButtonId"
+            android:id="@+id/abPositiveTextViewId"
             android:layout_margin="7dp"
             android:textColor="#FF0000"
             android:background="#1C1C1C"
@@ -64,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/bPositiveButtonId"
+            android:id="@+id/bPositiveTextViewId"
             android:layout_margin="7dp"
             android:textColor="#FF0000"
             android:background="#1C1C1C"
@@ -87,7 +87,7 @@
             android:layout_width="90dp"
             android:layout_height="90dp"/>
         <TextView
-            android:id="@+id/bNegativeButtonId"
+            android:id="@+id/bNegativeTextViewId"
             android:layout_margin="7dp"
             android:textColor="#FF0000"
             android:background="#1C1C1C"
@@ -105,7 +105,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/oPositiveButtonId"
+            android:id="@+id/oPositiveTextViewId"
             android:layout_margin="7dp"
             android:textColor="#FF0000"
             android:background="#1C1C1C"
@@ -116,7 +116,7 @@
             android:layout_width="90dp"
             android:layout_height="90dp"/>
         <TextView
-            android:id="@+id/oNegativeButtonId"
+            android:id="@+id/oNegativeTextViewId"
             android:layout_margin="7dp"
             android:textColor="#FF0000"
             android:background="#1C1C1C"
@@ -127,7 +127,7 @@
             android:layout_width="90dp"
             android:layout_height="90dp"/>
         <TextView
-            android:id="@+id/abNegativeButtonId"
+            android:id="@+id/abNegativeTextViewId"
             android:layout_margin="7dp"
             android:textColor="#FF0000"
             android:background="#1C1C1C"

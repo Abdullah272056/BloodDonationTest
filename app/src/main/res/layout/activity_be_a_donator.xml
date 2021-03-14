@@ -57,6 +57,7 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"/>
                     <EditText
+                        android:textColor="#000000"
                         android:id="@+id/nameEditTextId"
                         android:imeOptions="actionNext"
                         android:layout_marginStart="15dp"
@@ -82,6 +83,7 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"/>
                     <EditText
+                        android:textColor="#000000"
                         android:id="@+id/phoneEditTextId"
                         android:imeOptions="actionNext"
                         android:layout_marginStart="15dp"
@@ -106,6 +108,8 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"/>
                     <TextView
+                        android:textStyle="bold"
+                        android:textColor="#000000"
                         android:padding="15dp"
                         android:id="@+id/bloodGroupTextViewId"
                         android:imeOptions="actionNext"
@@ -130,6 +134,8 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"/>
                     <TextView
+                        android:textColor="#000000"
+                        android:textStyle="bold"
                         android:padding="15dp"
                         android:id="@+id/lastDateTextViewId"
                         android:imeOptions="actionNext"
@@ -155,6 +161,7 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"/>
                     <EditText
+                        android:textColor="#000000"
                         android:id="@+id/countryNameEditTextId"
                         android:imeOptions="actionNext"
                         android:layout_marginStart="15dp"
@@ -181,6 +188,7 @@
                         android:layout_height="30dp"/>
 
                     <EditText
+                        android:textColor="#000000"
                         android:id="@+id/districtEditTextId"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -206,6 +214,7 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"/>
                     <EditText
+                        android:textColor="#000000"
                         android:id="@+id/thanaEditTextId"
                         android:imeOptions="actionDone"
                         android:layout_marginStart="15dp"
