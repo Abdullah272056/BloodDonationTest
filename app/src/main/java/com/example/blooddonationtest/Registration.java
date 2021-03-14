@@ -18,12 +18,17 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Registration extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth;
     EditText signUpEmailEditText, signUpPasswordEditText,signUpConfirmPasswordEditText;
     Button signUpButton;
     TextView signInTextView;
+
+
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +37,9 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
+
+        databaseReference= FirebaseDatabase.getInstance().getReference();
+
 
         // view finding
          signUpEmailEditText=findViewById(R.id.signUpEmailEditTextId);
@@ -109,10 +117,18 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
+                            String id1 = mAuth.getCurrentUser().getUid();
+                            //For adding into database
+
+//                            databaseReference = databaseReference.child("Profile").child(id1);
+//                            databaseReference.child("Name").setValue(name);
+
+                            Log.e("id",id1);
                             Intent intent=new Intent(Registration.this,LogInActivity.class);
                             startActivity(intent);
                             finish();
                             
+
                             Toast.makeText(Registration.this, "register success", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(Registration.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -120,7 +136,6 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
                         }
                     }
                 });
-
 
 
                 }

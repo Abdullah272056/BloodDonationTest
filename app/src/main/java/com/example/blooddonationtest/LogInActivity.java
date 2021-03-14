@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -123,6 +124,10 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
                             Toast.makeText(LogInActivity.this, "login success", Toast.LENGTH_SHORT).show();
 
                            // FirebaseUser user = mAuth.getCurrentUser();
+
+                            String id1 = mAuth.getCurrentUser().getUid();
+
+                            Log.e("id2",id1);
 
                             Intent intent =new Intent(LogInActivity.this,HomeActivity.class);
                             startActivity(intent);
