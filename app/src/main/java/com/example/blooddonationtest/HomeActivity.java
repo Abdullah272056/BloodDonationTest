@@ -19,7 +19,7 @@ public class HomeActivity extends AppCompatActivity {
         beDonatorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
             }
         });
 
