@@ -3,6 +3,8 @@ package com.example.blooddonationtest;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -27,6 +29,70 @@ public class BeADonator extends AppCompatActivity {
         lastDateTextView=findViewById(R.id.lastDateTextViewId);
         bloodGroupTextView=findViewById(R.id.bloodGroupTextViewId);
         saveButton=findViewById(R.id.saveButtonId);
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                donatorInfoSave();
+            }
+        });
+
+
+    }
+
+    public void donatorInfoSave(){
+        String name=nameEditText.getText().toString();
+        String phone=phoneEditText.getText().toString();
+        String countryName=countryNameEditText.getText().toString();
+        String districtName=districtEditText.getText().toString();
+        String thanaName=thanaEditText.getText().toString();
+
+        String lastDate=lastDateTextView.getText().toString();
+        String bloodGroup=bloodGroupTextView.getText().toString();
+
+        if (TextUtils.isEmpty(name)){
+            nameEditText.setError("Enter your name");
+            nameEditText.requestFocus();
+            return;
+        }
+
+        if (TextUtils.isEmpty(phone)){
+            phoneEditText.setError("Enter phone number");
+            phoneEditText.requestFocus();
+            return;
+        }
+        if (TextUtils.isEmpty(countryName)){
+            countryNameEditText.setError("Enter country name");
+            countryNameEditText.requestFocus();
+            return;
+        }
+
+        if (TextUtils.isEmpty(districtName)){
+            districtEditText.setError("Enter district name");
+            districtEditText.requestFocus();
+            return;
+        }
+        if (TextUtils.isEmpty(thanaName)){
+            thanaEditText.setError("Enter thana name");
+            thanaEditText.requestFocus();
+            return;
+        }
+
+        if (TextUtils.isEmpty(lastDate)){
+            lastDateTextView.setError("Enter last date");
+            lastDateTextView.requestFocus();
+            return;
+        }
+        if (TextUtils.isEmpty(bloodGroup)){
+            bloodGroupTextView.setError("select your blood group");
+            bloodGroupTextView.requestFocus();
+            return;
+        }
+
+
+
+
+
 
 
     }
