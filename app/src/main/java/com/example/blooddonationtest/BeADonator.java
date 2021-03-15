@@ -15,6 +15,9 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.Calendar;
 
 public class BeADonator extends AppCompatActivity{
@@ -30,6 +33,8 @@ public class BeADonator extends AppCompatActivity{
             aNegativeTextView,bNegativeTextView,abNegativeTextView,oNegativeTextView;
 
 
+    DatabaseReference databaseReference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -37,6 +42,11 @@ public class BeADonator extends AppCompatActivity{
 
        // receive userId
         userId=getIntent().getStringExtra("userId");
+
+        // dataBase access with id
+        databaseReference= FirebaseDatabase.getInstance().getReference("UserInformation").child(userId);
+
+
 
         // view finding
         nameEditText=findViewById(R.id.nameEditTextId);
@@ -242,7 +252,11 @@ public class BeADonator extends AppCompatActivity{
 
 
 
+        String information_id=databaseReference.push().getKey();
 
+//        StudentSemester studentSemester=new StudentSemester(id,semester,cgpa);
+//        // set data
+//        databaseReference.child(information_id).setValue(studentSemester);
 
 
 
