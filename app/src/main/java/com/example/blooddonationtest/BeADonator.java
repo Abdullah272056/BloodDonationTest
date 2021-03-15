@@ -67,6 +67,9 @@ public class BeADonator extends AppCompatActivity{
 
     }
 
+
+
+    // select Blood group with AlertDialog
     public void  selectBloodGroup(){
         AlertDialog.Builder builder     =new AlertDialog.Builder(BeADonator.this);
         LayoutInflater layoutInflater   =LayoutInflater.from(BeADonator.this);
@@ -157,6 +160,34 @@ public class BeADonator extends AppCompatActivity{
         alertDialog.show();
     }
 
+    // select data function with DatePickerDialog
+    public void selectDate(){
+
+        Calendar calendar=Calendar.getInstance();
+        int day =calendar.get(Calendar.DAY_OF_MONTH);
+        int month =calendar.get(Calendar.MONTH);
+        int year =calendar.get(Calendar.YEAR);
+
+                   // DatePickerDialog create
+        DatePickerDialog dialog=new DatePickerDialog(BeADonator.this,
+                android.R.style.Theme_Holo_Light_Dialog_MinWidth,mDateSetListener,year,month,day);
+
+        //background color set
+        //dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+
+        // selected date set with textView
+        mDateSetListener=new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                  lastDateTextView.setText(String.valueOf(dayOfMonth+"/"+month+"/"+year));
+            }
+        };
+
+
+    }
+
+
     public void donatorInfoSave(){
         String name=nameEditText.getText().toString();
         String phone=phoneEditText.getText().toString();
@@ -210,32 +241,6 @@ public class BeADonator extends AppCompatActivity{
 
 
 
-
-
-    }
-
-    public void selectDate(){
-
-        Calendar calendar=Calendar.getInstance();
-        int day =calendar.get(Calendar.DAY_OF_MONTH);
-        int month =calendar.get(Calendar.MONTH);
-        int year =calendar.get(Calendar.YEAR);
-
-                   // DatePickerDialog create
-        DatePickerDialog dialog=new DatePickerDialog(BeADonator.this,
-                android.R.style.Theme_Holo_Light_Dialog_MinWidth,mDateSetListener,year,month,day);
-
-        //background color set
-        //dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.show();
-
-        // selected date set with textView
-        mDateSetListener=new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                  lastDateTextView.setText(String.valueOf(dayOfMonth+"/"+month+"/"+year));
-            }
-        };
 
 
     }

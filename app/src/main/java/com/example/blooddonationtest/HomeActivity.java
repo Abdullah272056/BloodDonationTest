@@ -10,11 +10,15 @@ import android.widget.Button;
 public class HomeActivity extends AppCompatActivity {
 
     Button beDonatorButton;
+    String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        // receive user id
+        userId=getIntent().getStringExtra(userId);
 
         beDonatorButton=findViewById(R.id.beDonatorButtonId);
         beDonatorButton.setOnClickListener(new View.OnClickListener() {

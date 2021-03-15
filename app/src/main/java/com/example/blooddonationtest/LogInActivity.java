@@ -125,11 +125,12 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
                            // FirebaseUser user = mAuth.getCurrentUser();
 
-                            String id1 = mAuth.getCurrentUser().getUid();
+                            String user_id = mAuth.getCurrentUser().getUid();
 
-                            Log.e("id2",id1);
+
 
                             Intent intent =new Intent(LogInActivity.this,HomeActivity.class);
+                            intent.putExtra("userId",user_id);
                             startActivity(intent);
                             finish();
 
