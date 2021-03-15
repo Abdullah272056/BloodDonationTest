@@ -127,10 +127,13 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
                             String user_id = mAuth.getCurrentUser().getUid();
 
-                            Log.e("idl",user_id);
+                           // Log.e("idl",user_id);
 
+
+                            SharePref sharePref=new SharePref();
+                            sharePref.saveId(LogInActivity.this,user_id);
                             Intent intent =new Intent(LogInActivity.this,HomeActivity.class);
-                            intent.putExtra("userId",user_id);
+                            //intent.putExtra("userId",user_id);
                             startActivity(intent);
                             finish();
 

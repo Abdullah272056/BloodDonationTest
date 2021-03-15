@@ -153,7 +153,7 @@ public class HomeActivity extends AppCompatActivity {
                 for (DataSnapshot studentSnapshot:snapshot.getChildren()){
                     UserInformation userInformation=studentSnapshot.getValue(UserInformation.class);
                     allUserInformationList.add(userInformation);
-                    Toast.makeText(HomeActivity.this, String.valueOf(allUserInformationList.size()), Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(HomeActivity.this, String.valueOf(allUserInformationList.size()), Toast.LENGTH_SHORT).show();
 
                 }
                 recyclerView.setAdapter(customAdapter);
@@ -181,10 +181,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
 
-
     }
-
-
 
     // create for drawerLayout
     public void navigationDrawer() {
