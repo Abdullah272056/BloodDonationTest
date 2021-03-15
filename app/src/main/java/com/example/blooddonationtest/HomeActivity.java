@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -37,9 +40,10 @@ public class HomeActivity extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+    Toolbar toolbar;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
@@ -51,6 +55,10 @@ public class HomeActivity extends AppCompatActivity {
 
         drawerLayout=findViewById (R.id.drawerLayoutId);
         navigationView=findViewById (R.id.myNavigationViewId);
+        toolbar=findViewById (R.id.toolbarId);
+        if (toolbar!=null){
+            setSupportActionBar (toolbar);
+        }
 
 
         // dataBase access with id
@@ -79,7 +87,18 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        // call navigationDrawer for getting navigation drawer
+        navigationDrawer();
+
+
+
+
+
+
+
+
     }
+
 
 
 
@@ -95,7 +114,7 @@ public class HomeActivity extends AppCompatActivity {
                 for (DataSnapshot studentSnapshot:snapshot.getChildren()){
                     UserInformation userInformation=studentSnapshot.getValue(UserInformation.class);
                     allUserInformationList.add(userInformation);
-                    Toast.makeText(HomeActivity.this, String.valueOf(allUserInformationList.size()), Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(HomeActivity.this, String.valueOf(allUserInformationList.size()), Toast.LENGTH_SHORT).show();
 
                 }
                 recyclerView.setAdapter(customAdapter);
@@ -128,7 +147,25 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-   
+    // create for drawerLayout
+    public void navigationDrawer() {
+
+        ActionBarDrawerToggle actionBarDrawerToggle=new ActionBarDrawerToggle(
+                HomeActivity.this,drawerLayout,toolbar,R.string.open,R.string.closed){
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                Toast.makeText (HomeActivity.this, "Open", Toast.LENGTH_SHORT).show ();
+            }
+            @Override
+            public void onDrawerClosed(View drawerView){
+                super.onDrawerClosed(drawerView);
+                Toast.makeText (HomeActivity.this, "Closed", Toast.LENGTH_SHORT).show ();
+            }
+        };
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+    }
 
 
 

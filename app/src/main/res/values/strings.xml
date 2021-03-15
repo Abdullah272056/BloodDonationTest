@@ -1,4 +1,6 @@
 <resources>
+    <string name="open">Open</string>
+    <string name="closed">Closed</string>
     <string name="app_name">BloodDonationTest</string>
     <string name="not_a_member_yet_b_sign_up_now">Not a member yet ? <b> Sign up now </b> </string>
     <string name="already_have_an_account_sign_in">already Have an account? <b> Sign In </b></string>
