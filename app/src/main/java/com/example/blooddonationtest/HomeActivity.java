@@ -24,7 +24,6 @@ public class HomeActivity extends AppCompatActivity {
 
     Button beDonatorButton;
     String userId;
-    //DatabaseReference databaseReference1,databaseReference;
     DatabaseReference singleUserDatabaseReference, allUserDatabaseReference;
 
     List<UserInformation> singleUserInformationList, allUserInformationList;
@@ -33,8 +32,6 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-
 
         // receive user id
         userId=getIntent().getStringExtra("userId");
@@ -67,6 +64,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
 
+        // get all user information
         allUserDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -85,8 +83,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-
-
+        // get single user information
         singleUserDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -94,16 +91,16 @@ public class HomeActivity extends AppCompatActivity {
                 for (DataSnapshot studentSnapshot:snapshot.getChildren()){
                     UserInformation userInformation=studentSnapshot.getValue(UserInformation.class);
                     singleUserInformationList.add(userInformation);
-                   // Toast.makeText(HomeActivity.this, String.valueOf(userInformationList.get(0).getUserName()), Toast.LENGTH_SHORT).show();
-
                 }
-                //listView.setAdapter(customAdapter);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
+
+
+
     }
 
 }
