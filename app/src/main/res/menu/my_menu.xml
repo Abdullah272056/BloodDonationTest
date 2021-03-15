@@ -11,7 +11,7 @@
         android:title="Profile"
         />
 
-    <item android:id="@+id/invoiceItemId"
+    <item android:id="@+id/notificationItemId"
                 android:title="Notification"
         />
 
@@ -35,6 +35,6 @@
     </item>
 
     <item android:title="Log Out"
-        android:id="@+id/logOutId"
+        android:id="@+id/logOutItemId"
         />
 </menu>

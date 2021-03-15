@@ -91,7 +91,46 @@ public class HomeActivity extends AppCompatActivity {
         navigationDrawer();
 
 
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId ()){
+                    case R.id.homeItemIdId:
+//                        intent=new Intent(HomePage.this,UpComingFeature.class);
+//                        startActivity(intent);
+                        break;
+                    case R.id.profileItemId:
+                        Toast.makeText(HomeActivity.this, " working progress ", Toast.LENGTH_SHORT).show();
 
+                        break;
+                    case R.id.notificationItemId:
+                        Toast.makeText(HomeActivity.this, " working progress ", Toast.LENGTH_SHORT).show();
+
+                        break;
+
+                    case R.id.aboutUsItemIdId:
+                        Toast.makeText(HomeActivity.this, " working progress ", Toast.LENGTH_SHORT).show();
+                        break;
+
+                    case R.id.shareItemIdId:
+                        Toast.makeText(HomeActivity.this, " working progress ", Toast.LENGTH_SHORT).show();
+
+                        break;
+                    case R.id.feedbackItemId:
+                        Toast.makeText(HomeActivity.this, " working progress ", Toast.LENGTH_SHORT).show();
+
+                        break;
+                    case R.id.logOutItemId:
+                        Toast.makeText(HomeActivity.this, " working progress ", Toast.LENGTH_SHORT).show();
+
+                        break;
+
+
+                }
+                return false;
+            }
+
+        });
 
 
 
@@ -114,7 +153,7 @@ public class HomeActivity extends AppCompatActivity {
                 for (DataSnapshot studentSnapshot:snapshot.getChildren()){
                     UserInformation userInformation=studentSnapshot.getValue(UserInformation.class);
                     allUserInformationList.add(userInformation);
-                   // Toast.makeText(HomeActivity.this, String.valueOf(allUserInformationList.size()), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HomeActivity.this, String.valueOf(allUserInformationList.size()), Toast.LENGTH_SHORT).show();
 
                 }
                 recyclerView.setAdapter(customAdapter);
