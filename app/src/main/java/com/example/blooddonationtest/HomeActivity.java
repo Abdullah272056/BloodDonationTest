@@ -3,6 +3,8 @@ package com.example.blooddonationtest;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,12 +23,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
-
+    RecyclerView recyclerView;
     Button beDonatorButton;
     String userId;
     DatabaseReference singleUserDatabaseReference, allUserDatabaseReference;
 
     List<UserInformation> singleUserInformationList, allUserInformationList;
+    CustomAdapter customAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,10 @@ public class HomeActivity extends AppCompatActivity {
         // receive user id
         userId=getIntent().getStringExtra("userId");
 
+        recyclerView=findViewById(R.id.recyclerViewId);
+        beDonatorButton=findViewById(R.id.beDonatorButtonId);
+
+
 
         // dataBase access with id
         singleUserDatabaseReference= FirebaseDatabase.getInstance().getReference("UserInformation").child(userId);
@@ -44,15 +51,22 @@ public class HomeActivity extends AppCompatActivity {
 
         singleUserInformationList=new ArrayList<>();
         allUserInformationList=new ArrayList<>();
+        customAdapter=new CustomAdapter(HomeActivity.this,allUserInformationList);
+        recyclerView.setLayoutManager(new LinearLayoutManager(HomeActivity.this));
 
-
-        beDonatorButton=findViewById(R.id.beDonatorButtonId);
-        beDonatorButton.setOnClickListener(new View.OnClickListener() {
+        beDonatorButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-            Intent intent=new Intent(HomeActivity.this,BeADonator.class);
-            intent.putExtra("userId",userId);
-            startActivity(intent);
+                int beDonateStatus=singleUserInformationList.size();
+                if (beDonateStatus>0){
+                    Toast.makeText(HomeActivity.this, "Already  your are donator ", Toast.LENGTH_SHORT).show();
+                }else {
+                    Intent intent=new Intent(HomeActivity.this,BeADonator.class);
+                    intent.putExtra("userId",userId);
+                    startActivity(intent);
+                }
+
+
             }
         });
 
@@ -61,7 +75,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+    protected void onPostCreate(@Nullable Bundle savedInstanceState){
         super.onPostCreate(savedInstanceState);
 
         // get all user information
@@ -75,7 +89,7 @@ public class HomeActivity extends AppCompatActivity {
                     Toast.makeText(HomeActivity.this, String.valueOf(allUserInformationList.size()), Toast.LENGTH_SHORT).show();
 
                 }
-                //listView.setAdapter(customAdapter);
+                recyclerView.setAdapter(customAdapter);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

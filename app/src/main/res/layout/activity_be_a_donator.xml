@@ -214,6 +214,7 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"/>
                     <EditText
+                        android:inputType="text"
                         android:textColor="#000000"
                         android:id="@+id/thanaEditTextId"
                         android:imeOptions="actionDone"

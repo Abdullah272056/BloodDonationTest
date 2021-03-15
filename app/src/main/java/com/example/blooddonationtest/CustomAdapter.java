@@ -32,11 +32,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull CustomAdapter.MyViewHolder holder, int position) {
 
-        holder.nameTextView.setText(userInformationList.get(position).getUserName());
-        holder.bloodGroupTextView.setText(userInformationList.get(position).getBloodGroup());
-        holder.locationTextView.setText(userInformationList.get(position).getThanaName() +", "+
+        holder.nameTextView.setText("Name : "+userInformationList.get(position).getUserName());
+        holder.bloodGroupTextView.setText("Blood group : "+userInformationList.get(position).getBloodGroup());
+        holder.locationTextView.setText("Location : "+userInformationList.get(position).getThanaName() +", "+
                 userInformationList.get(position).getDistrictName()+", "+userInformationList.get(position).getCountryName());
-        holder.lastDateTextView.setText(userInformationList.get(position).getLastDate());
+        holder.lastDateTextView.setText("Last donate : "+userInformationList.get(position).getLastDate());
     }
 
     @Override
