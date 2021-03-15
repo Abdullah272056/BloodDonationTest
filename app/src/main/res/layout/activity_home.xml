@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.drawerlayout.widget.DrawerLayout
     android:background="#AFABAB"
     android:orientation="vertical"
+    android:id="@+id/drawerLayoutId"
+    android:fitsSystemWindows="true"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,18 +12,41 @@
     tools:context=".HomeActivity">
 
 
-    <Button
-        android:layout_margin="10dp"
-        android:padding="20dp"
-        android:id="@+id/beDonatorButtonId"
-        android:text="Be a donator"
+
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent">
+
+        <Button
+            android:layout_margin="10dp"
+            android:padding="20dp"
+            android:id="@+id/beDonatorButtonId"
+            android:text="Be a donator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewId"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewId"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
-</LinearLayout>
+
+    </LinearLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        app:itemIconTint="#0B0B0B"
+        app:itemTextColor="#040303"
+        android:id="@+id/myNavigationViewId"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/navigation_header"
+        app:menu="@menu/my_menu" />
+
+
+
+
+</androidx.drawerlayout.widget.DrawerLayout>
