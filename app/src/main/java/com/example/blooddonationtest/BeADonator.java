@@ -33,7 +33,7 @@ public class BeADonator extends AppCompatActivity{
             aNegativeTextView,bNegativeTextView,abNegativeTextView,oNegativeTextView;
 
 
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference,databaseReference1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -50,6 +50,8 @@ public class BeADonator extends AppCompatActivity{
         // dataBase access with id
         databaseReference= FirebaseDatabase.getInstance().getReference("UserInformation").child(userId);
 
+        // data base init
+        databaseReference1= FirebaseDatabase.getInstance().getReference("allUserInfo");
 
 
         // view finding
@@ -260,8 +262,10 @@ public class BeADonator extends AppCompatActivity{
 
         UserInformation userInformation=new UserInformation(
                 information_id,name,phone,bloodGroup,lastDate,countryName,districtName,thanaName);
+
         // set data
         databaseReference.child(information_id).setValue(userInformation);
+        databaseReference1.child(information_id).setValue(userInformation);
 
 
 

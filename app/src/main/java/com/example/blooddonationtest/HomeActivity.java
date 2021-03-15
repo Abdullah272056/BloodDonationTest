@@ -25,9 +25,9 @@ public class HomeActivity extends AppCompatActivity {
     Button beDonatorButton;
     String userId;
     //DatabaseReference databaseReference1,databaseReference;
-    DatabaseReference databaseReference;
+    DatabaseReference singleUserDatabaseReference, allUserDatabaseReference;
 
-    List<UserInformation> userInformationList;
+    List<UserInformation> singleUserInformationList, allUserInformationList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +39,14 @@ public class HomeActivity extends AppCompatActivity {
         // receive user id
         userId=getIntent().getStringExtra("userId");
 
-        //databaseReference= FirebaseDatabase.getInstance().getReference("student");
-        // dataBase access with id
-        databaseReference= FirebaseDatabase.getInstance().getReference("UserInformation").child(userId);
 
-        userInformationList=new ArrayList<>();
+        // dataBase access with id
+        singleUserDatabaseReference= FirebaseDatabase.getInstance().getReference("UserInformation").child(userId);
+        // data base init
+        allUserDatabaseReference= FirebaseDatabase.getInstance().getReference("allUserInfo");
+
+        singleUserInformationList=new ArrayList<>();
+        allUserInformationList=new ArrayList<>();
 
 
         beDonatorButton=findViewById(R.id.beDonatorButtonId);
@@ -63,14 +66,35 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        databaseReference.addValueEventListener(new ValueEventListener() {
+
+        allUserDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                userInformationList.clear();
+                allUserInformationList.clear();
                 for (DataSnapshot studentSnapshot:snapshot.getChildren()){
                     UserInformation userInformation=studentSnapshot.getValue(UserInformation.class);
-                    userInformationList.add(userInformation);
-                    Toast.makeText(HomeActivity.this, String.valueOf(userInformationList.get(0).getUserName()), Toast.LENGTH_SHORT).show();
+                    allUserInformationList.add(userInformation);
+                    Toast.makeText(HomeActivity.this, String.valueOf(allUserInformationList.size()), Toast.LENGTH_SHORT).show();
+
+                }
+                //listView.setAdapter(customAdapter);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+        singleUserDatabaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                singleUserInformationList.clear();
+                for (DataSnapshot studentSnapshot:snapshot.getChildren()){
+                    UserInformation userInformation=studentSnapshot.getValue(UserInformation.class);
+                    singleUserInformationList.add(userInformation);
+                   // Toast.makeText(HomeActivity.this, String.valueOf(userInformationList.get(0).getUserName()), Toast.LENGTH_SHORT).show();
 
                 }
                 //listView.setAdapter(customAdapter);
@@ -81,5 +105,5 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
-    
+
 }
