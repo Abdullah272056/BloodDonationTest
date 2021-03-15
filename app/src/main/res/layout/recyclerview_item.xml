@@ -15,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     <TextView
+        android:id="@+id/nameTextViewId"
         android:textStyle="bold"
         android:paddingLeft="10dp"
         android:paddingTop="5dp"
@@ -24,6 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <TextView
+        android:id="@+id/bloodGroupTextViewId"
         android:textStyle="bold"
         android:paddingLeft="10dp"
         android:paddingTop="5dp"
@@ -33,6 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <TextView
+        android:id="@+id/lastDateTextViewId"
         android:paddingLeft="10dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
@@ -41,6 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
         <TextView
+            android:id="@+id/locationTextViewId"
             android:paddingLeft="10dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
