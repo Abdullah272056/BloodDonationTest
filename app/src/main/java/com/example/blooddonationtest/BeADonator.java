@@ -51,7 +51,9 @@ public class BeADonator extends AppCompatActivity{
         setContentView(R.layout.activity_be_a_donator);
 
        // receive userId
-        userId=getIntent().getStringExtra("userId");
+        //userId=getIntent().getStringExtra("userId");
+        userId=new SharePref().loadId(BeADonator.this);
+
 
 
         singleUserInformationList=new ArrayList<>();
@@ -294,7 +296,7 @@ public class BeADonator extends AppCompatActivity{
             singleUserDatabaseReference.child(information_id).setValue(userInformation);
             allUserDatabaseReference.child(information_id).setValue(userInformation);
             Intent intent=new Intent(BeADonator.this,HomeActivity.class);
-            intent.putExtra("userId",userId);
+            //intent.putExtra("userId",userId);
             startActivity(intent);
             finish();
         }

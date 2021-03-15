@@ -48,7 +48,8 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         // receive user id
-        userId=getIntent().getStringExtra("userId");
+       // userId=getIntent().getStringExtra("userId");
+        userId=new SharePref().loadId(HomeActivity.this);
 
         recyclerView=findViewById(R.id.recyclerViewId);
         beDonatorButton=findViewById(R.id.beDonatorButtonId);
@@ -79,7 +80,7 @@ public class HomeActivity extends AppCompatActivity {
                     Toast.makeText(HomeActivity.this, "Already  your are donator ", Toast.LENGTH_SHORT).show();
                 }else {
                     Intent intent=new Intent(HomeActivity.this,BeADonator.class);
-                    intent.putExtra("userId",userId);
+                    //intent.putExtra("userId",userId);
                     startActivity(intent);
                 }
 
