@@ -40,4 +40,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
 
 
+
+   
+
+    implementation 'com.google.android.material:material:1.2.1'
+
+
 }

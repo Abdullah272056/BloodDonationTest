@@ -4,6 +4,9 @@ public class UserInformation {
     String id, userName, userPhone,BloodGroup,
             lastDate, countryName,districtName,thanaName;
 
+    public UserInformation() {
+    }
+
     public UserInformation(String id, String userName, String userPhone, String bloodGroup, String lastDate, String countryName, String districtName, String thanaName) {
         this.id = id;
         this.userName = userName;
