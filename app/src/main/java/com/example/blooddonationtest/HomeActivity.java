@@ -2,7 +2,9 @@ package com.example.blooddonationtest;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,6 +34,10 @@ public class HomeActivity extends AppCompatActivity {
     List<UserInformation> singleUserInformationList, allUserInformationList;
     CustomAdapter customAdapter;
 
+
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +49,8 @@ public class HomeActivity extends AppCompatActivity {
         recyclerView=findViewById(R.id.recyclerViewId);
         beDonatorButton=findViewById(R.id.beDonatorButtonId);
 
+        drawerLayout=findViewById (R.id.drawerLayoutId);
+        navigationView=findViewById (R.id.myNavigationViewId);
 
 
         // dataBase access with id
@@ -116,5 +125,11 @@ public class HomeActivity extends AppCompatActivity {
 
 
     }
+
+
+
+   
+
+
 
 }
