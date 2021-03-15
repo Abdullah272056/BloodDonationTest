@@ -25,6 +25,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
             Intent intent=new Intent(HomeActivity.this,BeADonator.class);
+            intent.putExtra("userId",userId);
             startActivity(intent);
             }
         });

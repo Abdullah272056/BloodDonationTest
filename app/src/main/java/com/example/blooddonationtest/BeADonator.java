@@ -19,7 +19,7 @@ import java.util.Calendar;
 
 public class BeADonator extends AppCompatActivity{
 
-
+    String userId;
     DatePickerDialog.OnDateSetListener mDateSetListener;
 
     EditText nameEditText,phoneEditText,countryNameEditText,districtEditText,thanaEditText;
@@ -34,6 +34,9 @@ public class BeADonator extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_be_a_donator);
+
+       // receive userId
+        userId=getIntent().getStringExtra("userId");
 
         // view finding
         nameEditText=findViewById(R.id.nameEditTextId);
