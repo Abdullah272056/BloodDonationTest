@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -292,7 +293,11 @@ public class BeADonator extends AppCompatActivity{
             // set data
             singleUserDatabaseReference.child(information_id).setValue(userInformation);
             allUserDatabaseReference.child(information_id).setValue(userInformation);
+            Intent intent=new Intent(BeADonator.this,HomeActivity.class);
+            intent.putExtra("userId",userId);
+            startActivity(intent);
+            finish();
         }
-        
+
     }
 }
