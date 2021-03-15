@@ -18,7 +18,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         // receive user id
-        userId=getIntent().getStringExtra(userId);
+        userId=getIntent().getStringExtra("userId");
 
         beDonatorButton=findViewById(R.id.beDonatorButtonId);
         beDonatorButton.setOnClickListener(new View.OnClickListener() {

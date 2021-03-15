@@ -43,6 +43,10 @@ public class BeADonator extends AppCompatActivity{
        // receive userId
         userId=getIntent().getStringExtra("userId");
 
+//        // dataBase access with id
+//        databaseReference= FirebaseDatabase.getInstance().getReference("profile").child(userId);
+
+
         // dataBase access with id
         databaseReference= FirebaseDatabase.getInstance().getReference("UserInformation").child(userId);
 
@@ -254,9 +258,10 @@ public class BeADonator extends AppCompatActivity{
 
         String information_id=databaseReference.push().getKey();
 
-//        StudentSemester studentSemester=new StudentSemester(id,semester,cgpa);
-//        // set data
-//        databaseReference.child(information_id).setValue(studentSemester);
+        UserInformation userInformation=new UserInformation(
+                information_id,name,phone,bloodGroup,lastDate,countryName,districtName,thanaName);
+        // set data
+        databaseReference.child(information_id).setValue(userInformation);
 
 
 

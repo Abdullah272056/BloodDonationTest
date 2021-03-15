@@ -127,7 +127,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
                             String user_id = mAuth.getCurrentUser().getUid();
 
-
+                            Log.e("idl",user_id);
 
                             Intent intent =new Intent(LogInActivity.this,HomeActivity.class);
                             intent.putExtra("userId",user_id);

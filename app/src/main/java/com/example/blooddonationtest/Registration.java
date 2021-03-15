@@ -27,6 +27,7 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
     Button signUpButton;
     TextView signInTextView;
 
+     String signUpEmail,signUpPassword,signUpConfirmPassword;
 
     DatabaseReference databaseReference;
 
@@ -38,7 +39,8 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
-        databaseReference= FirebaseDatabase.getInstance().getReference();
+        // data base init
+        databaseReference= FirebaseDatabase.getInstance().getReference("student");
 
         // view finding
          signUpEmailEditText=findViewById(R.id.signUpEmailEditTextId);
@@ -73,9 +75,10 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
     }
 
     public  void userRegistration(){
-        final String signUpEmail= signUpEmailEditText.getText().toString();
-        final String signUpPassword=signUpPasswordEditText.getText().toString();
-        final String signUpConfirmPassword=signUpConfirmPasswordEditText.getText().toString();
+
+           signUpEmail= signUpEmailEditText.getText().toString();
+          signUpPassword=signUpPasswordEditText.getText().toString();
+          signUpConfirmPassword=signUpConfirmPasswordEditText.getText().toString();
 
         if (TextUtils.isEmpty(signUpEmail)){
             signUpEmailEditText.setError("Enter your email");
@@ -116,15 +119,16 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            String id1 = mAuth.getCurrentUser().getUid();
 
 
-                            //For adding into database
+                            String id = mAuth.getCurrentUser().getUid();
 
-//                            databaseReference = databaseReference.child("Profile").child(id1);
-//                            databaseReference.child("Name").setValue(name);
 
-                            Log.e("id",id1);
+                            User user=new User(id,signUpEmail);
+                            databaseReference.child(id).setValue(user);
+
+
+                            Log.e("idr",id);
                             Intent intent=new Intent(Registration.this,LogInActivity.class);
                             startActivity(intent);
                             finish();
