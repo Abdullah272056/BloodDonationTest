@@ -98,6 +98,20 @@
                 android:layout_height="wrap_content"/>
 
         </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/rememberCheckBoxId"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:buttonTint="#ffffff"
+            android:text="Remember Password ?"
+            android:textColor="#ffffff"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="end"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
         <LinearLayout
             android:weightSum="2"
             android:paddingRight="20dp"

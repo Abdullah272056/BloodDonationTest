@@ -36,8 +36,8 @@
                     android:textStyle="bold"
                     android:textSize="30sp"
                     android:textAlignment="center"
-                    android:text="Abdullah"
                     android:layout_width="match_parent"
+                    android:text="Abdullah"
                     android:layout_height="wrap_content"/>
 
 
