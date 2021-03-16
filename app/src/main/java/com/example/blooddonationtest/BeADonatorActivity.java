@@ -278,7 +278,8 @@ public class BeADonatorActivity extends AppCompatActivity{
             return;
         }
 
-
+        // call showProgress method
+        new CustomProgress(BeADonatorActivity.this).showProgress();
 
         // get single user information
         singleUserDatabaseReference.addValueEventListener(new ValueEventListener() {
@@ -310,6 +311,9 @@ public class BeADonatorActivity extends AppCompatActivity{
             startActivity(intent);
             finish();
         }
+
+        // call dismissProgress method
+        new CustomProgress(BeADonatorActivity.this).dismissProgress();
 
     }
 
