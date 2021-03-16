@@ -17,13 +17,19 @@ public class SharePref {
         String id=sharedPreferences.getString("id","");
         return id;
     }
-    
-    public void rememberData(Context context,String rememberEmail,String rememberPassword){
+
+    public void rememberData(Context context,String rememberEmail,String rememberPassword,int checkStatus){
         SharedPreferences sharedPreferences=context.getSharedPreferences("rememberData", context.MODE_PRIVATE);
         SharedPreferences.Editor editor=sharedPreferences.edit();
         editor.putString("rememberEmail",rememberEmail);
         editor.putString("rememberPassword",rememberPassword);
+        editor.putInt("rememberCheckStatus",checkStatus);
         editor.commit();
+    }
+    public int loadRememberCheckStatus(Context context){
+        SharedPreferences sharedPreferences=context.getSharedPreferences("rememberData",context.MODE_PRIVATE);
+        int checkStatus=sharedPreferences.getInt("rememberCheckStatus",0);
+        return checkStatus;
     }
     public String loadRememberEmail(Context context){
         SharedPreferences sharedPreferences=context.getSharedPreferences("rememberData",context.MODE_PRIVATE);

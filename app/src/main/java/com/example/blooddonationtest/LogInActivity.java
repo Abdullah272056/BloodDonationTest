@@ -63,9 +63,9 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         // remember data retrieve and checking
         String emailValue= new SharePref().loadRememberEmail(LogInActivity.this);
         String passwordValue= new SharePref().loadRememberPassword(LogInActivity.this);
-
-        if (!emailValue.isEmpty() && !passwordValue.isEmpty()){
-            logInEmailEditText.setText(String.valueOf(emailValue));
+        int checkBoxStatus= new SharePref().loadRememberCheckStatus(LogInActivity.this);
+        if (checkBoxStatus==1 && !emailValue.isEmpty() && !passwordValue.isEmpty()){
+            rememberCheckBox.setChecked(true); logInEmailEditText.setText(String.valueOf(emailValue));
             logInPasswordEditText.setText(String.valueOf(passwordValue));
             userLogin();
         }
@@ -128,7 +128,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
                            // sharePref=new SharePref();
                             if (rememberCheckBox.isChecked()){
-                                new SharePref().rememberData(LogInActivity.this,signInEmail,signInPassword);
+                                new SharePref().rememberData(LogInActivity.this,signInEmail,signInPassword,1);
                                // Toast.makeText(LogInActivity.this, "success", Toast.LENGTH_SHORT).show();
                             }
                             SharePref sharePref=new SharePref();
