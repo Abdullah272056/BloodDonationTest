@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,12 +28,11 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
     TextView signUpTextView,forgotPasswordTextView;
     EditText logInEmailEditText,logInPasswordEditText;
     CheckBox rememberCheckBox;
-    // Write a message to the database
-    FirebaseDatabase database ;
-    DatabaseReference myRef;
 
     private FirebaseAuth mAuth;
     String signInEmail,signInPassword;
+
+    ProgressBar logInProgressbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +51,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         logInEmailEditText =findViewById(R.id.logInEmailEditTextId);
         logInPasswordEditText =findViewById(R.id.logInPasswordEditTextId);
         rememberCheckBox=findViewById(R.id.rememberCheckBoxId);
+        logInProgressbar=findViewById(R.id.logInProgressbarId);
 
 
         logInButton.setOnClickListener(this);
@@ -68,6 +69,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
             rememberCheckBox.setChecked(true); logInEmailEditText.setText(String.valueOf(emailValue));
             logInPasswordEditText.setText(String.valueOf(passwordValue));
             userLogin();
+
         }
         else {
             // Toast.makeText(this, "empty", Toast.LENGTH_SHORT).show();
@@ -83,6 +85,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
     switch (v.getId()){
     case R.id.logIbButtonID:
+
             userLogin();
         break;
         case R.id.signUpTextViewId:
@@ -117,13 +120,13 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
             return;
         }
 
-
+        logInProgressbar.setVisibility(View.VISIBLE);
         mAuth.signInWithEmailAndPassword(signInEmail, signInPassword)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(LogInActivity.this, "login success", Toast.LENGTH_SHORT).show();
+                           // Toast.makeText(LogInActivity.this, "login success", Toast.LENGTH_SHORT).show();
 
                             String user_id = mAuth.getCurrentUser().getUid();
 
@@ -141,10 +144,10 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
                         } else {
                             Toast.makeText(LogInActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-
                         }
-
+                        logInProgressbar.setVisibility(View.GONE);
                     }
+
                 });
 
     }
