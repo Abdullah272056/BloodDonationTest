@@ -31,6 +31,7 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
 
     DatabaseReference databaseReference;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +76,7 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
 
     public  void userRegistration(){
 
-           signUpEmail= signUpEmailEditText.getText().toString();
+          signUpEmail= signUpEmailEditText.getText().toString();
           signUpPassword=signUpPasswordEditText.getText().toString();
           signUpConfirmPassword=signUpConfirmPasswordEditText.getText().toString();
 
@@ -113,6 +114,9 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
+        // call showProgress method
+        new CustomProgress(Registration.this).showProgress();
+
         mAuth.createUserWithEmailAndPassword(signUpEmail, signUpPassword)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -138,7 +142,8 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
                         }
                     }
                 });
-
+        // call dismissProgress method
+        new CustomProgress(Registration.this).dismissProgress();
 
                 }
 
