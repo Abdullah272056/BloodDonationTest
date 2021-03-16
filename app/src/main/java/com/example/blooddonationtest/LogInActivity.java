@@ -32,8 +32,6 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
     private FirebaseAuth mAuth;
     String signInEmail,signInPassword;
 
-    ProgressBar logInProgressbar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +49,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         logInEmailEditText =findViewById(R.id.logInEmailEditTextId);
         logInPasswordEditText =findViewById(R.id.logInPasswordEditTextId);
         rememberCheckBox=findViewById(R.id.rememberCheckBoxId);
-        logInProgressbar=findViewById(R.id.logInProgressbarId);
+
 
 
         logInButton.setOnClickListener(this);
@@ -120,7 +118,8 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
             return;
         }
 
-        logInProgressbar.setVisibility(View.VISIBLE);
+
+
         mAuth.signInWithEmailAndPassword(signInEmail, signInPassword)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -145,7 +144,8 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
                         } else {
                             Toast.makeText(LogInActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
-                        logInProgressbar.setVisibility(View.GONE);
+
+
                     }
 
                 });
