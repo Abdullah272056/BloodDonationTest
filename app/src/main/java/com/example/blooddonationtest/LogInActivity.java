@@ -32,6 +32,8 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
     private FirebaseAuth mAuth;
     String signInEmail,signInPassword;
 
+    CustomProgress customProgress;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +52,8 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         logInPasswordEditText =findViewById(R.id.logInPasswordEditTextId);
         rememberCheckBox=findViewById(R.id.rememberCheckBoxId);
 
+        // create object
+        customProgress=new CustomProgress(LogInActivity.this);
 
 
         logInButton.setOnClickListener(this);
@@ -83,14 +87,15 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
     switch (v.getId()){
     case R.id.logIbButtonID:
-
             userLogin();
         break;
+
         case R.id.signUpTextViewId:
         Intent intent=new Intent(LogInActivity.this,Registration.class);
         startActivity(intent);
         finish();
         break;
+
         case R.id.forgotPasswordTextViewId:
         break;
 
@@ -119,7 +124,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         }
 
 
-
+        customProgress.showProgress();
         mAuth.signInWithEmailAndPassword(signInEmail, signInPassword)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -149,6 +154,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
                     }
 
                 });
+        customProgress.dismissProgress();
 
     }
 
