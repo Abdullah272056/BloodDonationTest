@@ -45,6 +45,8 @@ public class BeADonatorActivity extends AppCompatActivity{
 
     List<UserInformation> singleUserInformationList, allUserInformationList;
 
+    TextView toolbarTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -65,7 +67,8 @@ public class BeADonatorActivity extends AppCompatActivity{
         //userId=getIntent().getStringExtra("userId");
         userId=new SharePref().loadId(BeADonatorActivity.this);
 
-
+        toolbarTextView=findViewById (R.id.toolbarTextViewId);
+        toolbarTextView.setText("Be Donator");
 
         singleUserInformationList=new ArrayList<>();
         allUserInformationList=new ArrayList<>();

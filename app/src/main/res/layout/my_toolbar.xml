@@ -6,7 +6,7 @@
     android:background="#0821AC"
     >
     <TextView
-
+        android:id="@+id/toolbarTextViewId"
         android:gravity="center_vertical"
         android:textColor="#FFFFFF"
         android:textSize="22sp"

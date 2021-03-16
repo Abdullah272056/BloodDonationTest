@@ -16,6 +16,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -43,6 +44,8 @@ public class HomeActivity extends AppCompatActivity {
     Toolbar toolbar;
 
     Intent intent;
+
+    TextView toolbarTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -57,6 +60,11 @@ public class HomeActivity extends AppCompatActivity {
 
         drawerLayout=findViewById (R.id.drawerLayoutId);
         navigationView=findViewById (R.id.myNavigationViewId);
+
+
+        toolbarTextView=findViewById (R.id.toolbarTextViewId);
+        toolbarTextView.setText("Home Page");
+
         toolbar=findViewById (R.id.toolbarId);
         if (toolbar!=null){
             setSupportActionBar (toolbar);

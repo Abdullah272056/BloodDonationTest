@@ -34,7 +34,7 @@ public class ProfileActivity extends AppCompatActivity {
     List<UserInformation> singleUserInformationList;
     Toolbar toolbar;
 
-
+    TextView toolbarTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +48,8 @@ public class ProfileActivity extends AppCompatActivity {
         // for add back Button in title bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        toolbarTextView=findViewById (R.id.toolbarTextViewId);
+        toolbarTextView.setText(" My Profile");
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
