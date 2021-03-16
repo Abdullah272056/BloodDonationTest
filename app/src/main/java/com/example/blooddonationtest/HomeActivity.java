@@ -9,8 +9,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -40,6 +42,7 @@ public class HomeActivity extends AppCompatActivity {
     NavigationView navigationView;
     Toolbar toolbar;
 
+    Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -81,8 +84,6 @@ public class HomeActivity extends AppCompatActivity {
                     //intent.putExtra("userId",userId);
                     startActivity(intent);
                 }
-
-
             }
         });
 
@@ -91,16 +92,17 @@ public class HomeActivity extends AppCompatActivity {
 
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @SuppressLint("RtlHardcoded")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch(item.getItemId ()){
                     case R.id.homeItemIdId:
-//                        intent=new Intent(HomePage.this,UpComingFeature.class);
-//                        startActivity(intent);
+                        drawerLayout.closeDrawer(Gravity.LEFT);
                         break;
                     case R.id.profileItemId:
-                        Toast.makeText(HomeActivity.this, " working progress ", Toast.LENGTH_SHORT).show();
-
+                        intent=new Intent(HomeActivity.this, ProfileActivity.class);
+                        startActivity(intent);
+                        drawerLayout.closeDrawer(Gravity.LEFT);
                         break;
                     case R.id.notificationItemId:
                         Toast.makeText(HomeActivity.this, " working progress ", Toast.LENGTH_SHORT).show();
