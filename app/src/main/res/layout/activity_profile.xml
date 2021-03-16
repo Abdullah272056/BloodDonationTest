@@ -95,7 +95,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:src="@drawable/ic_baseline_email_24"
+                        android:src="@drawable/ic_baseline_person_24"
                         android:layout_width="30dp"
                         android:layout_height="30dp"/>
                     <LinearLayout
@@ -140,7 +140,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:src="@drawable/ic_baseline_email_24"
+                        android:src="@drawable/ic_baseline_phone_android_24"
                         android:layout_width="30dp"
                         android:layout_height="30dp"/>
                     <LinearLayout
@@ -232,7 +232,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:src="@drawable/ic_baseline_email_24"
+                        android:src="@drawable/ic_bd_icon"
                         android:layout_width="30dp"
                         android:layout_height="30dp"/>
                     <LinearLayout
@@ -277,7 +277,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:src="@drawable/ic_baseline_email_24"
+                        android:src="@drawable/ic_baseline_location_on_24"
                         android:layout_width="30dp"
                         android:layout_height="30dp"/>
                     <LinearLayout
@@ -322,7 +322,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:src="@drawable/ic_baseline_email_24"
+                        android:src="@drawable/ic_baseline_calendar_today_24"
                         android:layout_width="30dp"
                         android:layout_height="30dp"/>
                     <LinearLayout
