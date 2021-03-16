@@ -88,6 +88,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         case R.id.signUpTextViewId:
         Intent intent=new Intent(LogInActivity.this,Registration.class);
         startActivity(intent);
+        finish();
         break;
         case R.id.forgotPasswordTextViewId:
         break;

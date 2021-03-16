@@ -66,7 +66,6 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.signInTextViewId:
-
                 Intent intent=new Intent(Registration.this, LogInActivity.class);
                 startActivity(intent);
                 finish();
@@ -142,4 +141,12 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
 
 
                 }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent =new Intent(Registration.this, LogInActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
 }
