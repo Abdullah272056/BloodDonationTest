@@ -11,8 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -79,7 +77,7 @@ public class HomeActivity extends AppCompatActivity {
                 if (beDonateStatus>0){
                     Toast.makeText(HomeActivity.this, "Already  your are donator ", Toast.LENGTH_SHORT).show();
                 }else {
-                    Intent intent=new Intent(HomeActivity.this,BeADonator.class);
+                    Intent intent=new Intent(HomeActivity.this, BeADonatorActivity.class);
                     //intent.putExtra("userId",userId);
                     startActivity(intent);
                 }

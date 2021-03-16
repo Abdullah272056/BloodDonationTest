@@ -6,8 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -28,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class BeADonator extends AppCompatActivity{
+public class BeADonatorActivity extends AppCompatActivity{
 
     String userId;
     DatePickerDialog.OnDateSetListener mDateSetListener;
@@ -52,7 +50,7 @@ public class BeADonator extends AppCompatActivity{
 
        // receive userId
         //userId=getIntent().getStringExtra("userId");
-        userId=new SharePref().loadId(BeADonator.this);
+        userId=new SharePref().loadId(BeADonatorActivity.this);
 
 
 
@@ -102,8 +100,8 @@ public class BeADonator extends AppCompatActivity{
 
     // select Blood group with AlertDialog
     public void  selectBloodGroup(){
-        AlertDialog.Builder builder     =new AlertDialog.Builder(BeADonator.this);
-        LayoutInflater layoutInflater   =LayoutInflater.from(BeADonator.this);
+        AlertDialog.Builder builder     =new AlertDialog.Builder(BeADonatorActivity.this);
+        LayoutInflater layoutInflater   =LayoutInflater.from(BeADonatorActivity.this);
         View view                       =layoutInflater.inflate(R.layout.blood_group,null);
         builder.setView(view);
         final AlertDialog alertDialog   = builder.create();
@@ -200,7 +198,7 @@ public class BeADonator extends AppCompatActivity{
         int year =calendar.get(Calendar.YEAR);
 
                    // DatePickerDialog create
-        DatePickerDialog dialog=new DatePickerDialog(BeADonator.this,
+        DatePickerDialog dialog=new DatePickerDialog(BeADonatorActivity.this,
                 android.R.style.Theme_Holo_Light_Dialog_MinWidth,mDateSetListener,year,month,day);
 
         //background color set
@@ -295,7 +293,7 @@ public class BeADonator extends AppCompatActivity{
             // set data
             singleUserDatabaseReference.child(information_id).setValue(userInformation);
             allUserDatabaseReference.child(information_id).setValue(userInformation);
-            Intent intent=new Intent(BeADonator.this,HomeActivity.class);
+            Intent intent=new Intent(BeADonatorActivity.this,HomeActivity.class);
             //intent.putExtra("userId",userId);
             startActivity(intent);
             finish();
