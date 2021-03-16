@@ -119,10 +119,8 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-
-
                             String id = mAuth.getCurrentUser().getUid();
-
+                            String ee = mAuth.getCurrentUser().getEmail();
 
                             User user=new User(id,signUpEmail);
                             databaseReference.child(id).setValue(user);
