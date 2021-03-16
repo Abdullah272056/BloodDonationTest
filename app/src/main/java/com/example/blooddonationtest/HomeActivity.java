@@ -124,7 +124,12 @@ public class HomeActivity extends AppCompatActivity {
 
                         break;
                     case R.id.logOutItemId:
-                        Toast.makeText(HomeActivity.this, " working progress ", Toast.LENGTH_SHORT).show();
+
+                        intent=new Intent(HomeActivity.this, LogInActivity.class);
+                        startActivity(intent);
+                        finish();
+                        new SharePref().rememberData(HomeActivity.this,"","",0);
+                       // Toast.makeText(HomeActivity.this, " working progress ", Toast.LENGTH_SHORT).show();
 
                         break;
 
