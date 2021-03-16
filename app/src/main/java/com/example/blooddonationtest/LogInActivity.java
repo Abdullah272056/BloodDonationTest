@@ -10,6 +10,7 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,11 +26,13 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
     Button logInButton;
     TextView signUpTextView,forgotPasswordTextView;
     EditText logInEmailEditText,logInPasswordEditText;
+    CheckBox rememberCheckBox;
     // Write a message to the database
     FirebaseDatabase database ;
     DatabaseReference myRef;
 
     private FirebaseAuth mAuth;
+    String signInEmail,signInPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,8 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         forgotPasswordTextView =findViewById(R.id.forgotPasswordTextViewId);
         logInEmailEditText =findViewById(R.id.logInEmailEditTextId);
         logInPasswordEditText =findViewById(R.id.logInPasswordEditTextId);
+        rememberCheckBox=findViewById(R.id.rememberCheckBoxId);
+
 
         logInButton.setOnClickListener(this);
         signUpTextView.setOnClickListener(this);
@@ -55,18 +60,22 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
 
 
+        // remember data retrieve and checking
+        String emailValue= new SharePref().loadRememberEmail(LogInActivity.this);
+        String passwordValue= new SharePref().loadRememberPassword(LogInActivity.this);
 
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                database = FirebaseDatabase.getInstance();
-//                myRef = database.getReference("message");
-//                String key=myRef.push().getKey();
-//                myRef.child(key).setValue("Hello world"+key);
-//                Toast.makeText(LogInActivity.this, "Success", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        if (!emailValue.isEmpty() && !passwordValue.isEmpty()){
+            logInEmailEditText.setText(String.valueOf(emailValue));
+            logInPasswordEditText.setText(String.valueOf(passwordValue));
+            userLogin();
+        }
+        else {
+            // Toast.makeText(this, "empty", Toast.LENGTH_SHORT).show();
+        }
+
+
+
+
 
     }
 
@@ -79,25 +88,17 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         case R.id.signUpTextViewId:
         Intent intent=new Intent(LogInActivity.this,Registration.class);
         startActivity(intent);
-
         break;
         case R.id.forgotPasswordTextViewId:
-
-
         break;
 
+    } }
 
 
-
-}
-
-
-    }
 
     public void userLogin(){
-
-        final String signInEmail= logInEmailEditText.getText().toString();
-        final String signInPassword=logInPasswordEditText.getText().toString();
+        signInEmail= logInEmailEditText.getText().toString();
+        signInPassword=logInPasswordEditText.getText().toString();
         if (TextUtils.isEmpty(signInEmail)){
             logInEmailEditText.setError("Enter your email");
             logInEmailEditText.requestFocus();
@@ -123,13 +124,13 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
                         if (task.isSuccessful()) {
                             Toast.makeText(LogInActivity.this, "login success", Toast.LENGTH_SHORT).show();
 
-                           // FirebaseUser user = mAuth.getCurrentUser();
-
                             String user_id = mAuth.getCurrentUser().getUid();
 
-                           // Log.e("idl",user_id);
-
-
+                           // sharePref=new SharePref();
+                            if (rememberCheckBox.isChecked()){
+                                new SharePref().rememberData(LogInActivity.this,signInEmail,signInPassword);
+                               // Toast.makeText(LogInActivity.this, "success", Toast.LENGTH_SHORT).show();
+                            }
                             SharePref sharePref=new SharePref();
                             sharePref.saveId(LogInActivity.this,user_id);
                             Intent intent =new Intent(LogInActivity.this,HomeActivity.class);
