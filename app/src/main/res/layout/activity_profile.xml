@@ -27,8 +27,8 @@
 
                 <ImageView
                     android:src="@drawable/ic_baseline_person_24"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"/>
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"/>
                 <TextView
                     android:id="@+id/profileFNameTextViewId"
                     android:textColor="#020202"
@@ -52,6 +52,7 @@
                 android:layout_height="wrap_content">
 
                 <LinearLayout
+                    android:background="#E3E1E1"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -125,6 +126,7 @@
 
                 </LinearLayout>
                 <View
+                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:background="#0629ED"
@@ -172,6 +174,7 @@
 
                 </LinearLayout>
                 <View
+                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:background="#0629ED"
@@ -217,6 +220,7 @@
 
                 </LinearLayout>
                 <View
+                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:background="#0629ED"
@@ -262,6 +266,7 @@
 
                 </LinearLayout>
                 <View
+                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:background="#0629ED"
@@ -307,6 +312,7 @@
 
                 </LinearLayout>
                 <View
+                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:background="#0629ED"
@@ -351,7 +357,13 @@
 
 
                 </LinearLayout>
-
+                <View
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="#0629ED"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
 
             </LinearLayout>
 
