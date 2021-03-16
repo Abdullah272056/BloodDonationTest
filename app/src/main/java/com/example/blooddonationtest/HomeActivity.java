@@ -63,6 +63,7 @@ public class HomeActivity extends AppCompatActivity {
         }
 
 
+
         // dataBase access with id
         singleUserDatabaseReference= FirebaseDatabase.getInstance().getReference("UserInformation").child(userId);
         // data base init

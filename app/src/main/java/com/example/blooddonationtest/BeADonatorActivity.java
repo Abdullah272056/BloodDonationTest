@@ -53,6 +53,7 @@ public class BeADonatorActivity extends AppCompatActivity{
         toolbar=findViewById (R.id.toolbarId);
         if (toolbar!=null){
             setSupportActionBar (toolbar);
+
         }
         // for add back Button in title bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
