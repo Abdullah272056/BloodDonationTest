@@ -4,9 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,6 +32,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     DatabaseReference singleUserDatabaseReference;
     List<UserInformation> singleUserInformationList;
+    Toolbar toolbar;
 
 
 
@@ -36,6 +40,14 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        toolbar=findViewById (R.id.toolbarId);
+        if (toolbar!=null){
+            setSupportActionBar (toolbar);
+        }
+        // for add back Button in title bar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
@@ -101,11 +113,33 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
         });
-        
+
             String email= mAuth.getCurrentUser().getEmail();
             profileEmailTextView.setText(email);
 
 
+    }
+
+
+
+
+    @Override
+    public void onBackPressed() {
+        Intent intent =new Intent(ProfileActivity.this, HomeActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    // title bar  button clicked
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 

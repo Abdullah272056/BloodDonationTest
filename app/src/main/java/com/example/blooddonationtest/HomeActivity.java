@@ -102,6 +102,7 @@ public class HomeActivity extends AppCompatActivity {
                     case R.id.profileItemId:
                         intent=new Intent(HomeActivity.this, ProfileActivity.class);
                         startActivity(intent);
+                        finish();
                         drawerLayout.closeDrawer(Gravity.LEFT);
                         break;
                     case R.id.notificationItemId:

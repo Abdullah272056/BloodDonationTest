@@ -7,16 +7,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfileActivity">
-
+    <include layout="@layout/my_toolbar"
+        android:id="@+id/toolbarId"
+        />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
 
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <LinearLayout
                 android:background="#03A9F4"
                 android:padding="10dp"
