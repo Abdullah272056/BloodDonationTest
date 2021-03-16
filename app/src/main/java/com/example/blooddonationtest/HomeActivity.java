@@ -83,6 +83,7 @@ public class HomeActivity extends AppCompatActivity {
                     Intent intent=new Intent(HomeActivity.this, BeADonatorActivity.class);
                     //intent.putExtra("userId",userId);
                     startActivity(intent);
+                    finish();
                 }
             }
         });

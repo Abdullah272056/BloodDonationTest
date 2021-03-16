@@ -3,12 +3,14 @@ package com.example.blooddonationtest;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -27,7 +29,7 @@ import java.util.Calendar;
 import java.util.List;
 
 public class BeADonatorActivity extends AppCompatActivity{
-
+    Toolbar toolbar;
     String userId;
     DatePickerDialog.OnDateSetListener mDateSetListener;
 
@@ -47,6 +49,16 @@ public class BeADonatorActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_be_a_donator);
+
+        toolbar=findViewById (R.id.toolbarId);
+        if (toolbar!=null){
+            setSupportActionBar (toolbar);
+        }
+        // for add back Button in title bar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+
 
        // receive userId
         //userId=getIntent().getStringExtra("userId");
@@ -300,4 +312,27 @@ public class BeADonatorActivity extends AppCompatActivity{
         }
 
     }
+
+
+    @Override
+    public void onBackPressed() {
+        Intent intent =new Intent(BeADonatorActivity.this, HomeActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    // title bar  button clicked
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
+
 }
