@@ -1,5 +1,7 @@
 package com.example.blooddonationtest;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -13,8 +15,11 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -63,7 +68,7 @@ public class ProfileEditActivity extends AppCompatActivity {
         singleUserInformationList=new ArrayList<>();
         allUserInformationList=new ArrayList<>();
 
-        // dataBase access with id
+        // dataBase init with id
         singleUserDatabaseReference= FirebaseDatabase.getInstance().getReference("UserInformation").child(userId);
 
         // data base init
@@ -101,6 +106,42 @@ public class ProfileEditActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState){
+        super.onPostCreate(savedInstanceState);
+
+        // get single user information
+        singleUserDatabaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                singleUserInformationList.clear();
+                for (DataSnapshot studentSnapshot:snapshot.getChildren()){
+                    UserInformation userInformation=studentSnapshot.getValue(UserInformation.class);
+                    singleUserInformationList.add(userInformation);
+
+                    if (singleUserInformationList.size()>0){
+                        nameEditText.setText(singleUserInformationList.get(0).getUserName());
+                        phoneEditText.setText(singleUserInformationList.get(0).getUserPhone());
+                        bloodGroupTextView.setText(singleUserInformationList.get(0).getBloodGroup());
+                        lastDateTextView.setText(singleUserInformationList.get(0).getLastDate());
+                        thanaEditText.setText(singleUserInformationList.get(0).getThanaName());
+                        districtEditText.setText(singleUserInformationList.get(0).getDistrictName());
+                        countryNameEditText.setText(singleUserInformationList.get(0).getCountryName());
+                    }
+
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+
+
+
 
 
     public void selectDate(){
