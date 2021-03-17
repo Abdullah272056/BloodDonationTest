@@ -82,7 +82,7 @@ public class ProfileActivity extends AppCompatActivity {
                 Intent intent =new Intent(ProfileActivity.this,ProfileEditActivity.class);
                 startActivity(intent);
                 finish();
-                
+
             }
         });
 

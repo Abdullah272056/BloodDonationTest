@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,6 +61,8 @@ public class ProfileEditActivity extends AppCompatActivity {
         }
         toolbarTextView=findViewById (R.id.toolbarTextViewId);
         toolbarTextView.setText("Be Donator");
+        // for add back Button in title bar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // receive userId
         //userId=getIntent().getStringExtra("userId");
@@ -140,7 +143,12 @@ public class ProfileEditActivity extends AppCompatActivity {
 
     }
 
-
+    @Override
+    public void onBackPressed() {
+        Intent intent =new Intent(ProfileEditActivity.this, ProfileActivity.class);
+        startActivity(intent);
+        finish();
+    }
 
 
 
