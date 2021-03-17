@@ -54,6 +54,10 @@ public class ProfileEditActivity extends AppCompatActivity {
         toolbarTextView=findViewById (R.id.toolbarTextViewId);
         toolbarTextView.setText("Be Donator");
 
+        // receive userId
+        //userId=getIntent().getStringExtra("userId");
+        userId=new SharePref().loadId(ProfileEditActivity.this);
+
         // view finding
         nameEditText=findViewById(R.id.nameEditTextId);
         phoneEditText=findViewById(R.id.phoneEditTextId);
