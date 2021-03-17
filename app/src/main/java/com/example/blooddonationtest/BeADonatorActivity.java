@@ -29,18 +29,16 @@ import java.util.Calendar;
 import java.util.List;
 
 public class BeADonatorActivity extends AppCompatActivity{
-    Toolbar toolbar;
-    String userId;
-    DatePickerDialog.OnDateSetListener mDateSetListener;
-
     EditText nameEditText,phoneEditText,countryNameEditText,districtEditText,thanaEditText;
     TextView lastDateTextView, bloodGroupTextView;
     Button saveButton;
 
+
+    Toolbar toolbar;
+    String userId;
+    DatePickerDialog.OnDateSetListener mDateSetListener;
     TextView aPositiveTextView,bPositiveTextView,oPositiveTextView,abPositiveTextView,
             aNegativeTextView,bNegativeTextView,abNegativeTextView,oNegativeTextView;
-
-
     DatabaseReference singleUserDatabaseReference,allUserDatabaseReference;
 
     List<UserInformation> singleUserInformationList, allUserInformationList;
