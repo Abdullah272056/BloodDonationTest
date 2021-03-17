@@ -14,7 +14,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -57,6 +59,17 @@ public class ProfileEditActivity extends AppCompatActivity {
         // receive userId
         //userId=getIntent().getStringExtra("userId");
         userId=new SharePref().loadId(ProfileEditActivity.this);
+
+        singleUserInformationList=new ArrayList<>();
+        allUserInformationList=new ArrayList<>();
+
+        // dataBase access with id
+        singleUserDatabaseReference= FirebaseDatabase.getInstance().getReference("UserInformation").child(userId);
+
+        // data base init
+        allUserDatabaseReference= FirebaseDatabase.getInstance().getReference("allUserInfo");
+
+
 
         // view finding
         nameEditText=findViewById(R.id.nameEditTextId);
