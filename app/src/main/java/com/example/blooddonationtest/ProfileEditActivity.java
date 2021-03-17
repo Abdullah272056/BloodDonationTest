@@ -9,6 +9,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -48,6 +50,8 @@ public class ProfileEditActivity extends AppCompatActivity {
     List<UserInformation> singleUserInformationList, allUserInformationList;
 
     TextView toolbarTextView;
+
+    String information_id;
 
 
     @Override
@@ -93,7 +97,7 @@ public class ProfileEditActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                //donatorInfoSave();
+                donatorInfoSave();
             }
         });
         bloodGroupTextView.setOnClickListener(new View.OnClickListener(){
@@ -132,6 +136,7 @@ public class ProfileEditActivity extends AppCompatActivity {
                         thanaEditText.setText(singleUserInformationList.get(0).getThanaName());
                         districtEditText.setText(singleUserInformationList.get(0).getDistrictName());
                         countryNameEditText.setText(singleUserInformationList.get(0).getCountryName());
+                        information_id=singleUserInformationList.get(0).getId();
                     }
 
                 }
@@ -281,6 +286,75 @@ public class ProfileEditActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
+    public void donatorInfoSave(){
+        String name=nameEditText.getText().toString();
+        String phone=phoneEditText.getText().toString();
+        String countryName=countryNameEditText.getText().toString();
+        String districtName=districtEditText.getText().toString();
+        String thanaName=thanaEditText.getText().toString();
 
+        String lastDate=lastDateTextView.getText().toString();
+        String bloodGroup=bloodGroupTextView.getText().toString();
+
+
+        if (TextUtils.isEmpty(name)){
+            nameEditText.setError("Enter your name");
+            nameEditText.requestFocus();
+            return;
+        }
+
+        if (TextUtils.isEmpty(phone)){
+            phoneEditText.setError("Enter phone number");
+            phoneEditText.requestFocus();
+            return;
+        }
+        if (TextUtils.isEmpty(countryName)){
+            countryNameEditText.setError("Enter country name");
+            countryNameEditText.requestFocus();
+            return;
+        }
+
+        if (TextUtils.isEmpty(districtName)){
+            districtEditText.setError("Enter district name");
+            districtEditText.requestFocus();
+            return;
+        }
+        if (TextUtils.isEmpty(thanaName)){
+            thanaEditText.setError("Enter thana name");
+            thanaEditText.requestFocus();
+            return;
+        }
+
+        if (TextUtils.isEmpty(lastDate)){
+            lastDateTextView.setError("Enter last date");
+            lastDateTextView.requestFocus();
+            return;
+        }
+        if (TextUtils.isEmpty(bloodGroup)){
+            bloodGroupTextView.setError("select your blood group");
+            bloodGroupTextView.requestFocus();
+            return;
+        }
+
+        // call showProgress method
+        new CustomProgress(ProfileEditActivity.this).showProgress();
+
+
+
+            UserInformation userInformation=new UserInformation(
+                    information_id,name,phone,bloodGroup,lastDate,countryName,districtName,thanaName);
+            // set data
+            singleUserDatabaseReference.child(information_id).setValue(userInformation);
+            allUserDatabaseReference.child(information_id).setValue(userInformation);
+
+            Intent intent=new Intent(ProfileEditActivity.this,HomeActivity.class);
+            startActivity(intent);
+            finish();
+
+
+        // call dismissProgress method
+        new CustomProgress(ProfileEditActivity.this).dismissProgress();
+
+    }
 
 }
