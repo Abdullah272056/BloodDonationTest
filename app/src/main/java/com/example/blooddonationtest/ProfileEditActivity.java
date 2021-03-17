@@ -65,7 +65,7 @@ public class ProfileEditActivity extends AppCompatActivity {
             setSupportActionBar (toolbar);
         }
         toolbarTextView=findViewById (R.id.toolbarTextViewId);
-        toolbarTextView.setText("Be Donator");
+        toolbarTextView.setText("Edit your info");
         // for add back Button in title bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -347,7 +347,7 @@ public class ProfileEditActivity extends AppCompatActivity {
             singleUserDatabaseReference.child(information_id).setValue(userInformation);
             allUserDatabaseReference.child(information_id).setValue(userInformation);
 
-            Intent intent=new Intent(ProfileEditActivity.this,HomeActivity.class);
+            Intent intent=new Intent(ProfileEditActivity.this,ProfileActivity.class);
             startActivity(intent);
             finish();
 
