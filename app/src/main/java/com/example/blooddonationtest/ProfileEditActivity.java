@@ -3,6 +3,7 @@ package com.example.blooddonationtest;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -29,6 +30,25 @@ public class ProfileEditActivity extends AppCompatActivity {
         lastDateTextView=findViewById(R.id.lastDateTextViewId);
         bloodGroupTextView=findViewById(R.id.bloodGroupTextViewId);
         saveButton=findViewById(R.id.saveButtonId);
+
+        saveButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                //donatorInfoSave();
+            }
+        });
+        bloodGroupTextView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                //selectBloodGroup();
+            }
+        });
+        lastDateTextView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+               // selectDate();
+            }
+        });
 
     }
 }
