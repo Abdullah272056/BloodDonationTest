@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
@@ -73,6 +74,17 @@ public class ProfileActivity extends AppCompatActivity {
         profileLastDonateDateTextView=findViewById(R.id.profileLastDonateDateTextViewId);
         profileEditImageView=findViewById(R.id.profileEditImageViewId);
 
+
+
+        profileEditImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(ProfileActivity.this,ProfileEditActivity.class);
+                startActivity(intent);
+                finish();
+                
+            }
+        });
 
 
 
