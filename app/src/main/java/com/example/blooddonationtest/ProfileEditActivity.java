@@ -47,6 +47,13 @@ public class ProfileEditActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile_edit);
 
 
+        toolbar=findViewById (R.id.toolbarId);
+        if (toolbar!=null){
+            setSupportActionBar (toolbar);
+        }
+        toolbarTextView=findViewById (R.id.toolbarTextViewId);
+        toolbarTextView.setText("Be Donator");
+
         // view finding
         nameEditText=findViewById(R.id.nameEditTextId);
         phoneEditText=findViewById(R.id.phoneEditTextId);
