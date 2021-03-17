@@ -1,16 +1,22 @@
 package com.example.blooddonationtest;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.Calendar;
+import java.util.List;
 
 public class ProfileEditActivity extends AppCompatActivity {
 
@@ -18,6 +24,21 @@ public class ProfileEditActivity extends AppCompatActivity {
     TextView lastDateTextView, bloodGroupTextView;
     Button saveButton;
     DatePickerDialog.OnDateSetListener mDateSetListener;
+
+
+    TextView aPositiveTextView,bPositiveTextView,oPositiveTextView,abPositiveTextView,
+            aNegativeTextView,bNegativeTextView,abNegativeTextView,oNegativeTextView;
+
+
+
+    Toolbar toolbar;
+    String userId;
+
+    DatabaseReference singleUserDatabaseReference,allUserDatabaseReference;
+
+    List<UserInformation> singleUserInformationList, allUserInformationList;
+
+    TextView toolbarTextView;
 
 
     @Override
@@ -45,7 +66,7 @@ public class ProfileEditActivity extends AppCompatActivity {
         bloodGroupTextView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                //selectBloodGroup();
+                selectBloodGroup();
             }
         });
         lastDateTextView.setOnClickListener(new View.OnClickListener(){
@@ -83,4 +104,98 @@ public class ProfileEditActivity extends AppCompatActivity {
 
 
     }
+
+    // select Blood group with AlertDialog
+    public void  selectBloodGroup(){
+        AlertDialog.Builder builder     =new AlertDialog.Builder(ProfileEditActivity.this);
+        LayoutInflater layoutInflater   =LayoutInflater.from(ProfileEditActivity.this);
+        View view                       =layoutInflater.inflate(R.layout.blood_group,null);
+        builder.setView(view);
+        final AlertDialog alertDialog   = builder.create();
+
+        aPositiveTextView=view.findViewById(R.id.aPositiveTextViewId);
+        bPositiveTextView=view.findViewById(R.id.bPositiveTextViewId);
+        oPositiveTextView=view.findViewById(R.id.oPositiveTextViewId);
+        abPositiveTextView=view.findViewById(R.id.abPositiveTextViewId);
+        aNegativeTextView=view.findViewById(R.id.aNegativeTextViewId);
+        bNegativeTextView=view.findViewById(R.id.bNegativeTextViewId);
+        abNegativeTextView=view.findViewById(R.id.abNegativeTextViewId);
+        oNegativeTextView=view.findViewById(R.id.oNegativeTextViewId);
+
+        aPositiveTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                bloodGroupTextView.setText(" A+ ");
+                alertDialog.dismiss();
+
+            }
+        });
+        bPositiveTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bloodGroupTextView.setText(" B+ ");
+                alertDialog.dismiss();
+            }
+        });
+
+        oPositiveTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bloodGroupTextView.setText(" O+ ");
+                alertDialog.dismiss();
+            }
+        });
+
+        abPositiveTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bloodGroupTextView.setText(" AB+ ");
+                alertDialog.dismiss();
+            }
+        });
+
+        aNegativeTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bloodGroupTextView.setText(" A- ");
+                alertDialog.dismiss();
+            }
+        });
+
+        bNegativeTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bloodGroupTextView.setText(" B- ");
+                alertDialog.dismiss();
+            }
+        });
+
+        oNegativeTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bloodGroupTextView.setText(" O- ");
+                alertDialog.dismiss();
+            }
+        });
+
+        abNegativeTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bloodGroupTextView.setText(" AB- ");
+                alertDialog.dismiss();
+            }
+        });
+
+
+
+
+
+
+
+        alertDialog.show();
+    }
+
+
+
 }
