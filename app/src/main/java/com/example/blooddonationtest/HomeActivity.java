@@ -120,6 +120,17 @@ public class HomeActivity extends AppCompatActivity {
 
                         break;
 
+                    case R.id.beADonatorItemId:
+                         int beDonateStatus=singleUserInformationList.size();
+                        if (beDonateStatus>0){
+                            Toast.makeText(HomeActivity.this, "Already  your are donator ", Toast.LENGTH_SHORT).show();
+                        }else {
+                            Intent intent=new Intent(HomeActivity.this, BeADonatorActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                        break;
+
                     case R.id.aboutUsItemIdId:
                         Toast.makeText(HomeActivity.this, " working progress ", Toast.LENGTH_SHORT).show();
                         break;

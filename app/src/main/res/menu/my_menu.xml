@@ -14,8 +14,8 @@
     <item android:id="@+id/notificationItemId"
                 android:title="Notification"
         />
-    <item android:id="@+id/beADonateItemId"
-        android:title="Be a Donate"
+    <item android:id="@+id/beADonatorItemId"
+        android:title="Be a Donator"
         />
 
     <item android:title="Communication"
