@@ -3,18 +3,22 @@
 
 
     <item android:id="@+id/homeItemIdId"
+        android:icon="@drawable/ic_baseline_home_24"
         android:title="Home"
        />
 
 
     <item android:id="@+id/profileItemId"
+        android:icon="@drawable/ic_baseline_person_24"
         android:title="Profile"
         />
 
     <item android:id="@+id/notificationItemId"
+        android:icon="@drawable/ic_baseline_notifications_24"
                 android:title="Notification"
         />
     <item android:id="@+id/beADonatorItemId"
+        android:icon="@drawable/ic_baseline_person_add_24"
         android:title="Be a Donator"
         />
 
@@ -23,13 +27,15 @@
         >
         <menu>
             <item android:id="@+id/aboutUsItemIdId"
-
+                android:icon="@drawable/about_us"
                 android:title="About Us"/>
 
             <item android:id="@+id/shareItemIdId"
+                android:icon="@drawable/ic_baseline_share_24"
                 android:title="Share"/>
 
             <item android:id="@+id/feedbackItemId"
+                android:icon="@drawable/ic_baseline_feedback_24"
                 android:title="FeedBack"/>
 
         </menu>
@@ -38,6 +44,10 @@
     </item>
 
     <item android:title="Log Out"
+        android:icon="@drawable/ic_log_out"
         android:id="@+id/logOutItemId"
         />
+
+
+
 </menu>
