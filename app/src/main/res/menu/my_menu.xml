@@ -6,13 +6,10 @@
         android:icon="@drawable/ic_baseline_home_24"
         android:title="Home"
        />
-
-
     <item android:id="@+id/profileItemId"
         android:icon="@drawable/ic_baseline_person_24"
         android:title="Profile"
         />
-
     <item android:id="@+id/notificationItemId"
         android:icon="@drawable/ic_baseline_notifications_24"
                 android:title="Notification"
@@ -21,7 +18,6 @@
         android:icon="@drawable/ic_baseline_person_add_24"
         android:title="Be a Donator"
         />
-
     <item android:title="Communication"
         android:id="@+id/otherId"
         >
