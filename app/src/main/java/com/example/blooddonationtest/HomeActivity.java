@@ -64,6 +64,8 @@ public class HomeActivity extends AppCompatActivity {
         if (toolbar!=null){
             setSupportActionBar (toolbar);
         }
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24);
+
 
 
 
