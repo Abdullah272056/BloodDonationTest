@@ -48,6 +48,7 @@ public class ProfileActivity extends AppCompatActivity {
         }
         // for add back Button in title bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
 
         toolbarTextView=findViewById (R.id.toolbarTextViewId);
         toolbarTextView.setText(" My Profile");

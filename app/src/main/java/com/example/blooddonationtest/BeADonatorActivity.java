@@ -53,10 +53,12 @@ public class BeADonatorActivity extends AppCompatActivity{
         toolbar=findViewById (R.id.toolbarId);
         if (toolbar!=null){
             setSupportActionBar (toolbar);
-
         }
         // for add back Button in title bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbarTextView=findViewById (R.id.toolbarTextViewId);
+        toolbarTextView.setText("Be Donator");
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
 
 
 
@@ -65,8 +67,7 @@ public class BeADonatorActivity extends AppCompatActivity{
         //userId=getIntent().getStringExtra("userId");
         userId=new SharePref().loadId(BeADonatorActivity.this);
 
-        toolbarTextView=findViewById (R.id.toolbarTextViewId);
-        toolbarTextView.setText("Be Donator");
+
 
         singleUserInformationList=new ArrayList<>();
         allUserInformationList=new ArrayList<>();

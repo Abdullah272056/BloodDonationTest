@@ -68,6 +68,8 @@ public class ProfileEditActivity extends AppCompatActivity {
         toolbarTextView.setText("Edit your info");
         // for add back Button in title bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
+
 
         // receive userId
         //userId=getIntent().getStringExtra("userId");

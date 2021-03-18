@@ -20,8 +20,6 @@
         <include layout="@layout/my_toolbar"
             android:id="@+id/toolbarId"
             />
-        
-
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewId"

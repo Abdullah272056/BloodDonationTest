@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.Toolbar
+    app:theme="@style/ThemeOverlay.AppCompat.Dark"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="56dp"
     android:background="#0821AC"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <TextView
         android:id="@+id/toolbarTextViewId"
         android:gravity="center_vertical"
