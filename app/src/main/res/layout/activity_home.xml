@@ -20,14 +20,7 @@
         <include layout="@layout/my_toolbar"
             android:id="@+id/toolbarId"
             />
-
-        <Button
-            android:layout_margin="10dp"
-            android:padding="20dp"
-            android:id="@+id/beDonatorButtonId"
-            android:text="Be a donator"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+        
 
 
         <androidx.recyclerview.widget.RecyclerView
