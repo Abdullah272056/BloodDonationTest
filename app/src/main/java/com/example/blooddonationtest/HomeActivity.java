@@ -31,7 +31,6 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
     RecyclerView recyclerView;
-    Button beDonatorButton;
     String userId;
     DatabaseReference singleUserDatabaseReference, allUserDatabaseReference;
 
@@ -42,9 +41,7 @@ public class HomeActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
-
     Intent intent;
-
     TextView toolbarTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -56,8 +53,6 @@ public class HomeActivity extends AppCompatActivity {
         userId=new SharePref().loadId(HomeActivity.this);
 
         recyclerView=findViewById(R.id.recyclerViewId);
-        beDonatorButton=findViewById(R.id.beDonatorButtonId);
-
         drawerLayout=findViewById (R.id.drawerLayoutId);
         navigationView=findViewById (R.id.myNavigationViewId);
 
@@ -82,20 +77,7 @@ public class HomeActivity extends AppCompatActivity {
         customAdapter=new CustomAdapter(HomeActivity.this,allUserInformationList);
         recyclerView.setLayoutManager(new LinearLayoutManager(HomeActivity.this));
 
-        beDonatorButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                int beDonateStatus=singleUserInformationList.size();
-                if (beDonateStatus>0){
-                    Toast.makeText(HomeActivity.this, "Already  your are donator ", Toast.LENGTH_SHORT).show();
-                }else {
-                    Intent intent=new Intent(HomeActivity.this, BeADonatorActivity.class);
-                    //intent.putExtra("userId",userId);
-                    startActivity(intent);
-                    finish();
-                }
-            }
-        });
+
 
         // call navigationDrawer for getting navigation drawer
         navigationDrawer();
