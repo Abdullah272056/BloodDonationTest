@@ -34,7 +34,7 @@ public class HomeActivity extends AppCompatActivity {
     DatabaseReference singleUserDatabaseReference, allUserDatabaseReference;
 
     List<UserInformation> singleUserInformationList, allUserInformationList;
-    CustomAdapter customAdapter;
+    CustomAdapter2 customAdapter;
 
 
     DrawerLayout drawerLayout;
@@ -75,7 +75,7 @@ public class HomeActivity extends AppCompatActivity {
 
         singleUserInformationList=new ArrayList<>();
         allUserInformationList=new ArrayList<>();
-        customAdapter=new CustomAdapter(HomeActivity.this,allUserInformationList);
+        customAdapter=new CustomAdapter2(HomeActivity.this,allUserInformationList);
         recyclerView.setLayoutManager(new LinearLayoutManager(HomeActivity.this));
 
 
