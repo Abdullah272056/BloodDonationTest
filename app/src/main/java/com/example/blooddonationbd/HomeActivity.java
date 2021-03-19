@@ -178,7 +178,34 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
-    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        MenuItem menuItem = menu.findItem(R.id.search);
+        //set Search View Action
+        androidx.appcompat.widget.SearchView searchView = (androidx.appcompat.widget.SearchView) menuItem.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query){
+                //String s=query.toLowerCase().trim();
+
+                //processSearch(query);
+                return false;
+
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // String s=newText.toLowerCase().trim();
+               // processSearch(newText);
+                return true;
+            }
+        });
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
 
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState){
