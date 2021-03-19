@@ -34,7 +34,6 @@ public class HomeActivity extends AppCompatActivity {
     DatabaseReference singleUserDatabaseReference, allUserDatabaseReference;
 
     List<UserInformation> singleUserInformationList, allUserInformationList;
-    CustomAdapter2 customAdapter;
 
 
     DrawerLayout drawerLayout;
@@ -75,8 +74,11 @@ public class HomeActivity extends AppCompatActivity {
 
         singleUserInformationList=new ArrayList<>();
         allUserInformationList=new ArrayList<>();
-        customAdapter=new CustomAdapter2(HomeActivity.this,allUserInformationList);
-        recyclerView.setLayoutManager(new LinearLayoutManager(HomeActivity.this));
+//        customAdapter=new CustomAdapter2(HomeActivity.this,allUserInformationList);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(HomeActivity.this));
+
+
+
 
 
 
@@ -155,24 +157,24 @@ public class HomeActivity extends AppCompatActivity {
     protected void onPostCreate(@Nullable Bundle savedInstanceState){
         super.onPostCreate(savedInstanceState);
 
-        // get all user information
-        allUserDatabaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                allUserInformationList.clear();
-                for (DataSnapshot studentSnapshot:snapshot.getChildren()){
-                    UserInformation userInformation=studentSnapshot.getValue(UserInformation.class);
-                    allUserInformationList.add(userInformation);
-                   // Toast.makeText(HomeActivity.this, String.valueOf(allUserInformationList.size()), Toast.LENGTH_SHORT).show();
-
-                }
-                recyclerView.setAdapter(customAdapter);
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+//        // get all user information
+//        allUserDatabaseReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                allUserInformationList.clear();
+//                for (DataSnapshot studentSnapshot:snapshot.getChildren()){
+//                    UserInformation userInformation=studentSnapshot.getValue(UserInformation.class);
+//                    allUserInformationList.add(userInformation);
+//                   // Toast.makeText(HomeActivity.this, String.valueOf(allUserInformationList.size()), Toast.LENGTH_SHORT).show();
+//
+//                }
+//                recyclerView.setAdapter(customAdapter);
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
 
         // get single user information
         singleUserDatabaseReference.addValueEventListener(new ValueEventListener() {
