@@ -1,10 +1,8 @@
-package com.example.blooddonationtest;
+package com.example.blooddonationbd;
 
 import android.app.Activity;
 
-import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 
 import androidx.appcompat.app.AlertDialog;
 

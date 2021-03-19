@@ -1,4 +1,4 @@
-package com.example.blooddonationtest;
+package com.example.blooddonationbd;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;

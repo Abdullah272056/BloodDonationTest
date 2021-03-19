@@ -1,4 +1,4 @@
-package com.example.blooddonationtest;
+package com.example.blooddonationbd;
 
 public class User {
 

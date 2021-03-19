@@ -1,4 +1,4 @@
-package com.example.blooddonationtest;
+package com.example.blooddonationbd;
 
 import androidx.appcompat.app.AppCompatActivity;
 

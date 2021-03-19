@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.blooddonationtest">
+    package="com.example.blooddonationbd">
 
     <application
         android:allowBackup="true"
@@ -9,13 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ProfileEditActivity"></activity>
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".BeADonatorActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".Registration" />
-        <activity android:name=".LogInActivity" />
-        <activity android:name=".SplashScreen">
+        <activity android:name="com.example.blooddonationbd.ProfileEditActivity"></activity>
+        <activity android:name="com.example.blooddonationbd.ProfileActivity" />
+        <activity android:name="com.example.blooddonationbd.BeADonatorActivity" />
+        <activity android:name="com.example.blooddonationbd.HomeActivity" />
+        <activity android:name="com.example.blooddonationbd.Registration" />
+        <activity android:name="com.example.blooddonationbd.LogInActivity" />
+        <activity android:name="com.example.blooddonationbd.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
