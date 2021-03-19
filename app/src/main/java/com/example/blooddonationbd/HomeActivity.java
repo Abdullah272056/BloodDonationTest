@@ -133,7 +133,6 @@ public class HomeActivity extends AppCompatActivity {
                         finish();
                         new SharePref().rememberData(HomeActivity.this,"","",0);
                        // Toast.makeText(HomeActivity.this, " working progress ", Toast.LENGTH_SHORT).show();
-
                         break;
 
 

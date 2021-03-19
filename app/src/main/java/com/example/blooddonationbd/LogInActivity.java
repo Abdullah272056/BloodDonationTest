@@ -3,8 +3,10 @@ package com.example.blooddonationbd;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
@@ -28,6 +30,8 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
     private FirebaseAuth mAuth;
     String signInEmail,signInPassword;
 
+    CustomProgress customProgress;
+
 
 
     @Override
@@ -48,7 +52,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         logInPasswordEditText =findViewById(R.id.logInPasswordEditTextId);
         rememberCheckBox=findViewById(R.id.rememberCheckBoxId);
 
-
+       customProgress= new CustomProgress(LogInActivity.this);
 
 
         logInButton.setOnClickListener(this);
@@ -117,13 +121,15 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
             return;
         }
 
-        new CustomProgress(LogInActivity.this).showProgress();
+
+        customProgress.showProgress();
 
         mAuth.signInWithEmailAndPassword(signInEmail, signInPassword)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            customProgress.dismissProgress();
                            // Toast.makeText(LogInActivity.this, "login success", Toast.LENGTH_SHORT).show();
 
                             String user_id = mAuth.getCurrentUser().getUid();
@@ -148,7 +154,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
                     }
 
                 });
-        new CustomProgress(LogInActivity.this).dismissProgress();
+
 
 
     }

@@ -45,6 +45,8 @@ public class BeADonatorActivity extends AppCompatActivity{
 
     TextView toolbarTextView;
 
+    CustomProgress customProgress;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -60,7 +62,8 @@ public class BeADonatorActivity extends AppCompatActivity{
         toolbarTextView.setText("Be Donator");
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
 
-
+        // create a object for custom progress
+        customProgress=new CustomProgress(BeADonatorActivity.this);
 
 
        // receive userId
@@ -281,8 +284,6 @@ public class BeADonatorActivity extends AppCompatActivity{
             return;
         }
 
-        // call showProgress method
-        new CustomProgress(BeADonatorActivity.this).showProgress();
 
         // get single user information
         singleUserDatabaseReference.addValueEventListener(new ValueEventListener() {
@@ -300,23 +301,29 @@ public class BeADonatorActivity extends AppCompatActivity{
             }
         });
 
+
+
         if (singleUserInformationList.size()>0){
             Toast.makeText(this, "Already  your are donator ", Toast.LENGTH_SHORT).show();
         }else {
+            // call showProgress method
+            customProgress.showProgress();
+
             String information_id=singleUserDatabaseReference.push().getKey();
             UserInformation userInformation=new UserInformation(
                     information_id,name,phone,bloodGroup,lastDate,countryName,districtName,thanaName);
             // set data
             singleUserDatabaseReference.child(information_id).setValue(userInformation);
             allUserDatabaseReference.child(information_id).setValue(userInformation);
+            // call dismissProgress method
+            customProgress.dismissProgress();
             Intent intent=new Intent(BeADonatorActivity.this,HomeActivity.class);
             //intent.putExtra("userId",userId);
             startActivity(intent);
             finish();
         }
 
-        // call dismissProgress method
-        new CustomProgress(BeADonatorActivity.this).dismissProgress();
+
 
     }
 

@@ -31,6 +31,7 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
 
     DatabaseReference databaseReference;
 
+    CustomProgress customProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,8 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
+
+        customProgress=new CustomProgress(Registration.this);
 
         // data base init
         databaseReference= FirebaseDatabase.getInstance().getReference("student");
@@ -115,12 +118,13 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
         }
 
         // call showProgress method
-        new CustomProgress(Registration.this).showProgress();
+        customProgress.showProgress();
 
         mAuth.createUserWithEmailAndPassword(signUpEmail, signUpPassword)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        customProgress.dismissProgress();
                         if (task.isSuccessful()){
                             String id = mAuth.getCurrentUser().getUid();
                             String ee = mAuth.getCurrentUser().getEmail();
@@ -142,8 +146,7 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
                         }
                     }
                 });
-        // call dismissProgress method
-        new CustomProgress(Registration.this).dismissProgress();
+
 
                 }
 
