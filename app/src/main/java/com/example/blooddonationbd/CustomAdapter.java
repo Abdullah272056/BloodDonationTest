@@ -26,7 +26,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         this.context = context;
         this.userInformationList = userInformationList;
         //for searchView//dataList's copy
-        copyUserInformationList = new ArrayList<>(copyUserInformationList);
+        copyUserInformationList = new ArrayList<>(userInformationList);
 
     }
 

@@ -8,12 +8,14 @@ import androidx.appcompat.app.AlertDialog;
 
 
 public class CustomProgress {
-    AlertDialog alertDialog;
-    Activity activity;
+    public AlertDialog alertDialog;
+    public Activity activity;
 
     CustomProgress(Activity activity) {
         this.activity = activity;
     }
+
+
 
     public void showProgress(){
         AlertDialog.Builder builder     =new AlertDialog.Builder(activity);
@@ -25,12 +27,17 @@ public class CustomProgress {
 
 
         alertDialog   = builder.create();
-
         alertDialog.show();
+
     }
 
     void dismissProgress(){
         showProgress();
-        alertDialog.dismiss();
+
+
+
+            alertDialog.dismiss();
+      
+
     }
 }
