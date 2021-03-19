@@ -189,7 +189,7 @@ public class HomeActivity extends AppCompatActivity {
             public boolean onQueryTextSubmit(String query){
                 //String s=query.toLowerCase().trim();
 
-                //processSearch(query);
+                processSearch(query);
                 return false;
 
             }
@@ -197,7 +197,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
                 // String s=newText.toLowerCase().trim();
-               // processSearch(newText);
+               processSearch(newText);
                 return true;
             }
         });
