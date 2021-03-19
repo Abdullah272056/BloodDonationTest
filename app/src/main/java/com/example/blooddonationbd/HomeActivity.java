@@ -269,6 +269,20 @@ public class HomeActivity extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
     }
 
+    public  void processSearch(String s){
 
+
+        FirebaseRecyclerOptions<UserInformation> options =
+                new FirebaseRecyclerOptions.Builder<UserInformation>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("allUserInfo").orderByChild("thanaName").startAt(s).endAt(s+"\uf8ff"), UserInformation.class)
+                        .build();
+
+
+        customAdapter =new CustomAdapter(options);
+        customAdapter.startListening();
+        recyclerView.setAdapter(customAdapter);
+
+
+    }
 
 }
