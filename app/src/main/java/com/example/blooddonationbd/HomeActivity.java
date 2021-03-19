@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,6 +42,8 @@ public class HomeActivity extends AppCompatActivity {
     Toolbar toolbar;
     Intent intent;
     TextView toolbarTextView;
+
+    CustomAdapter customAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -75,7 +78,17 @@ public class HomeActivity extends AppCompatActivity {
         singleUserInformationList=new ArrayList<>();
         allUserInformationList=new ArrayList<>();
 //        customAdapter=new CustomAdapter2(HomeActivity.this,allUserInformationList);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(HomeActivity.this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(HomeActivity.this));
+
+
+        FirebaseRecyclerOptions<UserInformation> options =
+                new FirebaseRecyclerOptions.Builder<UserInformation>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("allUserInfo"), UserInformation.class)
+                        .build();
+
+
+        customAdapter =new CustomAdapter(options);
+        recyclerView.setAdapter(customAdapter);
 
 
 
@@ -150,6 +163,17 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        customAdapter.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        customAdapter.stopListening();
+    }
 
 
 
