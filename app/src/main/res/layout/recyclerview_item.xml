@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:background="#707070"
+    android:gravity="center"
+    android:weightSum="5"
+    android:background="#ffffff"
     android:layout_margin="3dp"
     android:orientation="horizontal"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -9,10 +11,11 @@
 
 
     <LinearLayout
+        android:layout_weight="4"
         android:layout_margin="2dp"
         android:background="#FFFFFF"
         android:orientation="vertical"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content">
     <TextView
         android:textColor="#000000"
@@ -54,6 +57,30 @@
             android:paddingBottom="2dp"
             android:textSize="20sp"
             android:text="Location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:visibility="gone"
+            android:textColor="#000000"
+            android:id="@+id/phoneNumberTextViewId"
+            android:paddingLeft="10dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:textSize="20sp"
+            android:text="xxxxxx"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center"
+        android:background="#FFFFFF"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/callImageViewId"
+            android:src="@drawable/ic_baseline_call_24"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

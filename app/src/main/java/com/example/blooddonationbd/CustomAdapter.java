@@ -1,9 +1,12 @@
 package com.example.blooddonationbd;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,9 +15,11 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 public class CustomAdapter extends FirebaseRecyclerAdapter<UserInformation, CustomAdapter.MyViewHolder>{
-
-    public CustomAdapter(@NonNull FirebaseRecyclerOptions<UserInformation> options) {
+    Context context;
+    public CustomAdapter(@NonNull FirebaseRecyclerOptions<UserInformation> options, Context context) {
         super(options);
+
+        this.context=context;
     }
 
     @Override
@@ -24,6 +29,11 @@ public class CustomAdapter extends FirebaseRecyclerAdapter<UserInformation, Cust
         holder.locationTextView.setText("Location : "+model.getThanaName() +", "+
                 model.getDistrictName()+", "+model.getCountryName());
         holder.lastDateTextView.setText("Last donate : "+model.getLastDate());
+        holder.phoneNumberTextView.setText("Phone : "+model.getUserPhone());
+
+
+
+
 
     }
 
@@ -36,7 +46,8 @@ public class CustomAdapter extends FirebaseRecyclerAdapter<UserInformation, Cust
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView nameTextView,bloodGroupTextView,locationTextView,lastDateTextView;
+        TextView nameTextView,bloodGroupTextView,locationTextView,lastDateTextView,phoneNumberTextView;
+        ImageView callImageView;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -44,6 +55,9 @@ public class CustomAdapter extends FirebaseRecyclerAdapter<UserInformation, Cust
             bloodGroupTextView=itemView.findViewById(R.id.bloodGroupTextViewId);
             locationTextView=itemView.findViewById(R.id.locationTextViewId);
             lastDateTextView=itemView.findViewById(R.id.lastDateTextViewId);
+            phoneNumberTextView=itemView.findViewById(R.id.phoneNumberTextViewId);
+            callImageView=itemView.findViewById(R.id.callImageViewId);
+
 
 
         }

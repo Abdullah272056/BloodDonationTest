@@ -32,6 +32,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
+
+    String adminId="hIFyeCPR8gh9VghjneEr0l8xEJj1";
+
     RecyclerView recyclerView;
     String userId;
     DatabaseReference singleUserDatabaseReference, allUserDatabaseReference;
@@ -89,7 +92,7 @@ public class HomeActivity extends AppCompatActivity {
                         .build();
 
 
-        customAdapter =new CustomAdapter(options);
+        customAdapter =new CustomAdapter(options,HomeActivity.this);
         recyclerView.setAdapter(customAdapter);
 
 
@@ -278,7 +281,7 @@ public class HomeActivity extends AppCompatActivity {
                         .build();
 
 
-        customAdapter =new CustomAdapter(options);
+        customAdapter =new CustomAdapter(options,HomeActivity.this);
         customAdapter.startListening();
         recyclerView.setAdapter(customAdapter);
 

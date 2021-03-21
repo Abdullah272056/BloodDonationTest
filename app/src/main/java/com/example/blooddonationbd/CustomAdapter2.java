@@ -18,7 +18,6 @@ public class CustomAdapter2 extends RecyclerView.Adapter<CustomAdapter2.MyViewHo
 
     Context context;
     private List<UserInformation> userInformationList;
-
     // for search
     List<UserInformation> copyUserInformationList;
 
@@ -46,6 +45,14 @@ public class CustomAdapter2 extends RecyclerView.Adapter<CustomAdapter2.MyViewHo
         holder.locationTextView.setText("Location : "+userInformationList.get(position).getThanaName() +", "+
                 userInformationList.get(position).getDistrictName()+", "+userInformationList.get(position).getCountryName());
         holder.lastDateTextView.setText("Last donate : "+userInformationList.get(position).getLastDate());
+
+        holder.phoneNumberTextView.setText("Phone : "+userInformationList.get(position).getUserPhone());
+
+//        if (new SharePref().loadId(context).equals("hIFyeCPR8gh9VghjneEr0l8xEJj1")){
+//            holder.phoneNumberTextView.setVisibility(View.VISIBLE);
+//        }
+
+
     }
 
     @Override
@@ -96,7 +103,7 @@ public class CustomAdapter2 extends RecyclerView.Adapter<CustomAdapter2.MyViewHo
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView nameTextView,bloodGroupTextView,locationTextView,lastDateTextView;
+        TextView nameTextView,bloodGroupTextView,locationTextView,lastDateTextView,phoneNumberTextView;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -104,6 +111,7 @@ public class CustomAdapter2 extends RecyclerView.Adapter<CustomAdapter2.MyViewHo
             bloodGroupTextView=itemView.findViewById(R.id.bloodGroupTextViewId);
             locationTextView=itemView.findViewById(R.id.locationTextViewId);
             lastDateTextView=itemView.findViewById(R.id.lastDateTextViewId);
+            phoneNumberTextView=itemView.findViewById(R.id.phoneNumberTextViewId);
 
 
         }
