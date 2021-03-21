@@ -45,7 +45,6 @@ public class CustomAdapter extends FirebaseRecyclerAdapter<UserInformation, Cust
                     Toast.makeText(context, "access not available! \n  " +
                             "please contact admin number !", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
 
