@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:gravity="center"
-    android:weightSum="5"
-    android:background="#ffffff"
-    android:layout_margin="3dp"
-    android:orientation="horizontal"
+<androidx.cardview.widget.CardView
+    app:cardBackgroundColor="#DCEBF682"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="5dp"
+    app:cardUseCompatPadding="true"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:weightSum="5"
+        android:background="#ffffff"
+        android:layout_margin="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_weight="4"
@@ -55,7 +63,7 @@
             android:paddingLeft="10dp"
             android:paddingTop="2dp"
             android:paddingBottom="2dp"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:text="Location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -85,5 +93,5 @@
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
-
-</LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

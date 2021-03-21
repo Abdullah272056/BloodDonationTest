@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:gravity="center"
-    android:paddingTop="10dp"
-    android:paddingBottom="20dp"
-    android:background="#F1F8E1"
-    android:orientation="vertical"
+<androidx.cardview.widget.CardView
+    app:cardBackgroundColor="#FF5722"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="5dp"
+    app:cardUseCompatPadding="true"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="15dp"
+        android:background="#E5E6E2"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
 <ImageView
     android:src="@drawable/ic_bd_icon"
     android:layout_width="60dp"
@@ -61,5 +73,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"/>
     </LinearLayout>
+    </LinearLayout>
 
-</LinearLayout>
+</androidx.cardview.widget.CardView>
