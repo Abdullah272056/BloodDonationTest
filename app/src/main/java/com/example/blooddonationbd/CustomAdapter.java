@@ -1,6 +1,10 @@
 package com.example.blooddonationbd;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -18,12 +23,11 @@ public class CustomAdapter extends FirebaseRecyclerAdapter<UserInformation, Cust
     Context context;
     public CustomAdapter(@NonNull FirebaseRecyclerOptions<UserInformation> options, Context context) {
         super(options);
-
         this.context=context;
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull UserInformation model) {
+    protected void onBindViewHolder(@NonNull MyViewHolder holder, final int position, @NonNull final UserInformation model) {
         holder.nameTextView.setText("Name : "+model.getUserName());
         holder.bloodGroupTextView.setText("Blood group : "+model.getBloodGroup());
         holder.locationTextView.setText("Location : "+model.getThanaName() +", "+
@@ -40,7 +44,18 @@ public class CustomAdapter extends FirebaseRecyclerAdapter<UserInformation, Cust
             @Override
             public void onClick(View v) {
                 if (new SharePref().loadId(context).equals("hIFyeCPR8gh9VghjneEr0l8xEJj1")){
-                    // add code
+
+                    String phoneNumber=model.getUserPhone();
+
+                    Toast.makeText(context, phoneNumber ,Toast.LENGTH_SHORT).show();
+
+                    String s="tel:"+phoneNumber;
+                    Intent intent=new Intent(Intent.ACTION_DIAL);
+                    intent.setData(Uri.parse(s));
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                    
+
                 }else {
                     Toast.makeText(context, "access not available! \n  " +
                             "please contact admin number !", Toast.LENGTH_SHORT).show();
