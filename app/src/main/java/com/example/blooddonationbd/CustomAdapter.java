@@ -83,6 +83,12 @@ public class CustomAdapter extends FirebaseRecyclerAdapter<UserInformation, Cust
                         @Override
                         public void onClick(View v) {
                             alertDialog.dismiss();
+
+                            String s="tel:"+"01994215664";
+                            Intent intent=new Intent(Intent.ACTION_DIAL);
+                            intent.setData(Uri.parse(s));
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            context.startActivity(intent);
                         }
                     });
 

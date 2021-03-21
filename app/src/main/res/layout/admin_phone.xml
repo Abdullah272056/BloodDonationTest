@@ -34,7 +34,7 @@
         android:layout_height="wrap_content">
         <TextView
             android:layout_margin="10dp"
-            android:background="#C8ED6B"
+            android:background="#FEFFFC"
             android:id="@+id/cancelTextViewId"
             android:padding="10dp"
             android:textColor="#000000"
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"/>
         <TextView
             android:layout_margin="10dp"
-            android:background="#C8ED6B"
+            android:background="#FFFFFF"
             android:id="@+id/callTextViewId"
             android:padding="10dp"
             android:textSize="30sp"
