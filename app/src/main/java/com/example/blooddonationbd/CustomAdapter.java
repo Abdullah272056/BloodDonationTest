@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,6 +33,7 @@ public class CustomAdapter extends FirebaseRecyclerAdapter<UserInformation, Cust
         holder.bloodGroupTextView.setText("Blood group : "+model.getBloodGroup());
         holder.locationTextView.setText("Location : "+model.getThanaName() +", "+
                 model.getDistrictName()+", "+model.getCountryName());
+
         holder.lastDateTextView.setText("Last donate : "+model.getLastDate());
         holder.phoneNumberTextView.setText("Phone : "+model.getUserPhone());
 
@@ -54,9 +56,14 @@ public class CustomAdapter extends FirebaseRecyclerAdapter<UserInformation, Cust
                     intent.setData(Uri.parse(s));
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
-                    
+
 
                 }else {
+
+
+
+
+
                     Toast.makeText(context, "access not available! \n  " +
                             "please contact admin number !", Toast.LENGTH_SHORT).show();
                 }
