@@ -60,12 +60,37 @@ public class CustomAdapter extends FirebaseRecyclerAdapter<UserInformation, Cust
 
                 }else {
 
+                    AlertDialog.Builder builder     =new AlertDialog.Builder(context);
+                    LayoutInflater layoutInflater   =LayoutInflater.from(context);
+                    View view                       =layoutInflater.inflate(R.layout.admin_phone,null);
+                   TextView cancelTextView=view.findViewById(R.id.cancelTextViewId);
+                   TextView callTextView=view.findViewById(R.id.callTextViewId);
+
+                    builder.setView(view);
+                    final AlertDialog   alertDialog   = builder.create();
+                    alertDialog.setCancelable(false);
 
 
 
+                    cancelTextView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            alertDialog.dismiss();
+                        }
+                    });
 
-                    Toast.makeText(context, "access not available! \n  " +
-                            "please contact admin number !", Toast.LENGTH_SHORT).show();
+                    callTextView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            alertDialog.dismiss();
+                        }
+                    });
+
+                    alertDialog.show();
+
+
+//                    Toast.makeText(context, "access not available! \n  " +
+//                            "please contact admin number !", Toast.LENGTH_SHORT).show();
                 }
             }
         });

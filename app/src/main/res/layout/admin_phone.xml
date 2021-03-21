@@ -1,26 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:background="#ECFAC9"
+    android:paddingTop="10dp"
+    android:paddingBottom="20dp"
+    android:background="#F1F8E1"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <TextView
+        android:textAlignment="center"
         android:textColor="#000000"
         android:text="You can not communication with donator for security issue. So, You should contact before  with admin.
-        \n\nadmin number : 01994215664"
-        android:textSize="25sp"
+        \n\n"
+        android:textSize="22sp"
         android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <TextView
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:padding="10dp"
+        android:text="Admin : 01994215664"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
     <LinearLayout
         android:layout_marginTop="60dp"
         android:weightSum="2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:textStyle="bold"
+            android:layout_margin="10dp"
+            android:background="#C8ED6B"
+            android:id="@+id/cancelTextViewId"
             android:padding="10dp"
             android:textColor="#000000"
             android:textAlignment="center"
@@ -30,7 +45,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"/>
         <TextView
-            android:textStyle="bold"
+            android:layout_margin="10dp"
+            android:background="#C8ED6B"
+            android:id="@+id/callTextViewId"
             android:padding="10dp"
             android:textSize="30sp"
             android:textColor="#000000"
