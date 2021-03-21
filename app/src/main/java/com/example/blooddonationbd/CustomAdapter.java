@@ -31,7 +31,23 @@ public class CustomAdapter extends FirebaseRecyclerAdapter<UserInformation, Cust
         holder.lastDateTextView.setText("Last donate : "+model.getLastDate());
         holder.phoneNumberTextView.setText("Phone : "+model.getUserPhone());
 
+        if (new SharePref().loadId(context).equals("hIFyeCPR8gh9VghjneEr0l8xEJj1")){
+            holder.phoneNumberTextView.setVisibility(View.VISIBLE);
+        }
 
+
+        holder.callImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (new SharePref().loadId(context).equals("hIFyeCPR8gh9VghjneEr0l8xEJj1")){
+                    // add code
+                }else {
+                    Toast.makeText(context, "access not available! \n  " +
+                            "please contact admin number !", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
 
 
 
