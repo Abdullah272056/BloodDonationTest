@@ -33,7 +33,7 @@ public class CustomAdapter2 extends RecyclerView.Adapter<CustomAdapter2.MyViewHo
     @Override
     public CustomAdapter2.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater= LayoutInflater.from(context);
-        View view= layoutInflater.inflate(R.layout.recyclerview_item,parent,false);
+        View view= layoutInflater.inflate(R.layout.user_recyclerview_item,parent,false);
         return new CustomAdapter2.MyViewHolder(view);
     }
 

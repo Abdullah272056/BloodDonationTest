@@ -1,9 +1,7 @@
 package com.example.blooddonationbd;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +12,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -109,7 +106,7 @@ public class CustomAdapter extends FirebaseRecyclerAdapter<UserInformation, Cust
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater= LayoutInflater.from(parent.getContext());
-        View view= layoutInflater.inflate(R.layout.recyclerview_item,parent,false);
+        View view= layoutInflater.inflate(R.layout.user_recyclerview_item,parent,false);
         return new MyViewHolder(view);
     }
 
