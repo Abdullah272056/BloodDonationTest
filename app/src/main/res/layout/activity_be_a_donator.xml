@@ -194,7 +194,7 @@
                         android:id="@+id/districtTextViewId"                        android:imeOptions="actionNext"
                         android:layout_marginStart="15dp"
                         android:textSize="20sp"
-                        android:hint="Select division"
+                        android:hint="Select district"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
 
@@ -219,12 +219,12 @@
                         android:id="@+id/thanaTextViewId"                        android:imeOptions="actionNext"
                         android:layout_marginStart="15dp"
                         android:textSize="20sp"
-                        android:hint="Select division"
+                        android:hint="Select thana"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
 
                 </LinearLayout>
-               
+
 
 
             </LinearLayout>

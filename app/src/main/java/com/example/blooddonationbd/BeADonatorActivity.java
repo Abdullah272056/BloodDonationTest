@@ -29,8 +29,8 @@ import java.util.Calendar;
 import java.util.List;
 
 public class BeADonatorActivity extends AppCompatActivity{
-    EditText nameEditText,phoneEditText,countryNameEditText,districtEditText,thanaEditText;
-    TextView lastDateTextView, bloodGroupTextView;
+    EditText nameEditText,phoneEditText;
+    TextView lastDateTextView, bloodGroupTextView,districtTextView,divisionTextView,thanaTextView;
     Button saveButton;
 
 
@@ -65,19 +65,15 @@ public class BeADonatorActivity extends AppCompatActivity{
         // create a object for custom progress
         customProgress=new CustomProgress(BeADonatorActivity.this);
 
-
        // receive userId
         //userId=getIntent().getStringExtra("userId");
         userId=new SharePref().loadId(BeADonatorActivity.this);
-
-
 
         singleUserInformationList=new ArrayList<>();
         allUserInformationList=new ArrayList<>();
 
         // dataBase access with id
         singleUserDatabaseReference= FirebaseDatabase.getInstance().getReference("UserInformation").child(userId);
-
         // data base init
         allUserDatabaseReference= FirebaseDatabase.getInstance().getReference("allUserInfo");
 
@@ -85,9 +81,9 @@ public class BeADonatorActivity extends AppCompatActivity{
         // view finding
         nameEditText=findViewById(R.id.nameEditTextId);
         phoneEditText=findViewById(R.id.phoneEditTextId);
-        countryNameEditText=findViewById(R.id.countryNameEditTextId);
-        districtEditText=findViewById(R.id.districtEditTextId);
-        thanaEditText=findViewById(R.id.thanaEditTextId);
+        divisionTextView=findViewById(R.id.divisionTextViewId);
+        districtTextView=findViewById(R.id.districtTextViewId);
+        thanaTextView=findViewById(R.id.thanaTextViewId);
         lastDateTextView=findViewById(R.id.lastDateTextViewId);
         bloodGroupTextView=findViewById(R.id.bloodGroupTextViewId);
         saveButton=findViewById(R.id.saveButtonId);
@@ -238,9 +234,9 @@ public class BeADonatorActivity extends AppCompatActivity{
     public void donatorInfoSave(){
         String name=nameEditText.getText().toString();
         String phone=phoneEditText.getText().toString();
-        String countryName=countryNameEditText.getText().toString();
-        String districtName=districtEditText.getText().toString();
-        String thanaName=thanaEditText.getText().toString();
+        String divisionName=divisionTextView.getText().toString();
+        String districtName=districtTextView.getText().toString();
+        String thanaName=thanaTextView.getText().toString();
 
         String lastDate=lastDateTextView.getText().toString();
         String bloodGroup=bloodGroupTextView.getText().toString();
@@ -256,20 +252,20 @@ public class BeADonatorActivity extends AppCompatActivity{
             phoneEditText.requestFocus();
             return;
         }
-        if (TextUtils.isEmpty(countryName)){
-            countryNameEditText.setError("Enter country name");
-            countryNameEditText.requestFocus();
+        if (TextUtils.isEmpty(divisionName)){
+            divisionTextView.setError("Enter division ");
+            divisionTextView.requestFocus();
             return;
         }
 
         if (TextUtils.isEmpty(districtName)){
-            districtEditText.setError("Enter district name");
-            districtEditText.requestFocus();
+            districtTextView.setError("Enter district");
+            districtTextView.requestFocus();
             return;
         }
         if (TextUtils.isEmpty(thanaName)){
-            thanaEditText.setError("Enter thana name");
-            thanaEditText.requestFocus();
+            thanaTextView.setError("Enter thana");
+            thanaTextView.requestFocus();
             return;
         }
 
@@ -311,7 +307,7 @@ public class BeADonatorActivity extends AppCompatActivity{
 
             String information_id=singleUserDatabaseReference.push().getKey();
             UserInformation userInformation=new UserInformation(
-                    information_id,name,phone,bloodGroup,lastDate,countryName,districtName,thanaName);
+                    information_id,name,phone,bloodGroup,lastDate,divisionName,districtName,thanaName);
             // set data
             singleUserDatabaseReference.child(information_id).setValue(userInformation);
             allUserDatabaseReference.child(information_id).setValue(userInformation);
