@@ -5,6 +5,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -20,6 +22,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.blooddonationbd.getDistrict.DistrictCustomAdapter;
+import com.example.blooddonationbd.getDistrict.GetDistrictData;
+import com.example.blooddonationbd.getDistrict.GetDistrictResponseData;
+import com.example.blooddonationbd.getDistrict.ThanaCustomAdapter;
+import com.example.blooddonationbd.getDivision.DivisionCustomAdapter;
+import com.example.blooddonationbd.getDivision.GetDivisionData;
+import com.example.blooddonationbd.getDivision.GetDivisionResponseData;
+import com.example.blooddonationbd.retrofit.ApiInterface;
+import com.example.blooddonationbd.retrofit.RetrofitClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -35,7 +46,12 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
-public class ProfileEditActivity extends AppCompatActivity {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class ProfileEditActivity extends AppCompatActivity implements DivisionCustomAdapter.OnContactClickListener1
+        , DistrictCustomAdapter.OnContactClickListener2, ThanaCustomAdapter.OnContactClickListener3{
 
     EditText nameEditText,phoneEditText;
     TextView lastDateTextView, bloodGroupTextView,divisionNameTextView,districtNameTextView,thanaNameTextView;
@@ -59,14 +75,27 @@ public class ProfileEditActivity extends AppCompatActivity {
 
     String information_id;
 
-    int successStatus=0;
-    int successStatus1=0;
+    ApiInterface apiInterface;
+    List<GetDivisionData> divisionDataList;
+    List<GetDistrictData> districtDataList;
+    List<String> thanaDataList;
+    AlertDialog alertDialog;
+    RecyclerView recyclerView;
+    DivisionCustomAdapter divisionCustomAdapter;
+    DistrictCustomAdapter districtCustomAdapter;
+    ThanaCustomAdapter thanaCustomAdapter;
+    DivisionCustomAdapter.OnContactClickListener1 onContactClickListener1;
+    DistrictCustomAdapter.OnContactClickListener2 onContactClickListener2;
+    ThanaCustomAdapter.OnContactClickListener3 onContactClickListener3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_edit);
 
+        onContactClickListener1=this;
+        onContactClickListener2=this;
+        onContactClickListener3=this;
 
         toolbar=findViewById (R.id.toolbarId);
         if (toolbar!=null){
@@ -91,6 +120,7 @@ public class ProfileEditActivity extends AppCompatActivity {
 
         // data base init
         allUserDatabaseReference= FirebaseDatabase.getInstance().getReference("allUserInfo");
+        apiInterface = RetrofitClient.getRetrofit("https://bdapis.herokuapp.com/").create(ApiInterface.class);
 
 
 
@@ -120,6 +150,35 @@ public class ProfileEditActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 selectDate();
+            }
+        });
+
+
+        divisionNameTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getDivisionData();
+            }
+        });
+        districtNameTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String division=divisionNameTextView.getText().toString();
+                if (division.isEmpty()){
+                    Toast.makeText(ProfileEditActivity.this, "Please select your division", Toast.LENGTH_SHORT).show();
+                    return;
+                }else {
+                    getDistrict(division.toLowerCase());
+
+                }
+            }
+        });
+
+
+        thanaNameTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showThana(thanaDataList);
             }
         });
 
@@ -296,6 +355,120 @@ public class ProfileEditActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
+
+
+
+
+    public  void  getDivisionData(){
+        apiInterface.getAllDivision().enqueue(new Callback<GetDivisionResponseData>() {
+            @Override
+            public void onResponse(Call<GetDivisionResponseData> call, Response<GetDivisionResponseData> response) {
+                if (response.code()==200){
+                    divisionDataList=new ArrayList<>();
+                    assert response.body() != null;
+                    divisionDataList.addAll(response.body().getDivisionDataList());
+                    if (divisionDataList.size()>0){
+                        Toast.makeText(ProfileEditActivity.this, "sss", Toast.LENGTH_SHORT).show();
+                        showDivisionData(divisionDataList);
+                    }
+                }
+                else {
+                    Toast.makeText(ProfileEditActivity.this, "fff", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+            @Override
+            public void onFailure(Call<GetDivisionResponseData> call, Throwable t) {
+                Toast.makeText(ProfileEditActivity.this, "fff", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
+
+    private void showDivisionData(List<GetDivisionData> divisionDataList){
+        AlertDialog.Builder builder     =new AlertDialog.Builder(ProfileEditActivity.this);
+        LayoutInflater layoutInflater   =LayoutInflater.from(ProfileEditActivity.this);
+        View view                       =layoutInflater.inflate(R.layout.recyclerview,null);
+        builder.setView(view);
+        alertDialog   = builder.create();
+        alertDialog.setCancelable(true);
+
+        recyclerView=view.findViewById(R.id.recyclerViewId);
+        divisionCustomAdapter = new DivisionCustomAdapter(ProfileEditActivity.this,divisionDataList,onContactClickListener1);
+        recyclerView.setLayoutManager(new LinearLayoutManager(ProfileEditActivity.this));
+        recyclerView.setAdapter(divisionCustomAdapter);
+
+
+        alertDialog.show();
+
+
+    }
+
+
+    public void  getDistrict(String id){
+        apiInterface.getDistrict(id).enqueue(new Callback<GetDistrictResponseData>() {
+            @Override
+            public void onResponse(Call<GetDistrictResponseData> call, Response<GetDistrictResponseData> response) {
+                if (response.code()==200){
+                    districtDataList=new ArrayList<>();
+                    thanaDataList=new ArrayList<>();
+                    assert response.body() != null;
+                    districtDataList.addAll(response.body().getGetDistrictData());
+                    if (districtDataList.size()>0){
+                        showDistrict(districtDataList);
+                        // Toast.makeText(MainActivity.this, String.valueOf(thanaDataList.size()), Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else {
+                    Toast.makeText(ProfileEditActivity.this, "fff", Toast.LENGTH_SHORT).show();
+                }            }
+
+            @Override
+            public void onFailure(Call<GetDistrictResponseData> call, Throwable t) {
+                Toast.makeText(ProfileEditActivity.this, "fff", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
+    private void showDistrict(List<GetDistrictData> districtDataList){
+        AlertDialog.Builder builder     =new AlertDialog.Builder(ProfileEditActivity.this);
+        LayoutInflater layoutInflater   =LayoutInflater.from(ProfileEditActivity.this);
+        View view                       =layoutInflater.inflate(R.layout.recyclerview,null);
+        builder.setView(view);
+        alertDialog   = builder.create();
+        alertDialog.setCancelable(true);
+
+        recyclerView=view.findViewById(R.id.recyclerViewId);
+        districtCustomAdapter = new DistrictCustomAdapter(ProfileEditActivity.this,districtDataList,onContactClickListener2);
+        recyclerView.setLayoutManager(new LinearLayoutManager(ProfileEditActivity.this));
+        recyclerView.setAdapter(districtCustomAdapter);
+
+
+        alertDialog.show();
+
+
+    }
+
+    private void showThana(List<String> thanaDataList){
+        AlertDialog.Builder builder     =new AlertDialog.Builder(ProfileEditActivity.this);
+        LayoutInflater layoutInflater   =LayoutInflater.from(ProfileEditActivity.this);
+        View view                       =layoutInflater.inflate(R.layout.recyclerview,null);
+        builder.setView(view);
+        alertDialog   = builder.create();
+        alertDialog.setCancelable(true);
+
+        recyclerView=view.findViewById(R.id.recyclerViewId);
+        thanaCustomAdapter = new ThanaCustomAdapter(ProfileEditActivity.this,thanaDataList,onContactClickListener3);
+        recyclerView.setLayoutManager(new LinearLayoutManager(ProfileEditActivity.this));
+        recyclerView.setAdapter(thanaCustomAdapter);
+
+
+        alertDialog.show();
+
+
+    }
+
+
     public void donatorInfoSave(){
 
         String name=nameEditText.getText().toString();
@@ -347,56 +520,66 @@ public class ProfileEditActivity extends AppCompatActivity {
             return;
         }
 
-        // call showProgress method
-       // new CustomProgress(ProfileEditActivity.this).showProgress();
-
-
 
             UserInformation userInformation=new UserInformation(
                     information_id,name,phone,bloodGroup,lastDate,divisionName,districtName,thanaName);
-            // set data
-            singleUserDatabaseReference.child(information_id).setValue(userInformation).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    successStatus=1;
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(ProfileEditActivity.this, String.valueOf(e), Toast.LENGTH_LONG).show();
-
-                }
-            });
 
 
-            allUserDatabaseReference.child(information_id).setValue(userInformation).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    successStatus1=1;
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(ProfileEditActivity.this, String.valueOf(e), Toast.LENGTH_LONG).show();
 
+
+
+            allUserDatabaseReference.child(information_id).setValue(userInformation).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(ProfileEditActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(ProfileEditActivity.this, String.valueOf(task.getException().getMessage()), Toast.LENGTH_SHORT).show();
+
+                    }
                 }
             });
 
-          if (successStatus==1 && successStatus1==1){
-              Intent intent=new Intent(ProfileEditActivity.this,ProfileActivity.class);
-              startActivity(intent);
-              finish();
-          }else {
-              Toast.makeText(ProfileEditActivity.this, "Some error", Toast.LENGTH_LONG).show();
-
-          }
 
 
+        // set data
+        singleUserDatabaseReference.child(information_id).setValue(userInformation).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Intent intent=new Intent(ProfileEditActivity.this,ProfileActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(ProfileEditActivity.this, String.valueOf(task.getException().getMessage()), Toast.LENGTH_SHORT).show();
 
+                }
+            }
+        });
 
-        // call dismissProgress method
-      //  new CustomProgress(ProfileEditActivity.this).dismissProgress();
 
     }
 
+    // division item click
+    @Override
+    public void onContactClick1(int position) {
+        thanaNameTextView.setText("");
+        districtNameTextView.setText("");
+        divisionNameTextView.setText(String.valueOf(divisionDataList.get(position).getDivision()));
+        alertDialog.dismiss();
+    }
+    // district item click
+    @Override
+    public void onContactClick2(int position) {
+        thanaNameTextView.setText("");
+        thanaDataList.addAll(districtDataList.get(position).getUpazilla());
+        districtNameTextView.setText(String.valueOf(districtDataList.get(position).getDistrict()));
+        alertDialog.dismiss();
+    }
+
+    @Override
+    public void onContactClick3(int position) {
+        thanaNameTextView.setText(String.valueOf(thanaDataList.get(position)));
+        alertDialog.dismiss();
+    }
 }

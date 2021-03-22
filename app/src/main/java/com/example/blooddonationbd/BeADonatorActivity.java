@@ -29,8 +29,10 @@ import com.example.blooddonationbd.getDivision.GetDivisionData;
 import com.example.blooddonationbd.getDivision.GetDivisionResponseData;
 import com.example.blooddonationbd.retrofit.ApiInterface;
 import com.example.blooddonationbd.retrofit.RetrofitClient;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -50,7 +52,7 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
     EditText nameEditText,phoneEditText;
     TextView lastDateTextView, bloodGroupTextView,districtTextView,divisionTextView,thanaTextView;
     Button saveButton;
-    ApiInterface apiInterface;
+
 
     Toolbar toolbar;
     String userId;
@@ -58,21 +60,17 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
     TextView aPositiveTextView,bPositiveTextView,oPositiveTextView,abPositiveTextView,
             aNegativeTextView,bNegativeTextView,abNegativeTextView,oNegativeTextView;
     DatabaseReference singleUserDatabaseReference,allUserDatabaseReference;
-
     List<UserInformation> singleUserInformationList, allUserInformationList;
-
     TextView toolbarTextView;
-
     CustomProgress customProgress;
 
+
+    ApiInterface apiInterface;
     List<GetDivisionData> divisionDataList;
     List<GetDistrictData> districtDataList;
     List<String> thanaDataList;
-
     AlertDialog alertDialog;
-
     RecyclerView recyclerView;
-
     DivisionCustomAdapter divisionCustomAdapter;
     DistrictCustomAdapter districtCustomAdapter;
     ThanaCustomAdapter thanaCustomAdapter;
@@ -169,6 +167,10 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
                 }
             }
         });
+
+
+
+
         thanaTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -272,7 +274,7 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
         alertDialog.show();
     }
 
-    // select data function with DatePickerDialog
+    // select date function with DatePickerDialog
     public void selectDate(){
 
         Calendar calendar=Calendar.getInstance();
@@ -382,44 +384,35 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
 //            singleUserDatabaseReference.child(information_id).setValue(userInformation);
 //            allUserDatabaseReference.child(information_id).setValue(userInformation);
 
-            singleUserDatabaseReference.child(information_id).setValue(userInformation).addOnSuccessListener(new OnSuccessListener<Void>() {
+            singleUserDatabaseReference.child(information_id).setValue(userInformation).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
-                public void onSuccess(Void aVoid) {
-                    successStatus=1;
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(BeADonatorActivity.this, String.valueOf(e), Toast.LENGTH_LONG).show();
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(BeADonatorActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(BeADonatorActivity.this, String.valueOf(task.getException().getMessage()), Toast.LENGTH_SHORT).show();
 
-                }
-            });
-
-
-            allUserDatabaseReference.child(information_id).setValue(userInformation).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    successStatus1=1;
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(BeADonatorActivity.this, String.valueOf(e), Toast.LENGTH_LONG).show();
-
+                    }
                 }
             });
 
-            if (successStatus==1 && successStatus1==1){
-                // call dismissProgress method
 
-                Intent intent=new Intent(BeADonatorActivity.this,HomeActivity.class);
-                //intent.putExtra("userId",userId);
-                startActivity(intent);
-                finish();
-            }else {
-                Toast.makeText(BeADonatorActivity.this, "Some error", Toast.LENGTH_LONG).show();
+            allUserDatabaseReference.child(information_id).setValue(userInformation).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        Intent intent=new Intent(BeADonatorActivity.this,HomeActivity.class);
+                        //intent.putExtra("userId",userId);
+                        startActivity(intent);
+                        finish();
+                       // Toast.makeText(BeADonatorActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(BeADonatorActivity.this, String.valueOf(task.getException().getMessage()), Toast.LENGTH_SHORT).show();
 
-            }
+                    }
+                }
+            });
+
             customProgress.dismissProgress();
 
         }
