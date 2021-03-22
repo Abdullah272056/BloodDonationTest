@@ -355,10 +355,6 @@ public class ProfileEditActivity extends AppCompatActivity implements DivisionCu
         alertDialog.show();
     }
 
-
-
-
-
     public  void  getDivisionData(){
         apiInterface.getAllDivision().enqueue(new Callback<GetDivisionResponseData>() {
             @Override
@@ -398,7 +394,6 @@ public class ProfileEditActivity extends AppCompatActivity implements DivisionCu
         recyclerView.setLayoutManager(new LinearLayoutManager(ProfileEditActivity.this));
         recyclerView.setAdapter(divisionCustomAdapter);
 
-
         alertDialog.show();
 
 
@@ -430,6 +425,7 @@ public class ProfileEditActivity extends AppCompatActivity implements DivisionCu
             }
         });
     }
+
     private void showDistrict(List<GetDistrictData> districtDataList){
         AlertDialog.Builder builder     =new AlertDialog.Builder(ProfileEditActivity.this);
         LayoutInflater layoutInflater   =LayoutInflater.from(ProfileEditActivity.this);
@@ -522,7 +518,7 @@ public class ProfileEditActivity extends AppCompatActivity implements DivisionCu
 
 
             UserInformation userInformation=new UserInformation(
-                    information_id,name,phone,bloodGroup,lastDate,divisionName,districtName,thanaName);
+                    information_id,name,phone,bloodGroup,lastDate,divisionName,districtName,thanaName,singleUserInformationList.get(0).getMemberType());
 
 
 

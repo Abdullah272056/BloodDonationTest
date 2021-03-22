@@ -78,9 +78,6 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
     DistrictCustomAdapter.OnContactClickListener2 onContactClickListener2;
     ThanaCustomAdapter.OnContactClickListener3 onContactClickListener3;
 
-
-    int successStatus=0;
-    int successStatus1=0;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -378,7 +375,7 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
 
             String information_id=singleUserDatabaseReference.push().getKey();
             UserInformation userInformation=new UserInformation(
-                    information_id,name,phone,bloodGroup,lastDate,divisionName,districtName,thanaName);
+                    information_id,name,phone,bloodGroup,lastDate,divisionName,districtName,thanaName,"user");
             // set data
 
 //            singleUserDatabaseReference.child(information_id).setValue(userInformation);

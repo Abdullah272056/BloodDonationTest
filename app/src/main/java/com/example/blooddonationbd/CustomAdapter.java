@@ -34,7 +34,7 @@ public class CustomAdapter extends FirebaseRecyclerAdapter<UserInformation, Cust
         holder.lastDateTextView.setText("Last donate : "+model.getLastDate());
         holder.phoneNumberTextView.setText("Phone : "+model.getUserPhone());
 
-        if (new SharePref().loadId(context).equals("hIFyeCPR8gh9VghjneEr0l8xEJj1")){
+        if (new SharePref().loadId(context).equals("iQDrvduu4CVzs4U0EzcQAFXJc7C3")){
             holder.phoneNumberTextView.setVisibility(View.VISIBLE);
         }
 
@@ -42,7 +42,7 @@ public class CustomAdapter extends FirebaseRecyclerAdapter<UserInformation, Cust
         holder.callImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (new SharePref().loadId(context).equals("hIFyeCPR8gh9VghjneEr0l8xEJj1")){
+                if (new SharePref().loadId(context).equals("iQDrvduu4CVzs4U0EzcQAFXJc7C3")){
 
                     String phoneNumber=model.getUserPhone();
 

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -133,6 +134,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
                            // Toast.makeText(LogInActivity.this, "login success", Toast.LENGTH_SHORT).show();
 
                             String user_id = mAuth.getCurrentUser().getUid();
+                            Log.e("uas",user_id);
 
                            // sharePref=new SharePref();
                             if (rememberCheckBox.isChecked()){
