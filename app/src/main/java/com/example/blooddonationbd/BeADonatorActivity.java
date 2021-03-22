@@ -18,6 +18,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.blooddonationbd.getDistrict.GetDistrictData;
+import com.example.blooddonationbd.getDivision.GetDivisionData;
+import com.example.blooddonationbd.getDivision.GetDivisionResponseData;
+import com.example.blooddonationbd.retrofit.ApiInterface;
+import com.example.blooddonationbd.retrofit.RetrofitClient;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,11 +33,15 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class BeADonatorActivity extends AppCompatActivity{
     EditText nameEditText,phoneEditText;
     TextView lastDateTextView, bloodGroupTextView,districtTextView,divisionTextView,thanaTextView;
     Button saveButton;
-
+ApiInterface apiInterface;
 
     Toolbar toolbar;
     String userId;
@@ -46,6 +55,9 @@ public class BeADonatorActivity extends AppCompatActivity{
     TextView toolbarTextView;
 
     CustomProgress customProgress;
+
+    List<GetDivisionData> divisionDataList;
+    List<GetDistrictData> districtDataList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -77,6 +89,8 @@ public class BeADonatorActivity extends AppCompatActivity{
         // data base init
         allUserDatabaseReference= FirebaseDatabase.getInstance().getReference("allUserInfo");
 
+        apiInterface = RetrofitClient.getRetrofit("https://bdapis.herokuapp.com/").create(ApiInterface.class);
+
 
         // view finding
         nameEditText=findViewById(R.id.nameEditTextId);
@@ -106,6 +120,14 @@ public class BeADonatorActivity extends AppCompatActivity{
               selectDate();
             }
         });
+
+        divisionTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
 
 
     }
@@ -323,8 +345,30 @@ public class BeADonatorActivity extends AppCompatActivity{
 
     }
 
-    public void  selectDivision(){
+    public  void  getDivisionData(){
+        apiInterface.getAllDivision().enqueue(new Callback<GetDivisionResponseData>() {
+            @Override
+            public void onResponse(Call<GetDivisionResponseData> call, Response<GetDivisionResponseData> response) {
+                if (response.code()==200){
+                    divisionDataList=new ArrayList<>();
+                    assert response.body() != null;
+                    divisionDataList.addAll(response.body().getDivisionDataList());
+                    if (divisionDataList.size()>0){
+                        Toast.makeText(BeADonatorActivity.this, "sss", Toast.LENGTH_SHORT).show();
+                        //showDivisionData(divisionDataList);
+                    }
+                }
+                else {
+                    Toast.makeText(BeADonatorActivity.this, "fff", Toast.LENGTH_SHORT).show();
+                }
 
+            }
+            @Override
+            public void onFailure(Call<GetDivisionResponseData> call, Throwable t) {
+                Toast.makeText(BeADonatorActivity.this, "fff", Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
 
 

@@ -62,7 +62,6 @@ public class HomeActivity extends AppCompatActivity {
         drawerLayout=findViewById (R.id.drawerLayoutId);
         navigationView=findViewById (R.id.myNavigationViewId);
 
-
         toolbarTextView=findViewById (R.id.toolbarTextViewId);
         toolbarTextView.setText("Home Page");
 
