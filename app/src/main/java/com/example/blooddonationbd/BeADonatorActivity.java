@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.example.blooddonationbd.getDistrict.DistrictCustomAdapter;
 import com.example.blooddonationbd.getDistrict.GetDistrictData;
 import com.example.blooddonationbd.getDistrict.GetDistrictResponseData;
+import com.example.blooddonationbd.getDistrict.ThanaCustomAdapter;
 import com.example.blooddonationbd.getDivision.DivisionCustomAdapter;
 import com.example.blooddonationbd.getDivision.GetDivisionData;
 import com.example.blooddonationbd.getDivision.GetDivisionResponseData;
@@ -43,7 +44,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class BeADonatorActivity extends AppCompatActivity  implements DivisionCustomAdapter.OnContactClickListener1
-,DistrictCustomAdapter.OnContactClickListener2{
+,DistrictCustomAdapter.OnContactClickListener2,ThanaCustomAdapter.OnContactClickListener3{
     EditText nameEditText,phoneEditText;
     TextView lastDateTextView, bloodGroupTextView,districtTextView,divisionTextView,thanaTextView;
     Button saveButton;
@@ -72,10 +73,10 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
 
     DivisionCustomAdapter divisionCustomAdapter;
     DistrictCustomAdapter districtCustomAdapter;
-//    ThanaCustomAdapter thanaCustomAdapter;
+    ThanaCustomAdapter thanaCustomAdapter;
 DivisionCustomAdapter.OnContactClickListener1 onContactClickListener1;
     DistrictCustomAdapter.OnContactClickListener2 onContactClickListener2;
-//    ThanaCustomAdapter.OnContactClickListener3 onContactClickListener3;
+    ThanaCustomAdapter.OnContactClickListener3 onContactClickListener3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -85,7 +86,7 @@ DivisionCustomAdapter.OnContactClickListener1 onContactClickListener1;
 
         onContactClickListener1=this;
         onContactClickListener2=this;
-//        onContactClickListener3=this;
+        onContactClickListener3=this;
 
         toolbar=findViewById (R.id.toolbarId);
         if (toolbar!=null){
@@ -163,7 +164,12 @@ DivisionCustomAdapter.OnContactClickListener1 onContactClickListener1;
                 }
             }
         });
-
+        thanaTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showThana(thanaDataList);
+            }
+        });
 
 
     }
@@ -470,6 +476,26 @@ DivisionCustomAdapter.OnContactClickListener1 onContactClickListener1;
 
 
     }
+
+    private void showThana(List<String> thanaDataList){
+        AlertDialog.Builder builder     =new AlertDialog.Builder(BeADonatorActivity.this);
+        LayoutInflater layoutInflater   =LayoutInflater.from(BeADonatorActivity.this);
+        View view                       =layoutInflater.inflate(R.layout.recyclerview,null);
+        builder.setView(view);
+        alertDialog   = builder.create();
+        alertDialog.setCancelable(false);
+
+        recyclerView=view.findViewById(R.id.recyclerViewId);
+        thanaCustomAdapter = new ThanaCustomAdapter(BeADonatorActivity.this,thanaDataList,onContactClickListener3);
+        recyclerView.setLayoutManager(new LinearLayoutManager(BeADonatorActivity.this));
+        recyclerView.setAdapter(thanaCustomAdapter);
+
+
+        alertDialog.show();
+
+
+    }
+
     @Override
     public void onBackPressed() {
         Intent intent =new Intent(BeADonatorActivity.this, HomeActivity.class);
@@ -504,5 +530,10 @@ DivisionCustomAdapter.OnContactClickListener1 onContactClickListener1;
         thanaDataList.addAll(districtDataList.get(position).getUpazilla());
         districtTextView.setText(String.valueOf(districtDataList.get(position).getDistrict()));
         alertDialog.dismiss();
+    }
+
+    @Override
+    public void onContactClick3(int position) {
+
     }
 }

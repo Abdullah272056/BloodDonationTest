@@ -25,6 +25,7 @@ public class ThanaCustomAdapter extends RecyclerView.Adapter<ThanaCustomAdapter.
         this.onContactClickListener3 = onContactClickListener3;
 
 
+
     }
     @NonNull
     @Override
