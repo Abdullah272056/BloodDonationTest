@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.blooddonationbd.getDistrict.GetDistrictData;
+import com.example.blooddonationbd.getDistrict.GetDistrictResponseData;
 import com.example.blooddonationbd.getDivision.DivisionCustomAdapter;
 import com.example.blooddonationbd.getDivision.GetDivisionData;
 import com.example.blooddonationbd.getDivision.GetDivisionResponseData;
@@ -61,7 +62,7 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
 
     List<GetDivisionData> divisionDataList;
     List<GetDistrictData> districtDataList;
-
+    List<String> thanaDataList;
 
     AlertDialog alertDialog;
 
@@ -391,7 +392,6 @@ DivisionCustomAdapter.OnContactClickListener1 onContactClickListener1;
         });
     }
 
-
     private void showDivisionData(List<GetDivisionData> divisionDataList){
         AlertDialog.Builder builder     =new AlertDialog.Builder(BeADonatorActivity.this);
         LayoutInflater layoutInflater   =LayoutInflater.from(BeADonatorActivity.this);
@@ -411,6 +411,32 @@ DivisionCustomAdapter.OnContactClickListener1 onContactClickListener1;
 
     }
 
+
+    public void  getDistrict(String id){
+        apiInterface.getDistrict(id).enqueue(new Callback<GetDistrictResponseData>() {
+            @Override
+            public void onResponse(Call<GetDistrictResponseData> call, Response<GetDistrictResponseData> response) {
+                if (response.code()==200){
+                    districtDataList=new ArrayList<>();
+                    thanaDataList=new ArrayList<>();
+                    assert response.body() != null;
+                    districtDataList.addAll(response.body().getGetDistrictData());
+                    if (districtDataList.size()>0){
+                        //showDistrict(districtDataList);
+                        // Toast.makeText(MainActivity.this, String.valueOf(thanaDataList.size()), Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else {
+                    Toast.makeText(BeADonatorActivity.this, "fff", Toast.LENGTH_SHORT).show();
+                }            }
+
+            @Override
+            public void onFailure(Call<GetDistrictResponseData> call, Throwable t) {
+                Toast.makeText(BeADonatorActivity.this, "fff", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
 
     @Override
     public void onBackPressed() {
