@@ -29,7 +29,7 @@ public class CustomAdapter extends FirebaseRecyclerAdapter<UserInformation, Cust
         holder.nameTextView.setText("Name : "+model.getUserName());
         holder.bloodGroupTextView.setText("Blood group : "+model.getBloodGroup());
         holder.locationTextView.setText("Location : "+model.getThanaName() +", "+
-                model.getDistrictName()+", "+model.getCountryName());
+                model.getDistrictName()+", "+model.getDivisionName());
 
         holder.lastDateTextView.setText("Last donate : "+model.getLastDate());
         holder.phoneNumberTextView.setText("Phone : "+model.getUserPhone());

@@ -43,7 +43,7 @@ public class CustomAdapter2 extends RecyclerView.Adapter<CustomAdapter2.MyViewHo
         holder.nameTextView.setText("Name : "+userInformationList.get(position).getUserName());
         holder.bloodGroupTextView.setText("Blood group : "+userInformationList.get(position).getBloodGroup());
         holder.locationTextView.setText("Location : "+userInformationList.get(position).getThanaName() +", "+
-                userInformationList.get(position).getDistrictName()+", "+userInformationList.get(position).getCountryName());
+                userInformationList.get(position).getDistrictName()+", "+userInformationList.get(position).getDivisionName());
         holder.lastDateTextView.setText("Last donate : "+userInformationList.get(position).getLastDate());
 
         holder.phoneNumberTextView.setText("Phone : "+userInformationList.get(position).getUserPhone());
