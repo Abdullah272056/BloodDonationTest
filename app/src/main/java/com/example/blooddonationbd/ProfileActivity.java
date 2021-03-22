@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -79,9 +81,15 @@ public class ProfileActivity extends AppCompatActivity {
         profileEditImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(ProfileActivity.this,ProfileEditActivity.class);
-                startActivity(intent);
-                finish();
+                if (profileFNameTextView.getText().toString() == null ||profileFNameTextView.getText().toString().equals("")){
+                    Toast.makeText(ProfileActivity.this, "Your data is empty .please add your information", Toast.LENGTH_LONG).show();
+
+                }else {
+                    Intent intent =new Intent(ProfileActivity.this,ProfileEditActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+
 
             }
         });

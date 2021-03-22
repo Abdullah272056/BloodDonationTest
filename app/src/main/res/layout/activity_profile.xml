@@ -41,7 +41,7 @@
                     android:textSize="30sp"
                     android:textAlignment="center"
                     android:layout_width="match_parent"
-                    android:text="XXXXXXX"
+                    android:hint="XXXXXXX"
                     android:layout_height="wrap_content"/>
 
 
@@ -121,7 +121,7 @@
                             android:textColor="#020202"
                             android:layout_marginStart="15dp"
                             android:textSize="20sp"
-                            android:text="xxxxxx"
+                            android:hint="xxxxxx"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
 
@@ -169,7 +169,7 @@
                             android:textColor="#020202"
                             android:layout_marginStart="15dp"
                             android:textSize="20sp"
-                            android:text="xxxxxxxx"
+                            android:hint="xxxxxxxx"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
 
@@ -215,7 +215,7 @@
                             android:textColor="#020202"
                             android:layout_marginStart="15dp"
                             android:textSize="20sp"
-                            android:text="xxxxxxxxx"
+                            android:hint="xxxxxxxxx"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
 
@@ -261,7 +261,7 @@
                             android:textColor="#020202"
                             android:layout_marginStart="15dp"
                             android:textSize="20sp"
-                            android:text="xxxxx"
+                            android:hint="xxxxx"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
 
@@ -307,7 +307,7 @@
                             android:textColor="#020202"
                             android:layout_marginStart="15dp"
                             android:textSize="20sp"
-                            android:text="xxxxx"
+                            android:hint="xxxxx"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
 
@@ -353,7 +353,7 @@
                             android:textColor="#020202"
                             android:layout_marginStart="15dp"
                             android:textSize="20sp"
-                            android:text="xxxxx"
+                            android:hint="xxxxx"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
 
