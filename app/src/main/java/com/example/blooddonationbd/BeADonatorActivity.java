@@ -497,9 +497,12 @@ DivisionCustomAdapter.OnContactClickListener1 onContactClickListener1;
         divisionTextView.setText(String.valueOf(divisionDataList.get(position).getDivision()));
         alertDialog.dismiss();
     }
-
+    // district item click
     @Override
     public void onContactClick2(int position) {
-
+        thanaTextView.setText("");
+        thanaDataList.addAll(districtDataList.get(position).getUpazilla());
+        districtTextView.setText(String.valueOf(districtDataList.get(position).getDistrict()));
+        alertDialog.dismiss();
     }
 }
