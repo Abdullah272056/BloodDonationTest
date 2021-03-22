@@ -434,6 +434,9 @@ DivisionCustomAdapter.OnContactClickListener1 onContactClickListener1;
         // division item click
     @Override
     public void onContactClick1(int position) {
-
+        thanaTextView.setText("");
+        districtTextView.setText("");
+        divisionTextView.setText(String.valueOf(divisionDataList.get(position).getDivision()));
+        alertDialog.dismiss();
     }
 }
