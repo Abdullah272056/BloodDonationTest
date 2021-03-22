@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -338,7 +339,7 @@ public class ProfileEditActivity extends AppCompatActivity {
         }
 
         // call showProgress method
-        new CustomProgress(ProfileEditActivity.this).showProgress();
+       // new CustomProgress(ProfileEditActivity.this).showProgress();
 
 
 
@@ -347,6 +348,7 @@ public class ProfileEditActivity extends AppCompatActivity {
             // set data
             singleUserDatabaseReference.child(information_id).setValue(userInformation);
             allUserDatabaseReference.child(information_id).setValue(userInformation);
+        Toast.makeText(this, "ss", Toast.LENGTH_SHORT).show();
 
             Intent intent=new Intent(ProfileEditActivity.this,ProfileActivity.class);
             startActivity(intent);
@@ -354,7 +356,7 @@ public class ProfileEditActivity extends AppCompatActivity {
 
 
         // call dismissProgress method
-        new CustomProgress(ProfileEditActivity.this).dismissProgress();
+      //  new CustomProgress(ProfileEditActivity.this).dismissProgress();
 
     }
 

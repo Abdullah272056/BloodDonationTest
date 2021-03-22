@@ -2,18 +2,18 @@ package com.example.blooddonationbd;
 
 public class UserInformation {
     String id, userName, userPhone,BloodGroup,
-            lastDate, countryName,districtName,thanaName;
+            lastDate, divisionName,districtName,thanaName;
 
     public UserInformation() {
     }
 
-    public UserInformation(String id, String userName, String userPhone, String bloodGroup, String lastDate, String countryName, String districtName, String thanaName) {
+    public UserInformation(String id, String userName, String userPhone, String bloodGroup, String lastDate, String divisionName, String districtName, String thanaName) {
         this.id = id;
         this.userName = userName;
         this.userPhone = userPhone;
         BloodGroup = bloodGroup;
         this.lastDate = lastDate;
-        this.countryName = countryName;
+        this.divisionName = divisionName;
         this.districtName = districtName;
         this.thanaName = thanaName;
     }
@@ -59,11 +59,11 @@ public class UserInformation {
     }
 
     public String getCountryName() {
-        return countryName;
+        return divisionName;
     }
 
     public void setCountryName(String countryName) {
-        this.countryName = countryName;
+        this.divisionName = countryName;
     }
 
     public String getDistrictName() {

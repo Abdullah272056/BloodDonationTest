@@ -88,7 +88,7 @@
                     <EditText
                         android:textColor="#000000"
                         android:id="@+id/phoneEditTextId"
-                        android:imeOptions="actionNext"
+                        android:imeOptions="actionDone"
                         android:layout_marginStart="15dp"
                         android:textSize="20sp"
                         android:inputType="phone"

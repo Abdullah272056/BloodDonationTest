@@ -74,7 +74,7 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
     DivisionCustomAdapter divisionCustomAdapter;
     DistrictCustomAdapter districtCustomAdapter;
     ThanaCustomAdapter thanaCustomAdapter;
-DivisionCustomAdapter.OnContactClickListener1 onContactClickListener1;
+    DivisionCustomAdapter.OnContactClickListener1 onContactClickListener1;
     DistrictCustomAdapter.OnContactClickListener2 onContactClickListener2;
     ThanaCustomAdapter.OnContactClickListener3 onContactClickListener3;
 
@@ -373,8 +373,10 @@ DivisionCustomAdapter.OnContactClickListener1 onContactClickListener1;
             UserInformation userInformation=new UserInformation(
                     information_id,name,phone,bloodGroup,lastDate,divisionName,districtName,thanaName);
             // set data
+
             singleUserDatabaseReference.child(information_id).setValue(userInformation);
             allUserDatabaseReference.child(information_id).setValue(userInformation);
+
             // call dismissProgress method
             customProgress.dismissProgress();
             Intent intent=new Intent(BeADonatorActivity.this,HomeActivity.class);
