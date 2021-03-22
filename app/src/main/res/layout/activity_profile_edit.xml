@@ -24,33 +24,78 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <LinearLayout
-                android:layout_marginTop="25dp"
-                android:orientation="vertical"
+                android:background="#03A9F4"
+                android:padding="10dp"
                 android:gravity="center"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <ImageView
-                    android:src="@drawable/ic_bd_icon"
-                    android:layout_width="60dp"
-                    android:layout_height="70dp"/>
+                    android:src="@drawable/ic_baseline_person_24"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"/>
                 <TextView
-                    android:textSize="25sp"
+                    android:id="@+id/profileFNameTextViewId"
+                    android:textColor="#020202"
+                    android:layout_marginBottom="10dp"
+                    android:textStyle="bold"
+                    android:textSize="30sp"
                     android:textAlignment="center"
-                    android:textColor="#FF0000"
-                    android:text="Edit your information"
                     android:layout_width="match_parent"
+                    android:hint="XXXXXXX"
                     android:layout_height="wrap_content"/>
+
+
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:background="#E3E1E1"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:paddingLeft="15dp"
+                        android:layout_marginTop="20dp"
+                        android:textStyle="bold"
+                        android:textColor="#000000"
+                        android:textSize="30sp"
+                        android:text="Account Info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <LinearLayout
+                        android:paddingRight="30dp"
+                        android:layout_marginTop="20dp"
+                        android:gravity="right"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/profileEditImageViewId"
+                            android:src="@drawable/ic_baseline_edit_24"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+
+
                 <LinearLayout
                     android:gravity="center"
-                    android:padding="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="20dp"
@@ -62,24 +107,44 @@
                         android:src="@drawable/ic_baseline_person_24"
                         android:layout_width="30dp"
                         android:layout_height="30dp"/>
-                    <EditText
-                        android:textColor="#000000"
-                        android:id="@+id/nameEditTextId"
-                        android:imeOptions="actionNext"
-                        android:layout_marginStart="15dp"
-                        android:textSize="20sp"
-                        android:inputType="textPersonName"
-                        android:hint="Enter your name"
+                    <LinearLayout
+                        android:orientation="vertical"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textColor="#020202"
+                            android:textStyle="bold"
+                            android:layout_marginStart="15dp"
+                            android:textSize="20sp"
+                            android:text="Name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/profileNameTextViewId"
+                            android:textColor="#020202"
+                            android:layout_marginStart="15dp"
+                            android:textSize="20sp"
+                            android:hint="xxxxxx"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
 
                 </LinearLayout>
+                <View
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="#0629ED"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
                 <LinearLayout
                     android:gravity="center"
-                    android:padding="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:background="#FDF8F8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -88,23 +153,46 @@
                         android:src="@drawable/ic_baseline_phone_android_24"
                         android:layout_width="30dp"
                         android:layout_height="30dp"/>
-                    <EditText
-                        android:textColor="#000000"
-                        android:id="@+id/phoneEditTextId"
-                        android:imeOptions="actionNext"
-                        android:layout_marginStart="15dp"
-                        android:textSize="20sp"
-                        android:inputType="phone"
-                        android:hint="Enter phone number"
+                    <LinearLayout
+                        android:orientation="vertical"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textColor="#020202"
+                            android:textStyle="bold"
+                            android:layout_marginStart="15dp"
+                            android:textSize="20sp"
+                            android:text="Mobile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+
+                        <TextView
+                            android:id="@+id/profilePhoneTextViewId"
+                            android:textColor="#020202"
+                            android:layout_marginStart="15dp"
+                            android:textSize="20sp"
+                            android:hint="xxxxxxxx"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
 
                 </LinearLayout>
+                <View
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="#0629ED"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
                 <LinearLayout
                     android:gravity="center"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:background="#FDF8F8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -113,51 +201,90 @@
                         android:src="@drawable/ic_baseline_email_24"
                         android:layout_width="30dp"
                         android:layout_height="30dp"/>
-                    <TextView
-                        android:textStyle="bold"
-                        android:textColor="#000000"
-                        android:padding="15dp"
-                        android:id="@+id/bloodGroupTextViewId"
-                        android:imeOptions="actionNext"
-                        android:layout_marginStart="15dp"
-                        android:textSize="20sp"
-                        android:hint="Select blood group *"
+                    <LinearLayout
+                        android:orientation="vertical"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textColor="#020202"
+                            android:textStyle="bold"
+                            android:layout_marginStart="15dp"
+                            android:textSize="20sp"
+                            android:text="Email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/profileEmailTextViewId"
+                            android:textColor="#020202"
+                            android:layout_marginStart="15dp"
+                            android:textSize="20sp"
+                            android:hint="xxxxxxxxx"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
 
                 </LinearLayout>
+                <View
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="#0629ED"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
                 <LinearLayout
                     android:gravity="center"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:background="#FDF8F8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:src="@drawable/ic_baseline_calendar_today_24"
+                        android:src="@drawable/ic_bd_icon"
                         android:layout_width="30dp"
                         android:layout_height="30dp"/>
-                    <TextView
-                        android:textColor="#000000"
-                        android:textStyle="bold"
-                        android:padding="15dp"
-                        android:id="@+id/lastDateTextViewId"
-                        android:imeOptions="actionNext"
-                        android:layout_marginStart="15dp"
-                        android:textSize="20sp"
-                        android:hint="Last donate date *"
+                    <LinearLayout
+                        android:orientation="vertical"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textColor="#020202"
+                            android:textStyle="bold"
+                            android:layout_marginStart="15dp"
+                            android:textSize="20sp"
+                            android:text="Blood Group"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/profileBloodGroupTextViewId"
+                            android:textColor="#020202"
+                            android:layout_marginStart="15dp"
+                            android:textSize="20sp"
+                            android:hint="xxxxx"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
 
                 </LinearLayout>
+                <View
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="#0629ED"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
                 <LinearLayout
                     android:gravity="center"
-                    android:padding="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:background="#FDF8F8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -166,93 +293,87 @@
                         android:src="@drawable/ic_baseline_location_on_24"
                         android:layout_width="30dp"
                         android:layout_height="30dp"/>
-                    <EditText
-                        android:textColor="#000000"
-                        android:id="@+id/countryNameEditTextId"
-                        android:imeOptions="actionNext"
-                        android:layout_marginStart="15dp"
-                        android:textSize="20sp"
-                        android:inputType="text"
-                        android:hint="Enter country name"
+                    <LinearLayout
+                        android:orientation="vertical"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textColor="#020202"
+                            android:textStyle="bold"
+                            android:layout_marginStart="15dp"
+                            android:textSize="20sp"
+                            android:text="Address"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/profileAddressTextViewId"
+                            android:textColor="#020202"
+                            android:layout_marginStart="15dp"
+                            android:textSize="20sp"
+                            android:hint="xxxxx"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
 
                 </LinearLayout>
+                <View
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="#0629ED"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
                 <LinearLayout
                     android:gravity="center"
-                    android:padding="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:background="#FDF8F8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:src="@drawable/ic_baseline_location_city_24"
+                        android:src="@drawable/ic_baseline_calendar_today_24"
                         android:layout_width="30dp"
                         android:layout_height="30dp"/>
-
-                    <EditText
-                        android:textColor="#000000"
-                        android:id="@+id/districtEditTextId"
+                    <LinearLayout
+                        android:orientation="vertical"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:hint="Enter district name"
-                        android:imeOptions="actionNext"
-                        android:inputType="text"
-                        android:textSize="20sp" />
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textColor="#020202"
+                            android:textStyle="bold"
+                            android:layout_marginStart="15dp"
+                            android:textSize="20sp"
+                            android:text="Last Donate Date"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/profileLastDonateDateTextViewId"
+                            android:textColor="#020202"
+                            android:layout_marginStart="15dp"
+                            android:textSize="20sp"
+                            android:hint="xxxxx"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
 
                 </LinearLayout>
-                <LinearLayout
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:layout_marginRight="10dp"
+                <View
+                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
-                    android:background="#FDF8F8"
+                    android:layout_marginRight="10dp"
+                    android:background="#0629ED"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="1dp"/>
 
-                    <ImageView
-                        android:src="@drawable/ic_baseline_location_city_24"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"/>
-                    <EditText
-                        android:inputType="text"
-                        android:textColor="#000000"
-                        android:id="@+id/thanaEditTextId"
-                        android:imeOptions="actionDone"
-                        android:layout_marginStart="15dp"
-                        android:textSize="20sp"
-                        android:hint="Enter thana name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-
-                </LinearLayout>
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_marginBottom="30dp"
-                android:background="#FFF8F8"
-                android:padding="5dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <Button
-                    android:id="@+id/saveButtonId"
-                    android:padding="10dp"
-                    android:background="#F10606"
-                    android:textColor="#FFFFFF"
-                    android:textSize="35sp"
-                    android:text=" Save"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-
 
         </LinearLayout>
     </ScrollView>
