@@ -323,6 +323,10 @@ public class BeADonatorActivity extends AppCompatActivity{
 
     }
 
+    public void  selectDivision(){
+
+    }
+
 
     @Override
     public void onBackPressed() {
