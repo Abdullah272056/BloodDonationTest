@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.blooddonationbd.getDistrict.DistrictCustomAdapter;
 import com.example.blooddonationbd.getDistrict.GetDistrictData;
 import com.example.blooddonationbd.getDistrict.GetDistrictResponseData;
 import com.example.blooddonationbd.getDivision.DivisionCustomAdapter;
@@ -41,7 +42,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BeADonatorActivity extends AppCompatActivity  implements DivisionCustomAdapter.OnContactClickListener1{
+public class BeADonatorActivity extends AppCompatActivity  implements DivisionCustomAdapter.OnContactClickListener1
+,DistrictCustomAdapter.OnContactClickListener2{
     EditText nameEditText,phoneEditText;
     TextView lastDateTextView, bloodGroupTextView,districtTextView,divisionTextView,thanaTextView;
     Button saveButton;
@@ -69,10 +71,10 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
     RecyclerView recyclerView;
 
     DivisionCustomAdapter divisionCustomAdapter;
-//    DistrictCustomAdapter districtCustomAdapter;
+    DistrictCustomAdapter districtCustomAdapter;
 //    ThanaCustomAdapter thanaCustomAdapter;
 DivisionCustomAdapter.OnContactClickListener1 onContactClickListener1;
-//    DistrictCustomAdapter.OnContactClickListener2 onContactClickListener2;
+    DistrictCustomAdapter.OnContactClickListener2 onContactClickListener2;
 //    ThanaCustomAdapter.OnContactClickListener3 onContactClickListener3;
 
     @Override
@@ -82,7 +84,7 @@ DivisionCustomAdapter.OnContactClickListener1 onContactClickListener1;
 
 
         onContactClickListener1=this;
-//        onContactClickListener2=this;
+        onContactClickListener2=this;
 //        onContactClickListener3=this;
 
         toolbar=findViewById (R.id.toolbarId);
@@ -146,6 +148,19 @@ DivisionCustomAdapter.OnContactClickListener1 onContactClickListener1;
             @Override
             public void onClick(View v) {
                 getDivisionData();
+            }
+        });
+        districtTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String division=divisionTextView.getText().toString();
+                if (division.isEmpty()){
+                    Toast.makeText(BeADonatorActivity.this, "Please select your division", Toast.LENGTH_SHORT).show();
+                    return;
+                }else {
+                    getDistrict(division.toLowerCase());
+
+                }
             }
         });
 
@@ -422,7 +437,7 @@ DivisionCustomAdapter.OnContactClickListener1 onContactClickListener1;
                     assert response.body() != null;
                     districtDataList.addAll(response.body().getGetDistrictData());
                     if (districtDataList.size()>0){
-                        //showDistrict(districtDataList);
+                        showDistrict(districtDataList);
                         // Toast.makeText(MainActivity.this, String.valueOf(thanaDataList.size()), Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -437,7 +452,24 @@ DivisionCustomAdapter.OnContactClickListener1 onContactClickListener1;
             }
         });
     }
+    private void showDistrict(List<GetDistrictData> districtDataList){
+        AlertDialog.Builder builder     =new AlertDialog.Builder(BeADonatorActivity.this);
+        LayoutInflater layoutInflater   =LayoutInflater.from(BeADonatorActivity.this);
+        View view                       =layoutInflater.inflate(R.layout.recyclerview,null);
+        builder.setView(view);
+        alertDialog   = builder.create();
+        alertDialog.setCancelable(false);
 
+        recyclerView=view.findViewById(R.id.recyclerViewId);
+        districtCustomAdapter = new DistrictCustomAdapter(BeADonatorActivity.this,districtDataList,onContactClickListener2);
+        recyclerView.setLayoutManager(new LinearLayoutManager(BeADonatorActivity.this));
+        recyclerView.setAdapter(districtCustomAdapter);
+
+
+        alertDialog.show();
+
+
+    }
     @Override
     public void onBackPressed() {
         Intent intent =new Intent(BeADonatorActivity.this, HomeActivity.class);
@@ -464,5 +496,10 @@ DivisionCustomAdapter.OnContactClickListener1 onContactClickListener1;
         districtTextView.setText("");
         divisionTextView.setText(String.valueOf(divisionDataList.get(position).getDivision()));
         alertDialog.dismiss();
+    }
+
+    @Override
+    public void onContactClick2(int position) {
+
     }
 }
