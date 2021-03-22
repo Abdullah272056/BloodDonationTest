@@ -464,7 +464,7 @@ DivisionCustomAdapter.OnContactClickListener1 onContactClickListener1;
         View view                       =layoutInflater.inflate(R.layout.recyclerview,null);
         builder.setView(view);
         alertDialog   = builder.create();
-        alertDialog.setCancelable(false);
+        alertDialog.setCancelable(true);
 
         recyclerView=view.findViewById(R.id.recyclerViewId);
         districtCustomAdapter = new DistrictCustomAdapter(BeADonatorActivity.this,districtDataList,onContactClickListener2);
@@ -483,7 +483,7 @@ DivisionCustomAdapter.OnContactClickListener1 onContactClickListener1;
         View view                       =layoutInflater.inflate(R.layout.recyclerview,null);
         builder.setView(view);
         alertDialog   = builder.create();
-        alertDialog.setCancelable(false);
+        alertDialog.setCancelable(true);
 
         recyclerView=view.findViewById(R.id.recyclerViewId);
         thanaCustomAdapter = new ThanaCustomAdapter(BeADonatorActivity.this,thanaDataList,onContactClickListener3);
@@ -534,6 +534,7 @@ DivisionCustomAdapter.OnContactClickListener1 onContactClickListener1;
 
     @Override
     public void onContactClick3(int position) {
-
+        thanaTextView.setText(String.valueOf(thanaDataList.get(position)));
+        alertDialog.dismiss();
     }
 }
