@@ -58,12 +58,12 @@ public class UserInformation {
         this.lastDate = lastDate;
     }
 
-    public String getCountryName() {
+    public String getDivisionName() {
         return divisionName;
     }
 
-    public void setCountryName(String countryName) {
-        this.divisionName = countryName;
+    public void setDivisionName(String divisionName) {
+        this.divisionName = divisionName;
     }
 
     public String getDistrictName() {

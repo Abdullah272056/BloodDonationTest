@@ -37,8 +37,8 @@ import java.util.Objects;
 
 public class ProfileEditActivity extends AppCompatActivity {
 
-    EditText nameEditText,phoneEditText,countryNameEditText,districtEditText,thanaEditText;
-    TextView lastDateTextView, bloodGroupTextView;
+    EditText nameEditText,phoneEditText;
+    TextView lastDateTextView, bloodGroupTextView,divisionNameTextView,districtNameTextView,thanaNameTextView;
     Button saveButton;
     DatePickerDialog.OnDateSetListener mDateSetListener;
 
@@ -97,9 +97,9 @@ public class ProfileEditActivity extends AppCompatActivity {
         // view finding
         nameEditText=findViewById(R.id.nameEditTextId);
         phoneEditText=findViewById(R.id.phoneEditTextId);
-        countryNameEditText=findViewById(R.id.countryNameEditTextId);
-        districtEditText=findViewById(R.id.districtEditTextId);
-        thanaEditText=findViewById(R.id.thanaEditTextId);
+        divisionNameTextView=findViewById(R.id.divisionTextViewId);
+        districtNameTextView=findViewById(R.id.districtTextViewId);
+        thanaNameTextView=findViewById(R.id.thanaTextViewId);
         lastDateTextView=findViewById(R.id.lastDateTextViewId);
         bloodGroupTextView=findViewById(R.id.bloodGroupTextViewId);
         saveButton=findViewById(R.id.saveButtonId);
@@ -143,9 +143,9 @@ public class ProfileEditActivity extends AppCompatActivity {
                         phoneEditText.setText(singleUserInformationList.get(0).getUserPhone());
                         bloodGroupTextView.setText(singleUserInformationList.get(0).getBloodGroup());
                         lastDateTextView.setText(singleUserInformationList.get(0).getLastDate());
-                        thanaEditText.setText(singleUserInformationList.get(0).getThanaName());
-                        districtEditText.setText(singleUserInformationList.get(0).getDistrictName());
-                        countryNameEditText.setText(singleUserInformationList.get(0).getCountryName());
+                        thanaNameTextView.setText(singleUserInformationList.get(0).getThanaName());
+                        districtNameTextView.setText(singleUserInformationList.get(0).getDistrictName());
+                        divisionNameTextView.setText(singleUserInformationList.get(0).getDivisionName());
                         information_id=singleUserInformationList.get(0).getId();
                     }
 
@@ -300,9 +300,9 @@ public class ProfileEditActivity extends AppCompatActivity {
 
         String name=nameEditText.getText().toString();
         String phone=phoneEditText.getText().toString();
-        String countryName=countryNameEditText.getText().toString();
-        String districtName=districtEditText.getText().toString();
-        String thanaName=thanaEditText.getText().toString();
+        String divisionName=divisionNameTextView.getText().toString();
+        String districtName=districtNameTextView.getText().toString();
+        String thanaName=thanaNameTextView.getText().toString();
 
         String lastDate=lastDateTextView.getText().toString();
         String bloodGroup=bloodGroupTextView.getText().toString();
@@ -319,20 +319,20 @@ public class ProfileEditActivity extends AppCompatActivity {
             phoneEditText.requestFocus();
             return;
         }
-        if (TextUtils.isEmpty(countryName)){
-            countryNameEditText.setError("Enter country name");
-            countryNameEditText.requestFocus();
+        if (TextUtils.isEmpty(divisionName)){
+            divisionNameTextView.setError("Enter division name");
+            divisionNameTextView.requestFocus();
             return;
         }
 
         if (TextUtils.isEmpty(districtName)){
-            districtEditText.setError("Enter district name");
-            districtEditText.requestFocus();
+            districtNameTextView.setError("Enter district name");
+            districtNameTextView.requestFocus();
             return;
         }
         if (TextUtils.isEmpty(thanaName)){
-            thanaEditText.setError("Enter thana name");
-            thanaEditText.requestFocus();
+            thanaNameTextView.setError("Enter thana name");
+            thanaNameTextView.requestFocus();
             return;
         }
 
@@ -353,7 +353,7 @@ public class ProfileEditActivity extends AppCompatActivity {
 
 
             UserInformation userInformation=new UserInformation(
-                    information_id,name,phone,bloodGroup,lastDate,countryName,districtName,thanaName);
+                    information_id,name,phone,bloodGroup,lastDate,divisionName,districtName,thanaName);
             // set data
             singleUserDatabaseReference.child(information_id).setValue(userInformation).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override

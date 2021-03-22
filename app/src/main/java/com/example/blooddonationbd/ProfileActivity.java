@@ -123,7 +123,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                         profileAddressTextView.setText(singleUserInformationList.get(0).getThanaName()+
                                         ", "+singleUserInformationList.get(0).getDistrictName()+
-                                ", "+singleUserInformationList.get(0).getCountryName());
+                                ", "+singleUserInformationList.get(0).getDivisionName());
                         profileLastDonateDateTextView.setText(singleUserInformationList.get(0).getLastDate());
 
                 }
