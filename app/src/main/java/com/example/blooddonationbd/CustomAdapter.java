@@ -19,9 +19,11 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 public class CustomAdapter extends FirebaseRecyclerAdapter<UserInformation, CustomAdapter.MyViewHolder>{
     Context context;
-    public CustomAdapter(@NonNull FirebaseRecyclerOptions<UserInformation> options, Context context) {
+    String memberType;
+    public CustomAdapter(@NonNull FirebaseRecyclerOptions<UserInformation> options, Context context,String memberType) {
         super(options);
         this.context=context;
+        this.memberType=memberType;
     }
 
     @Override
@@ -34,7 +36,7 @@ public class CustomAdapter extends FirebaseRecyclerAdapter<UserInformation, Cust
         holder.lastDateTextView.setText("Last donate : "+model.getLastDate());
         holder.phoneNumberTextView.setText("Phone : "+model.getUserPhone());
 
-        if (new SharePref().loadId(context).equals("iQDrvduu4CVzs4U0EzcQAFXJc7C3")){
+        if (memberType.equals("admin")){
             holder.phoneNumberTextView.setVisibility(View.VISIBLE);
         }
 
@@ -42,7 +44,7 @@ public class CustomAdapter extends FirebaseRecyclerAdapter<UserInformation, Cust
         holder.callImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (new SharePref().loadId(context).equals("iQDrvduu4CVzs4U0EzcQAFXJc7C3")){
+                if (memberType.equals("admin")){
 
                     String phoneNumber=model.getUserPhone();
 

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -49,6 +50,10 @@ public class HomeActivity extends AppCompatActivity {
     TextView toolbarTextView;
 
     CustomAdapter customAdapter;
+
+    String memberType;
+
+    FirebaseRecyclerOptions<UserInformation> options;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -85,14 +90,12 @@ public class HomeActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(HomeActivity.this));
 
 
-        FirebaseRecyclerOptions<UserInformation> options =
-                new FirebaseRecyclerOptions.Builder<UserInformation>()
+        options = new FirebaseRecyclerOptions.Builder<UserInformation>()
                         .setQuery(FirebaseDatabase.getInstance().getReference().child("allUserInfo"), UserInformation.class)
                         .build();
 
 
-        customAdapter =new CustomAdapter(options,HomeActivity.this);
-        recyclerView.setAdapter(customAdapter);
+
 
 
 
@@ -123,7 +126,6 @@ public class HomeActivity extends AppCompatActivity {
                         break;
 
                     case R.id.beADonatorItemId:
-
                          int beDonateStatus=singleUserInformationList.size();
                         if (beDonateStatus>0){
                             Toast.makeText(HomeActivity.this, "Already  your are donator ", Toast.LENGTH_SHORT).show();
@@ -165,14 +167,32 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-
+       // memberType=singleUserInformationList.get(0).getMemberType();
 
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        customAdapter.startListening();
+        singleUserDatabaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                singleUserInformationList.clear();
+                for (DataSnapshot studentSnapshot:snapshot.getChildren()){
+                    UserInformation userInformation=studentSnapshot.getValue(UserInformation.class);
+                    singleUserInformationList.add(userInformation);
+
+                    customAdapter =new CustomAdapter(options,HomeActivity.this,singleUserInformationList.get(0).getMemberType());
+                    recyclerView.setAdapter(customAdapter);
+                    customAdapter.startListening();
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        
     }
 
     @Override
@@ -242,6 +262,8 @@ public class HomeActivity extends AppCompatActivity {
                 for (DataSnapshot studentSnapshot:snapshot.getChildren()){
                     UserInformation userInformation=studentSnapshot.getValue(UserInformation.class);
                     singleUserInformationList.add(userInformation);
+
+                    /////////////////
                 }
             }
             @Override
@@ -275,18 +297,18 @@ public class HomeActivity extends AppCompatActivity {
 
     public  void processSearch(String s){
 
-
         FirebaseRecyclerOptions<UserInformation> options =
                 new FirebaseRecyclerOptions.Builder<UserInformation>()
                         .setQuery(FirebaseDatabase.getInstance().getReference().child("allUserInfo").orderByChild("thanaName").startAt(s).endAt(s+"\uf8ff"), UserInformation.class)
                         .build();
 
-
-        customAdapter =new CustomAdapter(options,HomeActivity.this);
+        customAdapter =new CustomAdapter(options,HomeActivity.this,singleUserInformationList.get(0).getMemberType());
         customAdapter.startListening();
         recyclerView.setAdapter(customAdapter);
 
 
     }
+
+
 
 }
