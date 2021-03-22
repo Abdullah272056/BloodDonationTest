@@ -151,7 +151,6 @@
                 </LinearLayout>
                 <LinearLayout
                     android:gravity="center"
-                    android:padding="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="20dp"
@@ -163,21 +162,20 @@
                         android:src="@drawable/ic_baseline_location_on_24"
                         android:layout_width="30dp"
                         android:layout_height="30dp"/>
-                    <EditText
+                    <TextView
+                        android:textStyle="bold"
                         android:textColor="#000000"
-                        android:id="@+id/countryNameEditTextId"
-                        android:imeOptions="actionNext"
+                        android:padding="15dp"
+                        android:id="@+id/divisionTextViewId"                        android:imeOptions="actionNext"
                         android:layout_marginStart="15dp"
                         android:textSize="20sp"
-                        android:inputType="text"
-                        android:hint="Enter country name"
+                        android:hint="Select division"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
 
                 </LinearLayout>
                 <LinearLayout
                     android:gravity="center"
-                    android:padding="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="20dp"
@@ -189,22 +187,20 @@
                         android:src="@drawable/ic_baseline_location_city_24"
                         android:layout_width="30dp"
                         android:layout_height="30dp"/>
-
-                    <EditText
+                    <TextView
+                        android:textStyle="bold"
                         android:textColor="#000000"
-                        android:id="@+id/districtEditTextId"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:padding="15dp"
+                        android:id="@+id/districtTextViewId"                        android:imeOptions="actionNext"
                         android:layout_marginStart="15dp"
-                        android:hint="Enter district name"
-                        android:imeOptions="actionNext"
-                        android:inputType="text"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        android:hint="Select division"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
                 </LinearLayout>
                 <LinearLayout
                     android:gravity="center"
-                    android:padding="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="20dp"
@@ -216,18 +212,21 @@
                         android:src="@drawable/ic_baseline_location_city_24"
                         android:layout_width="30dp"
                         android:layout_height="30dp"/>
-                    <EditText
-                        android:inputType="text"
+                    <TextView
+                        android:textStyle="bold"
                         android:textColor="#000000"
-                        android:id="@+id/thanaEditTextId"
-                        android:imeOptions="actionDone"
+                        android:padding="15dp"
+                        android:id="@+id/thanaTextViewId"                        android:imeOptions="actionNext"
                         android:layout_marginStart="15dp"
                         android:textSize="20sp"
-                        android:hint="Enter thana name"
+                        android:hint="Select division"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
 
                 </LinearLayout>
+               
+
+
             </LinearLayout>
 
             <LinearLayout
