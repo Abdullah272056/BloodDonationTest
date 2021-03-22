@@ -10,6 +10,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +20,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,6 +33,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
 
 public class ProfileEditActivity extends AppCompatActivity {
 
@@ -53,6 +59,8 @@ public class ProfileEditActivity extends AppCompatActivity {
 
     String information_id;
 
+    int successStatus=0;
+    int successStatus1=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -289,6 +297,7 @@ public class ProfileEditActivity extends AppCompatActivity {
     }
 
     public void donatorInfoSave(){
+
         String name=nameEditText.getText().toString();
         String phone=phoneEditText.getText().toString();
         String countryName=countryNameEditText.getText().toString();
@@ -346,13 +355,43 @@ public class ProfileEditActivity extends AppCompatActivity {
             UserInformation userInformation=new UserInformation(
                     information_id,name,phone,bloodGroup,lastDate,countryName,districtName,thanaName);
             // set data
-            singleUserDatabaseReference.child(information_id).setValue(userInformation);
-            allUserDatabaseReference.child(information_id).setValue(userInformation);
-        Toast.makeText(this, "ss", Toast.LENGTH_SHORT).show();
+            singleUserDatabaseReference.child(information_id).setValue(userInformation).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    successStatus=1;
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(ProfileEditActivity.this, String.valueOf(e), Toast.LENGTH_LONG).show();
 
-            Intent intent=new Intent(ProfileEditActivity.this,ProfileActivity.class);
-            startActivity(intent);
-            finish();
+                }
+            });
+
+
+            allUserDatabaseReference.child(information_id).setValue(userInformation).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    successStatus1=1;
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(ProfileEditActivity.this, String.valueOf(e), Toast.LENGTH_LONG).show();
+
+                }
+            });
+
+          if (successStatus==1 && successStatus1==1){
+              Intent intent=new Intent(ProfileEditActivity.this,ProfileActivity.class);
+              startActivity(intent);
+              finish();
+          }else {
+              Toast.makeText(ProfileEditActivity.this, "Some error", Toast.LENGTH_LONG).show();
+
+          }
+
+
 
 
         // call dismissProgress method

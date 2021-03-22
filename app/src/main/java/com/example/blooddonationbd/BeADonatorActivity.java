@@ -29,6 +29,8 @@ import com.example.blooddonationbd.getDivision.GetDivisionData;
 import com.example.blooddonationbd.getDivision.GetDivisionResponseData;
 import com.example.blooddonationbd.retrofit.ApiInterface;
 import com.example.blooddonationbd.retrofit.RetrofitClient;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -78,6 +80,9 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
     DistrictCustomAdapter.OnContactClickListener2 onContactClickListener2;
     ThanaCustomAdapter.OnContactClickListener3 onContactClickListener3;
 
+
+    int successStatus=0;
+    int successStatus1=0;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -374,15 +379,49 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
                     information_id,name,phone,bloodGroup,lastDate,divisionName,districtName,thanaName);
             // set data
 
-            singleUserDatabaseReference.child(information_id).setValue(userInformation);
-            allUserDatabaseReference.child(information_id).setValue(userInformation);
+//            singleUserDatabaseReference.child(information_id).setValue(userInformation);
+//            allUserDatabaseReference.child(information_id).setValue(userInformation);
 
-            // call dismissProgress method
+            singleUserDatabaseReference.child(information_id).setValue(userInformation).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    successStatus=1;
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(BeADonatorActivity.this, String.valueOf(e), Toast.LENGTH_LONG).show();
+
+                }
+            });
+
+
+            allUserDatabaseReference.child(information_id).setValue(userInformation).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    successStatus1=1;
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(BeADonatorActivity.this, String.valueOf(e), Toast.LENGTH_LONG).show();
+
+                }
+            });
+
+            if (successStatus==1 && successStatus1==1){
+                // call dismissProgress method
+
+                Intent intent=new Intent(BeADonatorActivity.this,HomeActivity.class);
+                //intent.putExtra("userId",userId);
+                startActivity(intent);
+                finish();
+            }else {
+                Toast.makeText(BeADonatorActivity.this, "Some error", Toast.LENGTH_LONG).show();
+
+            }
             customProgress.dismissProgress();
-            Intent intent=new Intent(BeADonatorActivity.this,HomeActivity.class);
-            //intent.putExtra("userId",userId);
-            startActivity(intent);
-            finish();
+
         }
 
 

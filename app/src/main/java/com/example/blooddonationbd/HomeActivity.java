@@ -123,6 +123,7 @@ public class HomeActivity extends AppCompatActivity {
                         break;
 
                     case R.id.beADonatorItemId:
+
                          int beDonateStatus=singleUserInformationList.size();
                         if (beDonateStatus>0){
                             Toast.makeText(HomeActivity.this, "Already  your are donator ", Toast.LENGTH_SHORT).show();
@@ -131,6 +132,7 @@ public class HomeActivity extends AppCompatActivity {
                             startActivity(intent);
                             finish();
                         }
+
                         break;
 
                     case R.id.aboutUsItemIdId:

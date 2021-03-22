@@ -147,10 +147,10 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
                             finish();
 
                         } else {
-                            Toast.makeText(LogInActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LogInActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }
 
-
+                        customProgress.dismissProgress();
                     }
 
                 });
