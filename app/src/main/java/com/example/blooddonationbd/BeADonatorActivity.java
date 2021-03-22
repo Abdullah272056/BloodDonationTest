@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -19,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.blooddonationbd.getDistrict.GetDistrictData;
+import com.example.blooddonationbd.getDivision.DivisionCustomAdapter;
 import com.example.blooddonationbd.getDivision.GetDivisionData;
 import com.example.blooddonationbd.getDivision.GetDivisionResponseData;
 import com.example.blooddonationbd.retrofit.ApiInterface;
@@ -37,11 +40,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BeADonatorActivity extends AppCompatActivity{
+public class BeADonatorActivity extends AppCompatActivity  implements DivisionCustomAdapter.OnContactClickListener1{
     EditText nameEditText,phoneEditText;
     TextView lastDateTextView, bloodGroupTextView,districtTextView,divisionTextView,thanaTextView;
     Button saveButton;
-ApiInterface apiInterface;
+    ApiInterface apiInterface;
 
     Toolbar toolbar;
     String userId;
@@ -59,10 +62,27 @@ ApiInterface apiInterface;
     List<GetDivisionData> divisionDataList;
     List<GetDistrictData> districtDataList;
 
+
+    AlertDialog alertDialog;
+
+    RecyclerView recyclerView;
+
+    DivisionCustomAdapter divisionCustomAdapter;
+//    DistrictCustomAdapter districtCustomAdapter;
+//    ThanaCustomAdapter thanaCustomAdapter;
+DivisionCustomAdapter.OnContactClickListener1 onContactClickListener1;
+//    DistrictCustomAdapter.OnContactClickListener2 onContactClickListener2;
+//    ThanaCustomAdapter.OnContactClickListener3 onContactClickListener3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_be_a_donator);
+
+
+        onContactClickListener1=this;
+//        onContactClickListener2=this;
+//        onContactClickListener3=this;
 
         toolbar=findViewById (R.id.toolbarId);
         if (toolbar!=null){
@@ -124,7 +144,7 @@ ApiInterface apiInterface;
         divisionTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                getDivisionData();
             }
         });
 
@@ -355,7 +375,7 @@ ApiInterface apiInterface;
                     divisionDataList.addAll(response.body().getDivisionDataList());
                     if (divisionDataList.size()>0){
                         Toast.makeText(BeADonatorActivity.this, "sss", Toast.LENGTH_SHORT).show();
-                        //showDivisionData(divisionDataList);
+                        showDivisionData(divisionDataList);
                     }
                 }
                 else {
@@ -369,6 +389,26 @@ ApiInterface apiInterface;
 
             }
         });
+    }
+
+
+    private void showDivisionData(List<GetDivisionData> divisionDataList){
+        AlertDialog.Builder builder     =new AlertDialog.Builder(BeADonatorActivity.this);
+        LayoutInflater layoutInflater   =LayoutInflater.from(BeADonatorActivity.this);
+        View view                       =layoutInflater.inflate(R.layout.recyclerview,null);
+        builder.setView(view);
+        alertDialog   = builder.create();
+        alertDialog.setCancelable(true);
+
+        recyclerView=view.findViewById(R.id.recyclerViewId);
+        divisionCustomAdapter = new DivisionCustomAdapter(BeADonatorActivity.this,divisionDataList,onContactClickListener1);
+        recyclerView.setLayoutManager(new LinearLayoutManager(BeADonatorActivity.this));
+        recyclerView.setAdapter(divisionCustomAdapter);
+
+
+        alertDialog.show();
+
+
     }
 
 
@@ -391,6 +431,9 @@ ApiInterface apiInterface;
         }
     }
 
+        // division item click
+    @Override
+    public void onContactClick1(int position) {
 
-
+    }
 }
