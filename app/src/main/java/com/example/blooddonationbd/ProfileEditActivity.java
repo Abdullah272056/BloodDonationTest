@@ -19,6 +19,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,6 +58,10 @@ public class ProfileEditActivity extends AppCompatActivity implements DivisionCu
     EditText nameEditText,phoneEditText;
     TextView lastDateTextView, bloodGroupTextView,divisionNameTextView,districtNameTextView,thanaNameTextView;
     Button saveButton;
+    TextView readyForBDTextView;
+    RadioGroup radioGroup;
+    RadioButton yesRadioButton,noRadioButton;
+
     DatePickerDialog.OnDateSetListener mDateSetListener;
 
 
@@ -133,6 +139,12 @@ public class ProfileEditActivity extends AppCompatActivity implements DivisionCu
         lastDateTextView=findViewById(R.id.lastDateTextViewId);
         bloodGroupTextView=findViewById(R.id.bloodGroupTextViewId);
         saveButton=findViewById(R.id.saveButtonId);
+
+        radioGroup=findViewById(R.id.radioGroupId);
+        yesRadioButton=findViewById(R.id.yesRadioButtonId);
+        noRadioButton=findViewById(R.id.noRadioButtonId);
+        readyForBDTextView=findViewById(R.id.readyForBDTextViewId);
+
 
         saveButton.setOnClickListener(new View.OnClickListener(){
             @Override
