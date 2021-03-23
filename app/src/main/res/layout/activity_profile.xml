@@ -369,6 +369,55 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"/>
 
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#FDF8F8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:src="@drawable/ic_baseline_calendar_today_24"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"/>
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textColor="#020202"
+                            android:textStyle="bold"
+                            android:layout_marginStart="15dp"
+                            android:textSize="20sp"
+                            android:text="Ready for blood donation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/profileReadyForBDTextViewId"
+                            android:textColor="#020202"
+                            android:layout_marginStart="15dp"
+                            android:textSize="20sp"
+                            android:hint="xxxxx"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+                <View
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="#0629ED"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+
             </LinearLayout>
 
         </LinearLayout>

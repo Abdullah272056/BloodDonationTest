@@ -20,17 +20,17 @@ public class UserInformation {
         this.readyForBD = readyForBD;
     }
 
-    public UserInformation(String id, String userName, String userPhone, String bloodGroup, String lastDate, String divisionName, String districtName, String thanaName, String memberType) {
-        this.id = id;
-        this.userName = userName;
-        this.userPhone = userPhone;
-        BloodGroup = bloodGroup;
-        this.lastDate = lastDate;
-        this.divisionName = divisionName;
-        this.districtName = districtName;
-        this.thanaName = thanaName;
-        this.memberType = memberType;
-    }
+//    public UserInformation(String id, String userName, String userPhone, String bloodGroup, String lastDate, String divisionName, String districtName, String thanaName, String memberType) {
+//        this.id = id;
+//        this.userName = userName;
+//        this.userPhone = userPhone;
+//        BloodGroup = bloodGroup;
+//        this.lastDate = lastDate;
+//        this.divisionName = divisionName;
+//        this.districtName = districtName;
+//        this.thanaName = thanaName;
+//        this.memberType = memberType;
+//    }
 
     public String getReadyForBD() {
         return readyForBD;
