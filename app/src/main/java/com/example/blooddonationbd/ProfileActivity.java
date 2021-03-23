@@ -28,7 +28,7 @@ public class ProfileActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     TextView profileFNameTextView,profileNameTextView,profilePhoneTextView,profileEmailTextView,
-            profileBloodGroupTextView,profileAddressTextView,profileLastDonateDateTextView;
+            profileBloodGroupTextView,profileAddressTextView,profileLastDonateDateTextView,profileReadyForBDTextView ;
     ImageView profileEditImageView;
     String userId;
 
@@ -75,6 +75,7 @@ public class ProfileActivity extends AppCompatActivity {
         profileAddressTextView=findViewById(R.id.profileAddressTextViewId);
         profileLastDonateDateTextView=findViewById(R.id.profileLastDonateDateTextViewId);
         profileEditImageView=findViewById(R.id.profileEditImageViewId);
+        profileReadyForBDTextView=findViewById(R.id.profileReadyForBDTextViewId);
 
 
 
