@@ -236,16 +236,36 @@ public class ProfileEditActivity extends AppCompatActivity implements DivisionCu
                     UserInformation userInformation=studentSnapshot.getValue(UserInformation.class);
                     singleUserInformationList.add(userInformation);
 
-                    if (singleUserInformationList.size()>0){
-                        nameEditText.setText(singleUserInformationList.get(0).getUserName());
-                        phoneEditText.setText(singleUserInformationList.get(0).getUserPhone());
-                        bloodGroupTextView.setText(singleUserInformationList.get(0).getBloodGroup());
-                        lastDateTextView.setText(singleUserInformationList.get(0).getLastDate());
-                        thanaNameTextView.setText(singleUserInformationList.get(0).getThanaName());
-                        districtNameTextView.setText(singleUserInformationList.get(0).getDistrictName());
-                        divisionNameTextView.setText(singleUserInformationList.get(0).getDivisionName());
-                        information_id=singleUserInformationList.get(0).getId();
+
+
+                }
+
+
+                if (singleUserInformationList.size()>0){
+                    nameEditText.setText(singleUserInformationList.get(0).getUserName());
+                    phoneEditText.setText(singleUserInformationList.get(0).getUserPhone());
+                    bloodGroupTextView.setText(singleUserInformationList.get(0).getBloodGroup());
+                    lastDateTextView.setText(singleUserInformationList.get(0).getLastDate());
+                    thanaNameTextView.setText(singleUserInformationList.get(0).getThanaName());
+                    districtNameTextView.setText(singleUserInformationList.get(0).getDistrictName());
+                    divisionNameTextView.setText(singleUserInformationList.get(0).getDivisionName());
+                    information_id=singleUserInformationList.get(0).getId();
+
+                    if (singleUserInformationList.get(0).getReadyForBD()==(null)){
+
+                    }else {
+                        if (singleUserInformationList.get(0).getReadyForBD().equals("yes")){
+                            yesRadioButton.setChecked(true);
+                        }else if (singleUserInformationList.get(0).getReadyForBD().equals("no")){
+                            noRadioButton.setChecked(true);
+                        }else {
+                            noRadioButton.setChecked(false);
+                            yesRadioButton.setChecked(false);
+                        }
                     }
+
+
+
 
                 }
             }
@@ -555,9 +575,15 @@ public class ProfileEditActivity extends AppCompatActivity implements DivisionCu
             return;
         }
 
+        if (TextUtils.isEmpty(readyForBD)){
+            readyForBDTextView.setError("can not empty this field");
+            readyForBDTextView.requestFocus();
+            return;
+        }
 
             UserInformation userInformation=new UserInformation(
-                    information_id,name,phone,bloodGroup,lastDate,divisionName,districtName,thanaName,singleUserInformationList.get(0).getMemberType());
+                    information_id,name,phone,bloodGroup,lastDate,divisionName,
+                    districtName,thanaName,singleUserInformationList.get(0).getMemberType(),readyForBD);
 
 
 
