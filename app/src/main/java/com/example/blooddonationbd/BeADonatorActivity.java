@@ -341,20 +341,20 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
         DatePickerDialog dialog=new DatePickerDialog(BeADonatorActivity.this,
                 android.R.style.Theme_Holo_Light_Dialog_MinWidth,mDateSetListener,year,month,day);
 
-        //background color set
-        //dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.show();
+
 
         // selected date set with textView
         mDateSetListener=new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                  lastDateTextView.setText(String.valueOf(dayOfMonth+"/"+month+"/"+year));
+                  lastDateTextView.setText(String.valueOf(dayOfMonth+"/"+(month+1)+"/"+year));
                 lastDateTextView.setError(null);
                 lastDateTextView.requestFocus();
             }
         };
-
+        //background color set
+        //dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
 
     }
 

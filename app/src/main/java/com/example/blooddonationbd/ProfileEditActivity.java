@@ -178,7 +178,13 @@ public class ProfileEditActivity extends AppCompatActivity implements DivisionCu
         thanaNameTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showThana(thanaDataList);
+                String district=districtNameTextView.getText().toString();
+                if (district.isEmpty()){
+                    Toast.makeText(ProfileEditActivity.this, "please select district", Toast.LENGTH_SHORT).show();
+                    return;
+                }else {
+                    showThana(thanaDataList);
+                }
             }
         });
 
