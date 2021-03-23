@@ -17,6 +17,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,8 +53,11 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
 ,DistrictCustomAdapter.OnContactClickListener2,ThanaCustomAdapter.OnContactClickListener3{
     EditText nameEditText,phoneEditText;
     TextView lastDateTextView, bloodGroupTextView,districtTextView,divisionTextView,thanaTextView;
+    TextView readyForBDTextView;
     Button saveButton;
 
+    RadioGroup radioGroup;
+    RadioButton yesRadioButton,noRadioButton;
 
     Toolbar toolbar;
     String userId;
@@ -77,6 +82,7 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
     DivisionCustomAdapter.OnContactClickListener1 onContactClickListener1;
     DistrictCustomAdapter.OnContactClickListener2 onContactClickListener2;
     ThanaCustomAdapter.OnContactClickListener3 onContactClickListener3;
+    String readyForBD="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -126,6 +132,34 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
         bloodGroupTextView=findViewById(R.id.bloodGroupTextViewId);
         saveButton=findViewById(R.id.saveButtonId);
 
+
+        radioGroup=findViewById(R.id.radioGroupId);
+        yesRadioButton=findViewById(R.id.yesRadioButtonId);
+        noRadioButton=findViewById(R.id.noRadioButtonId);
+        readyForBDTextView=findViewById(R.id.readyForBDTextViewId);
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch(checkedId){
+                    case R.id.yesRadioButtonId:
+                        // do operations specific to this selection
+                        readyForBD="yes";
+                        readyForBDTextView.setError(null);
+                        readyForBDTextView.requestFocus();
+                        break;
+                    case R.id.noRadioButtonId:
+                        // do operations specific to this selection
+                        readyForBD="no";
+                        readyForBDTextView.setError(null);
+                        readyForBDTextView.requestFocus();
+                        break;
+
+                }
+            }
+        });
+
+
         saveButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -171,7 +205,14 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
         thanaTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showThana(thanaDataList);
+                String district=districtTextView.getText().toString();
+                if (district.isEmpty()){
+                    Toast.makeText(BeADonatorActivity.this, "please select district", Toast.LENGTH_SHORT).show();
+                   return;
+                }else {
+                    showThana(thanaDataList);
+                }
+
             }
         });
 
@@ -202,7 +243,10 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
             public void onClick(View v) {
 
                 bloodGroupTextView.setText(" A+ ");
+                bloodGroupTextView.setError(null);
+                bloodGroupTextView.requestFocus();
                 alertDialog.dismiss();
+
 
             }
         });
@@ -210,6 +254,8 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
             @Override
             public void onClick(View v) {
                 bloodGroupTextView.setText(" B+ ");
+                bloodGroupTextView.setError(null);
+                bloodGroupTextView.requestFocus();
                 alertDialog.dismiss();
             }
         });
@@ -218,6 +264,8 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
             @Override
             public void onClick(View v) {
                 bloodGroupTextView.setText(" O+ ");
+                bloodGroupTextView.setError(null);
+                bloodGroupTextView.requestFocus();
                 alertDialog.dismiss();
             }
         });
@@ -226,6 +274,8 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
             @Override
             public void onClick(View v) {
                 bloodGroupTextView.setText(" AB+ ");
+                bloodGroupTextView.setError(null);
+                bloodGroupTextView.requestFocus();
                 alertDialog.dismiss();
             }
         });
@@ -234,6 +284,8 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
             @Override
             public void onClick(View v) {
                 bloodGroupTextView.setText(" A- ");
+                bloodGroupTextView.setError(null);
+                bloodGroupTextView.requestFocus();
                 alertDialog.dismiss();
             }
         });
@@ -242,6 +294,8 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
             @Override
             public void onClick(View v) {
                 bloodGroupTextView.setText(" B- ");
+                bloodGroupTextView.setError(null);
+                bloodGroupTextView.requestFocus();
                 alertDialog.dismiss();
             }
         });
@@ -250,6 +304,8 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
             @Override
             public void onClick(View v) {
                 bloodGroupTextView.setText(" O- ");
+                bloodGroupTextView.setError(null);
+                bloodGroupTextView.requestFocus();
                 alertDialog.dismiss();
             }
         });
@@ -258,6 +314,8 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
             @Override
             public void onClick(View v) {
                 bloodGroupTextView.setText(" AB- ");
+                bloodGroupTextView.setError(null);
+                bloodGroupTextView.requestFocus();
                 alertDialog.dismiss();
             }
         });
@@ -292,6 +350,8 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                   lastDateTextView.setText(String.valueOf(dayOfMonth+"/"+month+"/"+year));
+                lastDateTextView.setError(null);
+                lastDateTextView.requestFocus();
             }
         };
 
@@ -308,6 +368,8 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
 
         String lastDate=lastDateTextView.getText().toString();
         String bloodGroup=bloodGroupTextView.getText().toString();
+
+
 
         if (TextUtils.isEmpty(name)){
             nameEditText.setError("Enter your name");
@@ -345,6 +407,11 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
         if (TextUtils.isEmpty(bloodGroup)){
             bloodGroupTextView.setError("select your blood group");
             bloodGroupTextView.requestFocus();
+            return;
+        }
+        if (TextUtils.isEmpty(readyForBD)){
+            readyForBDTextView.setError("can not empty this field");
+            readyForBDTextView.requestFocus();
             return;
         }
 
@@ -517,6 +584,7 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
         alertDialog.setCancelable(true);
 
         recyclerView=view.findViewById(R.id.recyclerViewId);
+
         thanaCustomAdapter = new ThanaCustomAdapter(BeADonatorActivity.this,thanaDataList,onContactClickListener3);
         recyclerView.setLayoutManager(new LinearLayoutManager(BeADonatorActivity.this));
         recyclerView.setAdapter(thanaCustomAdapter);
@@ -552,6 +620,10 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
         thanaTextView.setText("");
         districtTextView.setText("");
         divisionTextView.setText(String.valueOf(divisionDataList.get(position).getDivision()));
+
+        divisionTextView.setError(null);
+        divisionTextView.requestFocus();
+
         alertDialog.dismiss();
     }
     // district item click
@@ -560,12 +632,16 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
         thanaTextView.setText("");
         thanaDataList.addAll(districtDataList.get(position).getUpazilla());
         districtTextView.setText(String.valueOf(districtDataList.get(position).getDistrict()));
+        districtTextView.setError(null);
+        districtTextView.requestFocus();
         alertDialog.dismiss();
     }
 
     @Override
     public void onContactClick3(int position) {
         thanaTextView.setText(String.valueOf(thanaDataList.get(position)));
+        thanaTextView.setError(null);
+        thanaTextView.requestFocus();
         alertDialog.dismiss();
     }
 }

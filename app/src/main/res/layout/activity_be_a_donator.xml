@@ -237,9 +237,9 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:id="@+id/readyForBDTextViewId"
                         android:textColor="#000000"
                         android:padding="15dp"
-                        android:id="@+id/bloodTextViewId"                        android:imeOptions="actionNext"
                         android:layout_marginStart="15dp"
                         android:textSize="20sp"
                         android:text="Are you ready for blood donation ?"
@@ -247,17 +247,20 @@
                         android:layout_height="wrap_content"/>
 
                     <RadioGroup
+                        android:id="@+id/radioGroupId"
                         android:layout_marginLeft="30dp"
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <RadioButton
+                           android:id="@+id/yesRadioButtonId"
                             android:layout_margin="10dp"
                             android:textSize="30sp"
                             android:text="yes"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
                         <RadioButton
+                            android:id="@+id/noRadioButtonId"
                             android:layout_marginRight="10dp"
                             android:layout_marginBottom="10dp"
                             android:layout_marginTop="10dp"

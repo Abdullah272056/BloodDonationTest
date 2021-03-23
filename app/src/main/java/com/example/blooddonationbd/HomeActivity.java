@@ -195,6 +195,8 @@ public class HomeActivity extends AppCompatActivity {
                     customAdapter.startListening();
                 }
 
+
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
