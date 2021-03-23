@@ -181,18 +181,27 @@ public class HomeActivity extends AppCompatActivity {
                 for (DataSnapshot studentSnapshot:snapshot.getChildren()){
                     UserInformation userInformation=studentSnapshot.getValue(UserInformation.class);
                     singleUserInformationList.add(userInformation);
+                }
 
+
+                int size= singleUserInformationList.size();
+                if ( size>0){
                     customAdapter =new CustomAdapter(options,HomeActivity.this,singleUserInformationList.get(0).getMemberType());
                     recyclerView.setAdapter(customAdapter);
                     customAdapter.startListening();
+                }else {
+                    customAdapter =new CustomAdapter(options,HomeActivity.this,"user");
+                    recyclerView.setAdapter(customAdapter);
+                    customAdapter.startListening();
                 }
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
-        
+
     }
 
     @Override
