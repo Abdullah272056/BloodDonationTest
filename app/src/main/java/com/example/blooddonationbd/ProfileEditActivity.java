@@ -93,7 +93,7 @@ public class ProfileEditActivity extends AppCompatActivity implements DivisionCu
     DivisionCustomAdapter.OnContactClickListener1 onContactClickListener1;
     DistrictCustomAdapter.OnContactClickListener2 onContactClickListener2;
     ThanaCustomAdapter.OnContactClickListener3 onContactClickListener3;
-
+    String readyForBD="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -144,6 +144,27 @@ public class ProfileEditActivity extends AppCompatActivity implements DivisionCu
         yesRadioButton=findViewById(R.id.yesRadioButtonId);
         noRadioButton=findViewById(R.id.noRadioButtonId);
         readyForBDTextView=findViewById(R.id.readyForBDTextViewId);
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch(checkedId){
+                    case R.id.yesRadioButtonId:
+                        // do operations specific to this selection
+                        readyForBD="yes";
+                        readyForBDTextView.setError(null);
+                        readyForBDTextView.requestFocus();
+                        break;
+                    case R.id.noRadioButtonId:
+                        // do operations specific to this selection
+                        readyForBD="no";
+                        readyForBDTextView.setError(null);
+                        readyForBDTextView.requestFocus();
+                        break;
+
+                }
+            }
+        });
 
 
         saveButton.setOnClickListener(new View.OnClickListener(){
