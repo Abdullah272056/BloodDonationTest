@@ -442,7 +442,7 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
 
             String information_id=singleUserDatabaseReference.push().getKey();
             UserInformation userInformation=new UserInformation(
-                    information_id,name,phone,bloodGroup,lastDate,divisionName,districtName,thanaName,"user");
+                    information_id,name,phone,bloodGroup,lastDate,divisionName,districtName,thanaName,"user",readyForBD);
             // set data
 
 //            singleUserDatabaseReference.child(information_id).setValue(userInformation);

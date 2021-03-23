@@ -2,9 +2,22 @@ package com.example.blooddonationbd;
 
 public class UserInformation {
     String id, userName, userPhone,BloodGroup,
-            lastDate, divisionName,districtName,thanaName,memberType;
+            lastDate, divisionName,districtName,thanaName,memberType,readyForBD;
 
     public UserInformation() {
+    }
+
+    public UserInformation(String id, String userName, String userPhone, String bloodGroup, String lastDate, String divisionName, String districtName, String thanaName, String memberType, String readyForBD) {
+        this.id = id;
+        this.userName = userName;
+        this.userPhone = userPhone;
+        BloodGroup = bloodGroup;
+        this.lastDate = lastDate;
+        this.divisionName = divisionName;
+        this.districtName = districtName;
+        this.thanaName = thanaName;
+        this.memberType = memberType;
+        this.readyForBD = readyForBD;
     }
 
     public UserInformation(String id, String userName, String userPhone, String bloodGroup, String lastDate, String divisionName, String districtName, String thanaName, String memberType) {
@@ -19,6 +32,13 @@ public class UserInformation {
         this.memberType = memberType;
     }
 
+    public String getReadyForBD() {
+        return readyForBD;
+    }
+
+    public void setReadyForBD(String readyForBD) {
+        this.readyForBD = readyForBD;
+    }
 
     public String getId() {
         return id;
