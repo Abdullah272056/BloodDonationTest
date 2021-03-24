@@ -113,21 +113,19 @@ public class ProfileActivity extends AppCompatActivity {
                     UserInformation userInformation=studentSnapshot.getValue(UserInformation.class);
                     singleUserInformationList.add(userInformation);
 
-                    if (singleUserInformationList.size()>0){
-//                        TextView profileFNameTextView,profileNameTextView,profilePhoneTextView,profileEmailTextView,
-//                            profileBloodGroupTextView,profileAddressTextView,profileLastDonateDateTextView;
-
-                        profileFNameTextView.setText(singleUserInformationList.get(0).getUserName());
-                        profileNameTextView.setText(singleUserInformationList.get(0).getUserName());
-                        profilePhoneTextView.setText(singleUserInformationList.get(0).getUserPhone());
-                        profileBloodGroupTextView.setText(singleUserInformationList.get(0).getBloodGroup());
-
-                        profileAddressTextView.setText(singleUserInformationList.get(0).getThanaName()+
-                                        ", "+singleUserInformationList.get(0).getDistrictName()+
-                                ", "+singleUserInformationList.get(0).getDivisionName());
-                        profileLastDonateDateTextView.setText(singleUserInformationList.get(0).getLastDate());
-
                 }
+
+                if (singleUserInformationList.size()>0){
+                    profileFNameTextView.setText(singleUserInformationList.get(0).getUserName());
+                    profileNameTextView.setText(singleUserInformationList.get(0).getUserName());
+                    profilePhoneTextView.setText(singleUserInformationList.get(0).getUserPhone());
+                    profileBloodGroupTextView.setText(singleUserInformationList.get(0).getBloodGroup());
+
+                    profileAddressTextView.setText(singleUserInformationList.get(0).getThanaName()+
+                            ", "+singleUserInformationList.get(0).getDistrictName()+
+                            ", "+singleUserInformationList.get(0).getDivisionName());
+                    profileLastDonateDateTextView.setText(singleUserInformationList.get(0).getLastDate());
+                    profileReadyForBDTextView.setText(singleUserInformationList.get(0).getReadyForBD());
 
                 }
             }
