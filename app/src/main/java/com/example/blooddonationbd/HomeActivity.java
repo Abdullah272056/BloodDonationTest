@@ -38,7 +38,7 @@ public class HomeActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     String userId;
-    DatabaseReference singleUserDatabaseReference, allUserDatabaseReference;
+    DatabaseReference singleUserDatabaseReference, allUserDatabaseReference,adminInfoDatabaseReference;
 
     List<UserInformation> singleUserInformationList, allUserInformationList;
 
@@ -54,6 +54,11 @@ public class HomeActivity extends AppCompatActivity {
     String memberType;
 
     FirebaseRecyclerOptions<UserInformation> options;
+
+
+    List<AdminModelClass> adminInfoData;
+    String adminNumber;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -84,8 +89,22 @@ public class HomeActivity extends AppCompatActivity {
         // data base init
         allUserDatabaseReference= FirebaseDatabase.getInstance().getReference("allUserInfo");
 
+        adminInfoDatabaseReference= FirebaseDatabase.getInstance().getReference("adminInfo");
+//        String id=adminInfoDatabaseReference.push().getKey();
+//        AdminModelClass adminModelClass=new AdminModelClass("abdullah272056@gmail.com","01994215664",id);
+//        adminInfoDatabaseReference.child(id).setValue(adminModelClass);
+
+
         singleUserInformationList=new ArrayList<>();
         allUserInformationList=new ArrayList<>();
+        adminInfoData=new ArrayList<>();
+
+
+
+
+
+
+
 //        customAdapter=new CustomAdapter2(HomeActivity.this,allUserInformationList);
         recyclerView.setLayoutManager(new LinearLayoutManager(HomeActivity.this));
 
@@ -174,6 +193,8 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
+
         singleUserDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -182,17 +203,54 @@ public class HomeActivity extends AppCompatActivity {
                     UserInformation userInformation=studentSnapshot.getValue(UserInformation.class);
                     singleUserInformationList.add(userInformation);
                 }
-
-
                 int size= singleUserInformationList.size();
                 if ( size>0){
-                    customAdapter =new CustomAdapter(options,HomeActivity.this,singleUserInformationList.get(0).getMemberType());
-                    recyclerView.setAdapter(customAdapter);
-                    customAdapter.startListening();
+
+                    adminInfoDatabaseReference.addValueEventListener(new ValueEventListener() {
+                      @Override
+                             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                               adminInfoData.clear();
+                                 for (DataSnapshot studentSnapshot:snapshot.getChildren()){
+                                   AdminModelClass adminModelClass=studentSnapshot.getValue(AdminModelClass.class);
+                                   adminInfoData.add(adminModelClass);
+
+                                 }
+                          adminNumber=adminInfoData.get(0).getPhone();
+                          customAdapter =new CustomAdapter(options,HomeActivity.this,singleUserInformationList.get(0).getMemberType(),adminNumber);
+                          recyclerView.setAdapter(customAdapter);
+                          customAdapter.startListening();
+                      }
+                      @Override
+                      public void onCancelled(@NonNull DatabaseError error) {
+
+                      }
+                    }
+                    );
+
+
                 }else {
-                    customAdapter =new CustomAdapter(options,HomeActivity.this,"user");
-                    recyclerView.setAdapter(customAdapter);
-                    customAdapter.startListening();
+                    adminInfoDatabaseReference.addValueEventListener(new ValueEventListener() {
+
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            adminInfoData.clear();
+                            for (DataSnapshot studentSnapshot:snapshot.getChildren()){
+                                AdminModelClass adminModelClass=studentSnapshot.getValue(AdminModelClass.class);
+                                adminInfoData.add(adminModelClass);
+
+                            }
+                            adminNumber=adminInfoData.get(0).getPhone();
+                            customAdapter =new CustomAdapter(options,HomeActivity.this,"user",adminNumber);
+                            recyclerView.setAdapter(customAdapter);
+                            customAdapter.startListening();
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    }
+                    );
+
                 }
 
 
@@ -313,7 +371,7 @@ public class HomeActivity extends AppCompatActivity {
                         .setQuery(FirebaseDatabase.getInstance().getReference().child("allUserInfo").orderByChild("thanaName").startAt(s).endAt(s+"\uf8ff"), UserInformation.class)
                         .build();
 
-        customAdapter =new CustomAdapter(options,HomeActivity.this,singleUserInformationList.get(0).getMemberType());
+        customAdapter =new CustomAdapter(options,HomeActivity.this,singleUserInformationList.get(0).getMemberType(),adminNumber);
         customAdapter.startListening();
         recyclerView.setAdapter(customAdapter);
 

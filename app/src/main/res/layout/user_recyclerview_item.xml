@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
+
+    android:id="@+id/cardViewId"
     app:cardBackgroundColor="#DCEBF682"
     app:cardCornerRadius="10dp"
     app:cardElevation="5dp"
@@ -57,16 +59,18 @@
         android:text="Date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
         <TextView
-            android:textColor="#000000"
             android:id="@+id/locationTextViewId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:paddingTop="2dp"
             android:paddingBottom="2dp"
-            android:textSize="18sp"
             android:text="Location"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
         <TextView
             android:visibility="gone"
             android:textColor="#000000"
@@ -78,6 +82,16 @@
             android:text="xxxxxx"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/readyForBdTextViewId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:text="Ready for donation"
+            android:textColor="#000000"
+            android:textSize="18sp" />
 
     </LinearLayout>
     <LinearLayout

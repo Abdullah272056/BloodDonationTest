@@ -12,34 +12,54 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CustomAdapter extends FirebaseRecyclerAdapter<UserInformation, CustomAdapter.MyViewHolder>{
     Context context;
     String memberType;
-    public CustomAdapter(@NonNull FirebaseRecyclerOptions<UserInformation> options, Context context,String memberType) {
+    List<UserInformation> userInformationList;
+    String adminNumber;
+
+
+    public CustomAdapter(@NonNull FirebaseRecyclerOptions<UserInformation> options, Context context,String memberType,String adminNumber) {
         super(options);
         this.context=context;
         this.memberType=memberType;
+        this.adminNumber=adminNumber;
+        userInformationList=new ArrayList<>();
+
+
+
+
     }
 
     @Override
     protected void onBindViewHolder(@NonNull MyViewHolder holder, final int position, @NonNull final UserInformation model) {
-        holder.nameTextView.setText("Name : "+model.getUserName());
-        holder.bloodGroupTextView.setText("Blood group : "+model.getBloodGroup());
-        holder.locationTextView.setText("Location : "+model.getThanaName() +", "+
-                model.getDistrictName()+", "+model.getDivisionName());
 
-        holder.lastDateTextView.setText("Last donate : "+model.getLastDate());
-        holder.phoneNumberTextView.setText("Phone : "+model.getUserPhone());
 
-        if (memberType.equals("admin")){
-            holder.phoneNumberTextView.setVisibility(View.VISIBLE);
-        }
+                holder.nameTextView.setText("Name : "+model.getUserName());
+                holder.bloodGroupTextView.setText("Blood group : "+model.getBloodGroup());
+                holder.locationTextView.setText("Location : "+model.getThanaName() +", "+
+                        model.getDistrictName()+", "+model.getDivisionName());
 
+                holder.lastDateTextView.setText("Last donate : "+model.getLastDate());
+                holder.phoneNumberTextView.setText("Phone : "+model.getUserPhone());
+                holder.readyForBdTextView.setText("Ready for donation : "+model.getReadyForBD());
+                if (memberType.equals("admin")){
+                    holder.phoneNumberTextView.setVisibility(View.VISIBLE);
+                }
 
         holder.callImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,20 +77,25 @@ public class CustomAdapter extends FirebaseRecyclerAdapter<UserInformation, Cust
                     context.startActivity(intent);
 
 
-                }else {
+                }
+                else {
+
+
 
                     AlertDialog.Builder builder     =new AlertDialog.Builder(context);
                     LayoutInflater layoutInflater   =LayoutInflater.from(context);
                     View view                       =layoutInflater.inflate(R.layout.admin_phone,null);
                    TextView cancelTextView=view.findViewById(R.id.cancelTextViewId);
                    TextView callTextView=view.findViewById(R.id.callTextViewId);
+                    TextView adminPhoneTextView=view.findViewById(R.id.adminPhoneTextViewId);
+
 
                     builder.setView(view);
                     final AlertDialog   alertDialog   = builder.create();
                     alertDialog.setCancelable(false);
 
 
-
+                    adminPhoneTextView.setText("Admin : "+adminNumber);
                     cancelTextView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -113,8 +138,9 @@ public class CustomAdapter extends FirebaseRecyclerAdapter<UserInformation, Cust
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView nameTextView,bloodGroupTextView,locationTextView,lastDateTextView,phoneNumberTextView;
+        TextView nameTextView,bloodGroupTextView,locationTextView,lastDateTextView,phoneNumberTextView,readyForBdTextView;
         ImageView callImageView;
+        CardView cardView;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -124,6 +150,8 @@ public class CustomAdapter extends FirebaseRecyclerAdapter<UserInformation, Cust
             lastDateTextView=itemView.findViewById(R.id.lastDateTextViewId);
             phoneNumberTextView=itemView.findViewById(R.id.phoneNumberTextViewId);
             callImageView=itemView.findViewById(R.id.callImageViewId);
+            readyForBdTextView=itemView.findViewById(R.id.readyForBdTextViewId);
+            cardView=itemView.findViewById(R.id.cardViewId);
 
 
 
