@@ -386,10 +386,16 @@ public class HomeActivity extends AppCompatActivity {
                 new FirebaseRecyclerOptions.Builder<UserInformation>()
                         .setQuery(FirebaseDatabase.getInstance().getReference().child("allUserInfo").orderByChild("thanaName").startAt(s).endAt(s+"\uf8ff"), UserInformation.class)
                         .build();
+        int size= singleUserInformationList.size();
+        if ( size>0){
 
-        customAdapter =new CustomAdapter(options,HomeActivity.this,singleUserInformationList.get(0).getMemberType(),adminNumber,adminName);
-        customAdapter.startListening();
-        recyclerView.setAdapter(customAdapter);
+        }else {
+            customAdapter =new CustomAdapter(options,HomeActivity.this,"user",adminNumber,adminName);
+            customAdapter.startListening();
+            recyclerView.setAdapter(customAdapter);
+        }
+
+
 
 
     }
