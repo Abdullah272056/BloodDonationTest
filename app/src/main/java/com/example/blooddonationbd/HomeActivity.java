@@ -59,6 +59,9 @@ public class HomeActivity extends AppCompatActivity {
     List<AdminModelClass> adminInfoData;
     String adminNumber,adminName;
 
+
+    CustomProgress customProgress;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -82,6 +85,7 @@ public class HomeActivity extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24);
 
 
+        customProgress=new CustomProgress(HomeActivity.this);
 
 
         // dataBase access with id
@@ -191,13 +195,21 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+       // customProgress.dismissProgress();
+    }
+
+    @Override
     protected void onStart() {
         super.onStart();
 
-
+        customProgress.showProgress();
         singleUserDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                 singleUserInformationList.clear();
                 for (DataSnapshot studentSnapshot:snapshot.getChildren()){
                     UserInformation userInformation=studentSnapshot.getValue(UserInformation.class);
@@ -255,13 +267,15 @@ public class HomeActivity extends AppCompatActivity {
 
                 }
 
-
+                customProgress.dismissProgress();
 
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                customProgress.dismissProgress();
 
             }
+
         });
 
     }
