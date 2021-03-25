@@ -57,7 +57,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
     List<AdminModelClass> adminInfoData;
-    String adminNumber;
+    String adminNumber,adminName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -216,7 +216,8 @@ public class HomeActivity extends AppCompatActivity {
 
                                  }
                           adminNumber=adminInfoData.get(0).getPhone();
-                          customAdapter =new CustomAdapter(options,HomeActivity.this,singleUserInformationList.get(0).getMemberType(),adminNumber);
+                            adminName=adminInfoData.get(0).getName();
+                          customAdapter =new CustomAdapter(options,HomeActivity.this,singleUserInformationList.get(0).getMemberType(),adminNumber,adminName);
                           recyclerView.setAdapter(customAdapter);
                           customAdapter.startListening();
                       }
@@ -240,7 +241,8 @@ public class HomeActivity extends AppCompatActivity {
 
                             }
                             adminNumber=adminInfoData.get(0).getPhone();
-                            customAdapter =new CustomAdapter(options,HomeActivity.this,"user",adminNumber);
+                            adminName=adminInfoData.get(0).getName();
+                            customAdapter =new CustomAdapter(options,HomeActivity.this,"user",adminNumber,adminName);
                             recyclerView.setAdapter(customAdapter);
                             customAdapter.startListening();
                         }
@@ -371,7 +373,7 @@ public class HomeActivity extends AppCompatActivity {
                         .setQuery(FirebaseDatabase.getInstance().getReference().child("allUserInfo").orderByChild("thanaName").startAt(s).endAt(s+"\uf8ff"), UserInformation.class)
                         .build();
 
-        customAdapter =new CustomAdapter(options,HomeActivity.this,singleUserInformationList.get(0).getMemberType(),adminNumber);
+        customAdapter =new CustomAdapter(options,HomeActivity.this,singleUserInformationList.get(0).getMemberType(),adminNumber,adminName);
         customAdapter.startListening();
         recyclerView.setAdapter(customAdapter);
 

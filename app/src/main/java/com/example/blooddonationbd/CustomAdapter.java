@@ -30,14 +30,15 @@ public class CustomAdapter extends FirebaseRecyclerAdapter<UserInformation, Cust
     Context context;
     String memberType;
     List<UserInformation> userInformationList;
-    String adminNumber;
+    String adminNumber,adminName;
 
 
-    public CustomAdapter(@NonNull FirebaseRecyclerOptions<UserInformation> options, Context context,String memberType,String adminNumber) {
+    public CustomAdapter(@NonNull FirebaseRecyclerOptions<UserInformation> options, Context context,String memberType,String adminNumber,String adminName) {
         super(options);
         this.context=context;
         this.memberType=memberType;
         this.adminNumber=adminNumber;
+        this.adminName=adminName;
         userInformationList=new ArrayList<>();
 
 
@@ -88,6 +89,7 @@ public class CustomAdapter extends FirebaseRecyclerAdapter<UserInformation, Cust
                    TextView cancelTextView=view.findViewById(R.id.cancelTextViewId);
                    TextView callTextView=view.findViewById(R.id.callTextViewId);
                     TextView adminPhoneTextView=view.findViewById(R.id.adminPhoneTextViewId);
+                    TextView adminNameTextView=view.findViewById(R.id.adminNameTextViewId);
 
 
                     builder.setView(view);
