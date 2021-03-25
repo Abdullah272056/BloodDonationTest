@@ -1,15 +1,24 @@
 package com.example.blooddonationbd;
 
 public class AdminModelClass {
-    String email,phone,id;
+    String email,phone,id,name;
 
     public AdminModelClass() {
     }
 
-    public AdminModelClass(String email, String phone, String id) {
+    public AdminModelClass(String email, String phone, String id, String name) {
         this.email = email;
         this.phone = phone;
         this.id = id;
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {

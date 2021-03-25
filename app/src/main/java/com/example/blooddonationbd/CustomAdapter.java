@@ -103,12 +103,12 @@ public class CustomAdapter extends FirebaseRecyclerAdapter<UserInformation, Cust
                         }
                     });
 
-                    callTextView.setOnClickListener(new View.OnClickListener() {
+                    callTextView.setOnClickListener(new View.OnClickListener(){
                         @Override
                         public void onClick(View v) {
                             alertDialog.dismiss();
 
-                            String s="tel:"+"01994215664";
+                            String s="tel:"+adminNumber;
                             Intent intent=new Intent(Intent.ACTION_DIAL);
                             intent.setData(Uri.parse(s));
                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
