@@ -97,7 +97,8 @@ public class CustomAdapter extends FirebaseRecyclerAdapter<UserInformation, Cust
                     alertDialog.setCancelable(false);
 
 
-                    adminPhoneTextView.setText("Admin : "+adminNumber);
+                    adminPhoneTextView.setText("Phone : "+adminNumber);
+                    adminNameTextView.setText("Name : "+adminName +("admin"));
                     cancelTextView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
