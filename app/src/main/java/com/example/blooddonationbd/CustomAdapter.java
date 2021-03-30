@@ -44,7 +44,6 @@ public class CustomAdapter extends FirebaseRecyclerAdapter<UserInformation, Cust
     @Override
     protected void onBindViewHolder(@NonNull MyViewHolder holder, final int position, @NonNull final UserInformation model) {
 
-
                 holder.nameTextView.setText("Name : "+model.getUserName());
                 holder.bloodGroupTextView.setText("Blood group : "+model.getBloodGroup());
                 holder.locationTextView.setText("Location : "+model.getThanaName() +", "+
