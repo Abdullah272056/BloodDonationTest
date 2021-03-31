@@ -384,7 +384,7 @@ public class HomeActivity extends AppCompatActivity {
 
         FirebaseRecyclerOptions<UserInformation> options =
                 new FirebaseRecyclerOptions.Builder<UserInformation>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("allUserInfo").orderByChild("thanaName").startAt(s).endAt(s+"\uf8ff"), UserInformation.class)
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("allUserInfo").orderByChild("districtName").startAt(s).endAt(s+"\uf8ff"), UserInformation.class)
                         .build();
         int size= singleUserInformationList.size();
         if ( size>0){

@@ -77,6 +77,7 @@ public class CustomAdapter2 extends RecyclerView.Adapter<CustomAdapter2.MyViewHo
                 filterList.addAll(copyUserInformationList);
             }
             else{
+
                 String value=charSequence.toString().toLowerCase().trim();
                 for (UserInformation userInformation:copyUserInformationList){
                     if (userInformation.getBloodGroup().toLowerCase().trim().contains(value)||userInformation.getDistrictName().toLowerCase().trim().contains(value)){
