@@ -290,7 +290,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
-        MenuItem menuItem = menu.findItem(R.id.search);
+        MenuItem menuItem = menu.findItem(R.id.searchItemId);
         //set Search View Action
         androidx.appcompat.widget.SearchView searchView = (androidx.appcompat.widget.SearchView) menuItem.getActionView();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -388,7 +388,9 @@ public class HomeActivity extends AppCompatActivity {
                         .build();
         int size= singleUserInformationList.size();
         if ( size>0){
-
+            customAdapter =new CustomAdapter(options,HomeActivity.this,singleUserInformationList.get(0).getMemberType(),adminNumber,adminName);
+            customAdapter.startListening();
+            recyclerView.setAdapter(customAdapter);
         }else {
             customAdapter =new CustomAdapter(options,HomeActivity.this,"user",adminNumber,adminName);
             customAdapter.startListening();

@@ -5,7 +5,7 @@
         app:showAsAction="always"
         android:icon="@drawable/ic_baseline_search_24"
         android:title="search"
-        android:id="@+id/search"
+        android:id="@+id/searchItemId"
         app:actionViewClass="androidx.appcompat.widget.SearchView">
 
     </item>
