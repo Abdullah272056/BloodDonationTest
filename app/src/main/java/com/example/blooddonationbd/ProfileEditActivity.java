@@ -94,6 +94,8 @@ public class ProfileEditActivity extends AppCompatActivity implements DivisionCu
     DistrictCustomAdapter.OnContactClickListener2 onContactClickListener2;
     ThanaCustomAdapter.OnContactClickListener3 onContactClickListener3;
     String readyForBD="";
+
+    CustomProgress customProgress;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -128,7 +130,8 @@ public class ProfileEditActivity extends AppCompatActivity implements DivisionCu
         allUserDatabaseReference= FirebaseDatabase.getInstance().getReference("allUserInfo");
         apiInterface = RetrofitClient.getRetrofit("https://bdapis.herokuapp.com/").create(ApiInterface.class);
 
-
+        // create a object for custom progress
+        customProgress=new CustomProgress(ProfileEditActivity.this);
 
         // view finding
         nameEditText=findViewById(R.id.nameEditTextId);
@@ -415,9 +418,11 @@ public class ProfileEditActivity extends AppCompatActivity implements DivisionCu
     }
 
     public  void  getDivisionData(){
+        customProgress.showProgress();
         apiInterface.getAllDivision().enqueue(new Callback<GetDivisionResponseData>() {
             @Override
             public void onResponse(Call<GetDivisionResponseData> call, Response<GetDivisionResponseData> response) {
+                customProgress.dismissProgress();
                 if (response.code()==200){
                     divisionDataList=new ArrayList<>();
                     assert response.body() != null;
@@ -434,6 +439,7 @@ public class ProfileEditActivity extends AppCompatActivity implements DivisionCu
             }
             @Override
             public void onFailure(Call<GetDivisionResponseData> call, Throwable t) {
+                customProgress.dismissProgress();
                 Toast.makeText(ProfileEditActivity.this, "fff", Toast.LENGTH_SHORT).show();
 
             }
@@ -460,9 +466,11 @@ public class ProfileEditActivity extends AppCompatActivity implements DivisionCu
 
 
     public void  getDistrict(String id){
+        customProgress.showProgress();
         apiInterface.getDistrict(id).enqueue(new Callback<GetDistrictResponseData>() {
             @Override
             public void onResponse(Call<GetDistrictResponseData> call, Response<GetDistrictResponseData> response) {
+                customProgress.dismissProgress();
                 if (response.code()==200){
                     districtDataList=new ArrayList<>();
                     thanaDataList=new ArrayList<>();
@@ -479,6 +487,7 @@ public class ProfileEditActivity extends AppCompatActivity implements DivisionCu
 
             @Override
             public void onFailure(Call<GetDistrictResponseData> call, Throwable t) {
+                customProgress.dismissProgress();
                 Toast.makeText(ProfileEditActivity.this, "fff", Toast.LENGTH_SHORT).show();
 
             }
