@@ -15,6 +15,10 @@
         <item name="android:maxHeight">5dip</item>
     </style>
 
-
+    <style name="MyEditTextStyle" parent="@android:style/TextAppearance.Widget.EditText">
+        <item name="android:background">#FDFCFC</item> //NO UNDERBAR
+        <item name="android:maxLines">1</item>
+        <item name="android:height">28dp</item> //COMMON HEIGHT
+    </style>
 
 </resources>

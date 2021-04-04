@@ -57,56 +57,77 @@
             android:text="Forgot password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-        <LinearLayout
-            android:gravity="center"
-            android:padding="10dp"
+        <androidx.cardview.widget.CardView
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
-            android:background="#FDF8F8"
+            app:cardCornerRadius="7dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-            <ImageView
-                android:src="@drawable/ic_baseline_email_24"
-                android:layout_width="30dp"
-                android:layout_height="30dp"/>
-            <EditText
-                android:id="@+id/logInEmailEditTextId"
-                android:imeOptions="actionNext"
-                android:layout_marginStart="15dp"
-                android:textSize="20sp"
-                android:inputType="textEmailAddress"
-                android:hint="Email *"
+            <LinearLayout
+                android:gravity="center"
+                android:padding="10dp"
+                android:background="#FDF8F8"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content">
 
-        </LinearLayout>
-        <LinearLayout
-            android:gravity="center"
-            android:padding="15dp"
+                <ImageView
+                    android:src="@drawable/ic_baseline_email_24"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+                <EditText
+                    android:padding="7dp"
+                    style="@style/MyEditTextStyle"
+                    android:id="@+id/logInEmailEditTextId"
+                    android:imeOptions="actionNext"
+                    android:layout_marginStart="15dp"
+                    android:textSize="20sp"
+                    android:inputType="textEmailAddress"
+                    android:hint="Email *"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
-            android:background="#FDF8F8"
+            app:cardCornerRadius="7dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-            <ImageView
-                android:src="@drawable/ic_baseline_lock_24"
-                android:layout_width="30dp"
-                android:layout_height="30dp"/>
-            <EditText
-                android:id="@+id/logInPasswordEditTextId"
-                android:imeOptions="actionDone"
-                android:layout_marginStart="15dp"
-                android:textSize="20sp"
-                android:inputType="textPassword"
-                android:hint="Password *"
+            <LinearLayout
+                android:gravity="center"
+                android:padding="10dp"
+                android:background="#FDF8F8"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content">
 
-        </LinearLayout>
+                <ImageView
+                    android:src="@drawable/ic_baseline_lock_24"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+
+
+                <EditText
+                    android:padding="7dp"
+                    style="@style/MyEditTextStyle"
+                    android:id="@+id/logInPasswordEditTextId"
+                    android:imeOptions="actionDone"
+                    android:layout_marginStart="15dp"
+                    android:textSize="20sp"
+                    android:inputType="textPassword"
+                    android:hint="Password *"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+
+
+        </androidx.cardview.widget.CardView>
+
 
         <CheckBox
             android:id="@+id/rememberCheckBoxId"
@@ -128,16 +149,25 @@
             android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <Button
-                android:id="@+id/logIbButtonID"
-                android:background="#F80202"
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="7dp"
+                app:cardElevation="7dp"
+                app:cardUseCompatPadding="true"
                 android:layout_weight="1"
-                android:textColor="#FFFEFE"
-                android:textSize="30sp"
-                android:padding="10dp"
-                android:text="Log in"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/logIbButtonID"
+                    android:background="#F80202"
+                    android:textColor="#FFFEFE"
+                    android:textSize="30sp"
+                    android:padding="10dp"
+                    android:text="Log in"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </androidx.cardview.widget.CardView>
+
         </LinearLayout>
         <LinearLayout
             android:paddingRight="20dp"
