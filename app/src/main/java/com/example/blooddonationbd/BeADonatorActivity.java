@@ -182,12 +182,15 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
         divisionTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                districtTextView.setText("");
                 getDivisionData();
             }
         });
         districtTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                thanaTextView.setText("");
+                districtTextView.setText("");
                 String division=divisionTextView.getText().toString();
                 if (division.isEmpty()){
                     Toast.makeText(BeADonatorActivity.this, "Please select your division", Toast.LENGTH_SHORT).show();

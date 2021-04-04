@@ -194,11 +194,14 @@ public class ProfileEditActivity extends AppCompatActivity implements DivisionCu
             @Override
             public void onClick(View v) {
                 getDivisionData();
+                districtNameTextView.setText("");
             }
         });
         districtNameTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                thanaNameTextView.setText("");
+                districtNameTextView.setText("");
                 String division=divisionNameTextView.getText().toString();
                 if (division.isEmpty()){
                     Toast.makeText(ProfileEditActivity.this, "Please select your division", Toast.LENGTH_SHORT).show();
