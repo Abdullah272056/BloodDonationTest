@@ -38,7 +38,7 @@
                     android:textSize="25sp"
                     android:textAlignment="center"
                     android:textColor="#FF0000"
-                    android:text="Be a Donator"
+                    android:text="Edit your profile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
