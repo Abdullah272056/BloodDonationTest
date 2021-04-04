@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="56dp"
-    android:background="#0821AC"
+    android:background="#9C27B0"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <TextView
         android:id="@+id/toolbarTextViewId"

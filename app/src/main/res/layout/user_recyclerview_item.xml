@@ -2,9 +2,8 @@
 <androidx.cardview.widget.CardView
 
     android:id="@+id/cardViewId"
-    app:cardBackgroundColor="#DCEBF682"
     app:cardCornerRadius="10dp"
-    app:cardElevation="5dp"
+    app:cardElevation="7dp"
     app:cardUseCompatPadding="true"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -12,6 +11,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
+        android:padding="10dp"
         android:orientation="horizontal"
         android:gravity="center"
         android:weightSum="5"
@@ -31,7 +31,6 @@
         android:textColor="#000000"
         android:id="@+id/nameTextViewId"
         android:textStyle="bold"
-        android:paddingLeft="10dp"
         android:paddingTop="2dp"
         android:paddingBottom="2dp"
         android:textSize="22sp"
@@ -42,7 +41,7 @@
         android:textColor="#FF0000"
         android:id="@+id/bloodGroupTextViewId"
         android:textStyle="bold"
-        android:paddingLeft="10dp"
+
         android:paddingTop="2dp"
         android:paddingBottom="2dp"
         android:textSize="22sp"
@@ -50,12 +49,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <TextView
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="#000000"
         android:id="@+id/lastDateTextViewId"
-        android:paddingLeft="10dp"
         android:paddingTop="2dp"
         android:paddingBottom="2dp"
-        android:textSize="20sp"
         android:text="Date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -64,21 +62,20 @@
             android:id="@+id/locationTextViewId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
             android:paddingTop="2dp"
             android:paddingBottom="2dp"
             android:text="Location"
             android:textColor="#000000"
-            android:textSize="18sp" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            />
 
         <TextView
             android:visibility="gone"
             android:textColor="#000000"
             android:id="@+id/phoneNumberTextViewId"
-            android:paddingLeft="10dp"
             android:paddingTop="2dp"
             android:paddingBottom="2dp"
-            android:textSize="20sp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:text="xxxxxx"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -86,12 +83,12 @@
             android:id="@+id/readyForBdTextViewId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
             android:paddingTop="2dp"
             android:paddingBottom="2dp"
             android:text="Ready for donation"
             android:textColor="#000000"
-            android:textSize="18sp" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            />
 
     </LinearLayout>
     <LinearLayout
