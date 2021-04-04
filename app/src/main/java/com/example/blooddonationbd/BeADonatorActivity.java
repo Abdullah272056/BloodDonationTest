@@ -524,7 +524,8 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
         builder.setView(view);
         alertDialog   = builder.create();
         alertDialog.setCancelable(true);
-
+        TextView textView=view.findViewById(R.id.itemNameTextViewId);
+        textView.setText("Select your Division");
         recyclerView=view.findViewById(R.id.recyclerViewId);
         divisionCustomAdapter = new DivisionCustomAdapter(BeADonatorActivity.this,divisionDataList,onContactClickListener1);
         recyclerView.setLayoutManager(new LinearLayoutManager(BeADonatorActivity.this));
@@ -573,6 +574,8 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
         alertDialog   = builder.create();
         alertDialog.setCancelable(true);
 
+        TextView textView=view.findViewById(R.id.itemNameTextViewId);
+        textView.setText("Select your District");
         recyclerView=view.findViewById(R.id.recyclerViewId);
         districtCustomAdapter = new DistrictCustomAdapter(BeADonatorActivity.this,districtDataList,onContactClickListener2);
         recyclerView.setLayoutManager(new LinearLayoutManager(BeADonatorActivity.this));
@@ -592,8 +595,9 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
         alertDialog   = builder.create();
         alertDialog.setCancelable(true);
 
+        TextView textView=view.findViewById(R.id.itemNameTextViewId);
+        textView.setText("Select your Thana");
         recyclerView=view.findViewById(R.id.recyclerViewId);
-
         thanaCustomAdapter = new ThanaCustomAdapter(BeADonatorActivity.this,thanaDataList,onContactClickListener3);
         recyclerView.setLayoutManager(new LinearLayoutManager(BeADonatorActivity.this));
         recyclerView.setAdapter(thanaCustomAdapter);

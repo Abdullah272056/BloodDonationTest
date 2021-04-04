@@ -456,7 +456,8 @@ public class ProfileEditActivity extends AppCompatActivity implements DivisionCu
         builder.setView(view);
         alertDialog   = builder.create();
         alertDialog.setCancelable(true);
-
+        TextView textView=view.findViewById(R.id.itemNameTextViewId);
+        textView.setText("Select your Division");
         recyclerView=view.findViewById(R.id.recyclerViewId);
         divisionCustomAdapter = new DivisionCustomAdapter(ProfileEditActivity.this,divisionDataList,onContactClickListener1);
         recyclerView.setLayoutManager(new LinearLayoutManager(ProfileEditActivity.this));
@@ -506,6 +507,8 @@ public class ProfileEditActivity extends AppCompatActivity implements DivisionCu
         alertDialog.setCancelable(true);
 
         recyclerView=view.findViewById(R.id.recyclerViewId);
+        TextView textView=view.findViewById(R.id.itemNameTextViewId);
+        textView.setText("Select your District");
         districtCustomAdapter = new DistrictCustomAdapter(ProfileEditActivity.this,districtDataList,onContactClickListener2);
         recyclerView.setLayoutManager(new LinearLayoutManager(ProfileEditActivity.this));
         recyclerView.setAdapter(districtCustomAdapter);
@@ -523,7 +526,8 @@ public class ProfileEditActivity extends AppCompatActivity implements DivisionCu
         builder.setView(view);
         alertDialog   = builder.create();
         alertDialog.setCancelable(true);
-
+        TextView textView=view.findViewById(R.id.itemNameTextViewId);
+        textView.setText("Select your Thana");
         recyclerView=view.findViewById(R.id.recyclerViewId);
         thanaCustomAdapter = new ThanaCustomAdapter(ProfileEditActivity.this,thanaDataList,onContactClickListener3);
         recyclerView.setLayoutManager(new LinearLayoutManager(ProfileEditActivity.this));
