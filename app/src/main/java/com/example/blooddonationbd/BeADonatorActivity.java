@@ -182,7 +182,7 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
         divisionTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                districtTextView.setText("");
+
                 getDivisionData();
             }
         });

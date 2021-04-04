@@ -194,7 +194,7 @@ public class ProfileEditActivity extends AppCompatActivity implements DivisionCu
             @Override
             public void onClick(View v) {
                 getDivisionData();
-                districtNameTextView.setText("");
+               // districtNameTextView.setText("");
             }
         });
         districtNameTextView.setOnClickListener(new View.OnClickListener() {
