@@ -535,9 +535,11 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
 
 
     public void  getDistrict(String id){
+        customProgress.showProgress();
         apiInterface.getDistrict(id).enqueue(new Callback<GetDistrictResponseData>() {
             @Override
             public void onResponse(Call<GetDistrictResponseData> call, Response<GetDistrictResponseData> response) {
+                customProgress.dismissProgress();
                 if (response.code()==200){
                     districtDataList=new ArrayList<>();
                     thanaDataList=new ArrayList<>();
@@ -554,6 +556,7 @@ public class BeADonatorActivity extends AppCompatActivity  implements DivisionCu
 
             @Override
             public void onFailure(Call<GetDistrictResponseData> call, Throwable t) {
+                customProgress.dismissProgress();
                 Toast.makeText(BeADonatorActivity.this, "fff", Toast.LENGTH_SHORT).show();
 
             }
